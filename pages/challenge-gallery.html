@@ -51,12 +51,12 @@
 </div>
 
 <!-- Challenge Filters -->
-<div class="challenge-filters">
-    <button class="filter-pill active" data-filter="all" onclick="filterChallengesByCategory('all')">All</button>
-    <button class="filter-pill" data-filter="habits" onclick="filterChallengesByCategory('habits')">Habits</button>
-    <button class="filter-pill" data-filter="mindset" onclick="filterChallengesByCategory('mindset')">Mindset</button>
-    <button class="filter-pill" data-filter="goals" onclick="filterChallengesByCategory('goals')">Goals</button>
-    <button class="filter-pill" data-filter="wellness" onclick="filterChallengesByCategory('wellness')">Wellness</button>
+<div class="category-filters">
+    <button class="category-pill active" data-category="all" onclick="filterChallengesByCategory('all')">All</button>
+    <button class="category-pill" data-category="habits" onclick="filterChallengesByCategory('habits')">Habits</button>
+    <button class="category-pill" data-category="mindset" onclick="filterChallengesByCategory('mindset')">Mindset</button>
+    <button class="category-pill" data-category="goals" onclick="filterChallengesByCategory('goals')">Goals</button>
+    <button class="category-pill" data-category="wellness" onclick="filterChallengesByCategory('wellness')">Wellness</button>
 </div>
 
 <!-- Browse Challenges -->
@@ -125,8 +125,8 @@
 </div>
 
 <!-- Active Challenges -->
-<div class="gallery-section" id="active-section" style="display: none;">
-    <div class="active-dreams-carousel">
+<div class="gallery-section" id="active-section">
+    <div class="active-challenges-carousel">
         <div class="dream-card" data-category="habits" onclick="showChallengeDetail('water-active')">
             <div class="dream-card-header">
                 <h3 class="dream-title">Daily Water Challenge</h3>
@@ -237,8 +237,8 @@
 </div>
 
 <!-- Completed Challenges -->
-<div class="gallery-section" id="completed-section" style="display: none;">
-    <div class="active-dreams-carousel">
+<div class="gallery-section" id="completed-section">
+    <div class="completed-challenges-carousel">
         <div class="dream-card" data-category="habits" onclick="showChallengeDetail('meditation-completed')">
             <div class="dream-card-header">
                 <h3 class="dream-title">21-Day Meditation Streak</h3>

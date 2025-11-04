@@ -5561,6 +5561,21 @@ h1, h2 {
     border-color: #d1d1d6;
 }
 
+/* Challenge Carousel Containers */
+.active-challenges-carousel,
+.completed-challenges-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+}
+.active-challenges-carousel::-webkit-scrollbar,
+.completed-challenges-carousel::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* ===============================================
    DREAM GALLERY STYLES

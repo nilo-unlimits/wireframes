@@ -165,6 +165,10 @@ function enhancedShowPage(pageId) {
                 loadComponent('breadcrumb', 'challenge-gallery-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
+                    // Initialize Challenge Gallery with Browse tab active
+                    setTimeout(() => {
+                        switchChallengeTab('browse');
+                    }, 100);
                 });
             }
         });
@@ -1055,17 +1059,25 @@ window.showDreamDetail = showDreamDetail;
 
 // Challenge tab switching functionality
 function switchChallengeTab(tabName) {
-    // Update tab buttons
-    document.querySelectorAll('.gallery-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    // Update tab buttons - only in Challenge Gallery
+    const challengeGalleryTabs = document.querySelectorAll('#challenge-gallery .gallery-tab');
+    if (challengeGalleryTabs.length > 0) {
+        challengeGalleryTabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        const targetTab = document.querySelector(`#challenge-gallery [data-tab="${tabName}"]`);
+        if (targetTab) targetTab.classList.add('active');
+    }
     
-    // Show/hide sections
-    document.querySelectorAll('.gallery-section').forEach(section => {
-        section.style.display = 'none';
-    });
-    document.getElementById(`${tabName}-section`).style.display = 'block';
+    // Show/hide sections - only in Challenge Gallery
+    const challengeGallerySections = document.querySelectorAll('#challenge-gallery .gallery-section');
+    if (challengeGallerySections.length > 0) {
+        challengeGallerySections.forEach(section => {
+            section.style.display = 'none';
+        });
+        const targetSection = document.querySelector(`#challenge-gallery #${tabName}-section`);
+        if (targetSection) targetSection.style.display = 'block';
+    }
 }
 
 // Challenge type selection
@@ -1083,10 +1095,10 @@ function selectChallengeType(type) {
 // Filter challenges by category
 function filterChallengesByCategory(category) {
     // Update filter pill styling
-    document.querySelectorAll('.filter-pill').forEach(pill => {
+    document.querySelectorAll('.category-pill').forEach(pill => {
         pill.classList.remove('active');
     });
-    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+    document.querySelector(`[data-category="${category}"]`).classList.add('active');
     
     // Filter challenge cards
     const challengeCards = document.querySelectorAll('.suggested-dream-card, .dream-card');
