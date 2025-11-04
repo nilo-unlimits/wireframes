@@ -5496,14 +5496,16 @@ h1, h2 {
     color: #8e8e93;
 }
 
-.dream-gallery-content {
-    padding: 0 20px;
-}
 
 .dreams-masonry-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    padding: 0 20px;
+}
+
+.active-dreams-carousel {
+    padding: 0 20px;
 }
 
 .gallery-dream-card {
