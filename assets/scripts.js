@@ -101,7 +101,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-gallery'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-gallery', 'challenge-gallery'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -158,6 +158,11 @@ function enhancedShowPage(pageId) {
                 });
             } else if (pageId === 'dream-gallery') {
                 loadComponent('breadcrumb', 'dream-gallery-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'challenge-gallery') {
+                loadComponent('breadcrumb', 'challenge-gallery-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
@@ -420,6 +425,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('meditation');
         await loadPageContent('notifications');
         await loadPageContent('dream-gallery');
+        await loadPageContent('challenge-gallery');
         await loadPageContent('dream-detail');
         await loadPageContent('future-self');
         
@@ -430,6 +436,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for dream-gallery since it's preloaded
         await loadComponent('breadcrumb', 'dream-gallery-breadcrumb-container');
         updateBreadcrumbTitle('dream-gallery');
+        
+        // Load breadcrumb for challenge-gallery since it's preloaded
+        await loadComponent('breadcrumb', 'challenge-gallery-breadcrumb-container');
+        updateBreadcrumbTitle('challenge-gallery');
         
     } catch (error) {
         console.error('Error loading app content:', error);
@@ -494,7 +504,8 @@ const BREADCRUMB_TITLES = {
     'manage-account': 'MANAGE ACCOUNT',
     'learn-more': 'SUBSCRIPTION',
     'dream-report': 'DREAM REPORT',
-    'dream-gallery': 'DREAM GALLERY'
+    'dream-gallery': 'DREAM GALLERY',
+    'challenge-gallery': 'CHALLENGE GALLERY'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1037,3 +1048,92 @@ window.closeFilterMenu = closeFilterMenu;
 window.selectFilter = selectFilter;
 window.addNewDream = addNewDream;
 window.showDreamDetail = showDreamDetail;
+
+// ===============================================
+// CHALLENGE GALLERY FUNCTIONALITY
+// ===============================================
+
+// Challenge tab switching functionality
+function switchChallengeTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.gallery-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Show/hide sections
+    document.querySelectorAll('.gallery-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(`${tabName}-section`).style.display = 'block';
+}
+
+// Challenge type selection
+function selectChallengeType(type) {
+    // Update challenge type card styling
+    document.querySelectorAll('.challenge-type-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.querySelector(`[data-type="${type}"]`).classList.add('active');
+    
+    // Update card content based on type
+    const card = document.querySelector('.challenge-type-card');
+    const icon = card.querySelector('.challenge-type-icon');
+    const title = card.querySelector('.challenge-type-title');
+    const duration = card.querySelector('.challenge-type-duration');
+    
+    switch(type) {
+        case 'starter':
+            icon.textContent = 'S';
+            title.textContent = 'Starter';
+            duration.textContent = '21 Days';
+            card.style.background = 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)';
+            break;
+        case 'warrior':
+            icon.textContent = 'W';
+            title.textContent = 'Warrior';
+            duration.textContent = '60 Days';
+            card.style.background = 'linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)';
+            break;
+        case 'unlimiter':
+            icon.textContent = 'U';
+            title.textContent = 'Unlimiter';
+            duration.textContent = '100 Days';
+            card.style.background = 'linear-gradient(135deg, #667EEA 0%, #764BA2 100%)';
+            break;
+    }
+}
+
+// Challenge search functionality  
+function filterChallenges() {
+    const searchInput = document.querySelector('#gallery-search input');
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
+    if (!activeSection) return;
+    
+    // Filter all cards
+    const allCards = activeSection.querySelectorAll('.suggested-dream-card, .dream-card');
+    allCards.forEach(card => {
+        const title = card.querySelector('.suggested-dream-title, .dream-title');
+        if (title) {
+            const titleText = title.textContent.toLowerCase();
+            if (titleText.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
+
+// Challenge detail functionality
+function showChallengeDetail(challengeId) {
+    console.log('Showing challenge detail for:', challengeId);
+}
+
+// Make functions globally available
+window.switchChallengeTab = switchChallengeTab;
+window.selectChallengeType = selectChallengeType;
+window.filterChallenges = filterChallenges;
+window.showChallengeDetail = showChallengeDetail;

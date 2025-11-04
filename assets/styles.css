@@ -5373,6 +5373,106 @@ h1, h2 {
 
 
 /* ===============================================
+   CHALLENGE TYPE CAROUSEL STYLES
+   =============================================== */
+
+.challenge-type-carousel {
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+.challenge-type-card {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    border-radius: 16px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.challenge-type-card:hover {
+    transform: translateY(-2px);
+}
+
+.challenge-type-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.challenge-type-icon {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.challenge-type-content {
+    flex: 1;
+}
+
+.challenge-type-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #fff;
+}
+
+.challenge-type-duration {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+}
+
+.challenge-type-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.challenge-type-arrows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.challenge-arrow-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.challenge-arrow-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.challenge-arrow-btn i {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+    color: #fff;
+}
+
+
+/* ===============================================
    DREAM GALLERY STYLES
    =============================================== */
 
