@@ -3547,12 +3547,25 @@ h1, h2 {
 
 .suggested-dream-title {
     position: absolute;
-    bottom: 12px;
+    bottom: 28px;
     left: 12px;
     right: 12px;
     font-size: 12px;
     font-weight: 600;
     color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.suggested-dream-subtitle {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
     line-height: 1.2;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -5374,7 +5387,7 @@ h1, h2 {
 .gallery-tabs {
     display: flex;
     gap: 0;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .gallery-tab {
@@ -5397,7 +5410,7 @@ h1, h2 {
 .gallery-actions {
     display: flex;
     gap: 8px;
-    padding: 0 20px;
+    padding: 0;
 }
 
 /* Gallery Search Styling */
@@ -5413,7 +5426,7 @@ h1, h2 {
     border-radius: 12px;
     padding: 12px 16px;
     gap: 8px;
-    margin: 0 20px;
+    margin: 0;
 }
 
 .gallery-search-icon {
@@ -5504,11 +5517,11 @@ h1, h2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .active-dreams-carousel {
-    padding: 0 20px;
+    padding: 0;
 }
 
 .gallery-dream-card {
