@@ -413,6 +413,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('dreams');
         await loadPageContent('challenges');
         await loadPageContent('meditation');
+        await loadPageContent('notifications');
         await loadPageContent('future-self');
         
         // Load breadcrumb for future-self since it's preloaded
