@@ -31,26 +31,32 @@
     </div>
 </div>
 
-<!-- Challenge Type Carousel -->
-<div class="challenge-type-carousel">
-    <div class="challenge-type-card active" data-type="starter" onclick="selectChallengeType('starter')">
-        <div class="challenge-type-avatar">
-            <div class="challenge-type-icon">S</div>
-        </div>
-        <div class="challenge-type-content">
-            <div class="challenge-type-title">Starter</div>
-            <div class="challenge-type-duration">21 Days</div>
-            <div class="challenge-type-subtitle">Challenges</div>
-        </div>
-        <div class="challenge-type-arrows">
-            <button class="challenge-arrow-btn prev">
-                <i data-lucide="chevron-left"></i>
-            </button>
-            <button class="challenge-arrow-btn next">
-                <i data-lucide="chevron-right"></i>
-            </button>
-        </div>
-    </div>
+<!-- Challenge Type Selection -->
+<div class="challenge-type-tabs">
+    <button class="challenge-type-tab active" data-type="starter" onclick="selectChallengeType('starter')">
+        <span class="challenge-type-icon">S</span>
+        <span class="challenge-type-label">Starter</span>
+        <span class="challenge-type-duration">21 Days</span>
+    </button>
+    <button class="challenge-type-tab" data-type="warrior" onclick="selectChallengeType('warrior')">
+        <span class="challenge-type-icon">W</span>
+        <span class="challenge-type-label">Warrior</span>
+        <span class="challenge-type-duration">60 Days</span>
+    </button>
+    <button class="challenge-type-tab" data-type="unlimiter" onclick="selectChallengeType('unlimiter')">
+        <span class="challenge-type-icon">U</span>
+        <span class="challenge-type-label">Unlimiter</span>
+        <span class="challenge-type-duration">100 Days</span>
+    </button>
+</div>
+
+<!-- Challenge Filters -->
+<div class="challenge-filters">
+    <button class="filter-pill active" data-filter="all" onclick="filterChallengesByCategory('all')">All</button>
+    <button class="filter-pill" data-filter="habits" onclick="filterChallengesByCategory('habits')">Habits</button>
+    <button class="filter-pill" data-filter="mindset" onclick="filterChallengesByCategory('mindset')">Mindset</button>
+    <button class="filter-pill" data-filter="goals" onclick="filterChallengesByCategory('goals')">Goals</button>
+    <button class="filter-pill" data-filter="wellness" onclick="filterChallengesByCategory('wellness')">Wellness</button>
 </div>
 
 <!-- Browse Challenges -->
@@ -168,6 +174,60 @@
                 <div class="dream-collaborators">
                     <div class="collaborator-avatars">
                         <div class="avatar">JS</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="wellness" onclick="showChallengeDetail('gratitude-active')">
+            <div class="dream-card-header">
+                <h3 class="dream-title">Daily Gratitude Practice</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 76%;"></div>
+                    </div>
+                    <div class="progress-label">Day 16 of 21</div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">MK</div>
+                        <div class="avatar">TL</div>
+                        <div class="avatar">RP</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="goals" onclick="showChallengeDetail('reading-active')">
+            <div class="dream-card-header">
+                <h3 class="dream-title">Read 30 Minutes Daily</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%;"></div>
+                    </div>
+                    <div class="progress-label">Day 7 of 21</div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">NC</div>
                         <button class="add-collaborator">+</button>
                     </div>
                 </div>

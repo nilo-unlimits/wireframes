@@ -1070,38 +1070,33 @@ function switchChallengeTab(tabName) {
 
 // Challenge type selection
 function selectChallengeType(type) {
-    // Update challenge type card styling
-    document.querySelectorAll('.challenge-type-card').forEach(card => {
-        card.classList.remove('active');
+    // Update challenge type tab styling
+    document.querySelectorAll('.challenge-type-tab').forEach(tab => {
+        tab.classList.remove('active');
     });
     document.querySelector(`[data-type="${type}"]`).classList.add('active');
     
-    // Update card content based on type
-    const card = document.querySelector('.challenge-type-card');
-    const icon = card.querySelector('.challenge-type-icon');
-    const title = card.querySelector('.challenge-type-title');
-    const duration = card.querySelector('.challenge-type-duration');
+    // Filter challenges based on selected type (could be used to show different challenge sets)
+    console.log(`Selected challenge type: ${type}`);
+}
+
+// Filter challenges by category
+function filterChallengesByCategory(category) {
+    // Update filter pill styling
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.classList.remove('active');
+    });
+    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
     
-    switch(type) {
-        case 'starter':
-            icon.textContent = 'S';
-            title.textContent = 'Starter';
-            duration.textContent = '21 Days';
-            card.style.background = 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)';
-            break;
-        case 'warrior':
-            icon.textContent = 'W';
-            title.textContent = 'Warrior';
-            duration.textContent = '60 Days';
-            card.style.background = 'linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)';
-            break;
-        case 'unlimiter':
-            icon.textContent = 'U';
-            title.textContent = 'Unlimiter';
-            duration.textContent = '100 Days';
-            card.style.background = 'linear-gradient(135deg, #667EEA 0%, #764BA2 100%)';
-            break;
-    }
+    // Filter challenge cards
+    const challengeCards = document.querySelectorAll('.suggested-dream-card, .dream-card');
+    challengeCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 // Challenge search functionality  
@@ -1135,5 +1130,6 @@ function showChallengeDetail(challengeId) {
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
+window.filterChallengesByCategory = filterChallengesByCategory;
 window.filterChallenges = filterChallenges;
 window.showChallengeDetail = showChallengeDetail;
