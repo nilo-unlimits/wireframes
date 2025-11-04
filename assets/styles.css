@@ -5357,3 +5357,240 @@ h1, h2 {
     font-size: 16px !important;
     color: #8e8e93;
 }
+
+
+/* ===============================================
+   DREAM GALLERY STYLES
+   =============================================== */
+
+.gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.gallery-tabs {
+    display: flex;
+    gap: 0;
+}
+
+.gallery-tab {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8e8e93;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gallery-tab.active {
+    color: #000;
+    border-bottom-color: #007AFF;
+}
+
+.gallery-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.category-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px 16px;
+    overflow-x: auto;
+}
+
+.category-pill {
+    padding: 6px 16px;
+    border: 1px solid #e5e5ea;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8e8e93;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.category-pill.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.filter-menu-btn {
+    padding: 6px 8px;
+    border: 1px solid #e5e5ea;
+    border-radius: 20px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-menu-btn i {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    color: #8e8e93;
+}
+
+.dream-gallery-content {
+    padding: 0 20px;
+}
+
+.dreams-masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gallery-dream-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gallery-dream-card:hover {
+    transform: translateY(-2px);
+}
+
+.gallery-card-image {
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+}
+
+.gallery-bookmark-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gallery-bookmark-btn i {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    color: #8e8e93;
+}
+
+.gallery-bookmark-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.gallery-card-content {
+    padding: 12px;
+}
+
+.gallery-dream-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.gallery-dream-count {
+    font-size: 11px;
+    color: #8e8e93;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Add New Dream Card */
+.gallery-dream-card.add-new-dream .gallery-card-image {
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-dream-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e5e5ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-dream-icon i {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+    color: #8e8e93;
+}
+
+/* Active Dreams */
+.gallery-dream-card.active-dream .gallery-card-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gallery-progress-indicator {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+/* Achieved Dreams */
+.gallery-dream-card.achieved-dream .gallery-card-image {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+.gallery-achievement-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-achievement-badge i {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    color: #4ecdc4;
+}
+
+/* Gallery Sections */
+.gallery-section {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

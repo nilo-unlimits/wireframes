@@ -414,6 +414,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('challenges');
         await loadPageContent('meditation');
         await loadPageContent('notifications');
+        await loadPageContent('dream-gallery');
+        await loadPageContent('dream-detail');
         await loadPageContent('future-self');
         
         // Load breadcrumb for future-self since it's preloaded
@@ -871,3 +873,131 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.initAutoMessageCarousel = initAutoMessageCarousel;
+
+// ===============================================
+// DREAM GALLERY FUNCTIONALITY
+// ===============================================
+
+// Tab switching functionality
+function switchGalleryTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.gallery-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Show/hide sections
+    document.querySelectorAll('.gallery-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(`${tabName}-section`).style.display = 'block';
+    
+    // Reset category filters when switching tabs
+    resetCategoryFilters();
+}
+
+// Category filtering functionality
+function filterByCategory(category) {
+    // Update active pill
+    document.querySelectorAll('.category-pill').forEach(pill => {
+        pill.classList.remove('active');
+    });
+    document.querySelector(`[data-category="${category}"]`).classList.add('active');
+    
+    // Filter cards in current visible section
+    const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
+    if (!activeSection) return;
+    
+    const cards = activeSection.querySelectorAll('.gallery-dream-card');
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category || card.classList.contains('add-new-dream')) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Reset category filters
+function resetCategoryFilters() {
+    document.querySelectorAll('.category-pill').forEach(pill => {
+        pill.classList.remove('active');
+    });
+    document.querySelector('[data-category="all"]').classList.add('active');
+    
+    // Show all cards
+    document.querySelectorAll('.gallery-dream-card').forEach(card => {
+        card.style.display = 'block';
+    });
+}
+
+// Search functionality
+function openSearch() {
+    const searchContainer = document.getElementById('gallery-search');
+    searchContainer.style.display = 'block';
+    searchContainer.querySelector('input').focus();
+}
+
+function closeSearch() {
+    const searchContainer = document.getElementById('gallery-search');
+    searchContainer.style.display = 'none';
+    searchContainer.querySelector('input').value = '';
+    // Reset filter to show all cards
+    filterDreams();
+}
+
+function filterDreams() {
+    const searchInput = document.querySelector('#gallery-search input');
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
+    if (!activeSection) return;
+    
+    const cards = activeSection.querySelectorAll('.gallery-dream-card');
+    cards.forEach(card => {
+        const title = card.querySelector('.gallery-dream-title');
+        if (title) {
+            const titleText = title.textContent.toLowerCase();
+            if (titleText.includes(searchTerm) || card.classList.contains('add-new-dream')) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
+
+// Bookmark functionality
+function openBookmarks() {
+    // Placeholder for bookmark functionality
+    console.log('Opening bookmarks...');
+}
+
+// Filter menu functionality
+function openFilterMenu() {
+    // Placeholder for filter menu functionality
+    console.log('Opening filter menu...');
+}
+
+// Add new dream functionality
+function addNewDream() {
+    // Placeholder for add new dream functionality
+    console.log('Adding new dream...');
+}
+
+// Dream detail functionality
+function showDreamDetail(dreamId) {
+    // Placeholder for dream detail functionality
+    console.log('Showing dream detail for:', dreamId);
+}
+
+// Make functions globally available
+window.switchGalleryTab = switchGalleryTab;
+window.filterByCategory = filterByCategory;
+window.openSearch = openSearch;
+window.closeSearch = closeSearch;
+window.filterDreams = filterDreams;
+window.openBookmarks = openBookmarks;
+window.openFilterMenu = openFilterMenu;
+window.addNewDream = addNewDream;
+window.showDreamDetail = showDreamDetail;
