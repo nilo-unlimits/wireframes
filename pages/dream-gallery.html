@@ -117,38 +117,87 @@
                 </div>
             </div>
             
-            <div class="gallery-dream-card add-new-dream" onclick="addNewDream()">
-                <div class="gallery-card-image add-dream-bg">
-                    <div class="add-dream-icon">
-                        <i data-lucide="plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Add New Dream</h3>
-                    <p class="gallery-dream-count">Create your own</p>
-                </div>
-            </div>
         </div>
     </div>
 
     <!-- Active Dreams -->
     <div class="gallery-section" id="active-section" style="display: none;">
-        <div class="dreams-masonry-grid">
-            <div class="gallery-dream-card active-dream" data-category="self" onclick="showDreamDetail('photography')">
-                <div class="gallery-card-image"></div>
-                <div class="gallery-progress-indicator">65%</div>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Master Photography</h3>
-                    <p class="gallery-dream-count">In Progress</p>
+        <div class="dreams-list-view">
+            <div class="dream-card" data-category="self" onclick="showDreamDetail('photography')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Master Photography</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <div class="progress-label">65% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">LM</div>
+                            <div class="avatar">NK</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="gallery-dream-card active-dream" data-category="self" onclick="showDreamDetail('mindfulness')">
-                <div class="gallery-card-image"></div>
-                <div class="gallery-progress-indicator">43%</div>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Master Mindfulness</h3>
-                    <p class="gallery-dream-count">In Progress</p>
+            <div class="dream-card" data-category="self" onclick="showDreamDetail('mindfulness')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Master Mindfulness</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 43%;"></div>
+                        </div>
+                        <div class="progress-label">43% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">PQ</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dream-card" data-category="work" onclick="showDreamDetail('business')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Launch My Business</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 28%;"></div>
+                        </div>
+                        <div class="progress-label">28% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,15 +205,40 @@
 
     <!-- Achieved Dreams -->
     <div class="gallery-section" id="achieved-section" style="display: none;">
-        <div class="dreams-masonry-grid">
-            <div class="gallery-dream-card achieved-dream" data-category="work" onclick="showDreamDetail('degree')">
-                <div class="gallery-card-image"></div>
-                <div class="gallery-achievement-badge">
-                    <i data-lucide="check-circle"></i>
+        <div class="dreams-list-view">
+            <div class="dream-card achieved" data-category="work" onclick="showDreamDetail('degree')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Complete My Degree</h3>
+                    <div class="dream-actions">
+                        <div class="achievement-badge">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Complete My Degree</h3>
-                    <p class="gallery-dream-count">Achieved 2023</p>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="achievement-info">
+                        <div class="achievement-date">Achieved March 2023</div>
+                        <div class="achievement-stats">4 months, 12 tasks completed</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dream-card achieved" data-category="self" onclick="showDreamDetail('marathon')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Run My First Marathon</h3>
+                    <div class="dream-actions">
+                        <div class="achievement-badge">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="achievement-info">
+                        <div class="achievement-date">Achieved June 2023</div>
+                        <div class="achievement-stats">8 months, 24 tasks completed</div>
+                    </div>
                 </div>
             </div>
         </div>

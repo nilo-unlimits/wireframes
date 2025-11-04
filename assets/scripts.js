@@ -908,9 +908,22 @@ function filterByCategory(category) {
     const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
     if (!activeSection) return;
     
-    const cards = activeSection.querySelectorAll('.gallery-dream-card');
-    cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category || card.classList.contains('add-new-dream')) {
+    // Filter both masonry grid cards and list view cards
+    const gridCards = activeSection.querySelectorAll('.gallery-dream-card');
+    const listCards = activeSection.querySelectorAll('.dream-card');
+    
+    // Filter grid cards (Get Inspired)
+    gridCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Filter list cards (Active/Achieved)
+    listCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
@@ -925,8 +938,11 @@ function resetCategoryFilters() {
     });
     document.querySelector('[data-category="all"]').classList.add('active');
     
-    // Show all cards
+    // Show all cards in all sections
     document.querySelectorAll('.gallery-dream-card').forEach(card => {
+        card.style.display = 'block';
+    });
+    document.querySelectorAll('.dream-card').forEach(card => {
         card.style.display = 'block';
     });
 }
@@ -953,12 +969,27 @@ function filterDreams() {
     const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
     if (!activeSection) return;
     
-    const cards = activeSection.querySelectorAll('.gallery-dream-card');
-    cards.forEach(card => {
+    // Filter grid cards (Get Inspired)
+    const gridCards = activeSection.querySelectorAll('.gallery-dream-card');
+    gridCards.forEach(card => {
         const title = card.querySelector('.gallery-dream-title');
         if (title) {
             const titleText = title.textContent.toLowerCase();
-            if (titleText.includes(searchTerm) || card.classList.contains('add-new-dream')) {
+            if (titleText.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+    
+    // Filter list cards (Active/Achieved)
+    const listCards = activeSection.querySelectorAll('.dream-card');
+    listCards.forEach(card => {
+        const title = card.querySelector('.dream-title');
+        if (title) {
+            const titleText = title.textContent.toLowerCase();
+            if (titleText.includes(searchTerm)) {
                 card.style.display = 'block';
             } else {
                 card.style.display = 'none';

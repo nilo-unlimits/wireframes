@@ -5594,3 +5594,50 @@ h1, h2 {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* List View for Active and Achieved Dreams */
+.dreams-list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dreams-list-view .dream-card {
+    margin-bottom: 0;
+}
+
+/* Achievement Info Styling */
+.achievement-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.achievement-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4ecdc4;
+}
+
+.achievement-stats {
+    font-size: 11px;
+    color: #8e8e93;
+    font-weight: 500;
+}
+
+.achievement-badge {
+    width: 32px;
+    height: 32px;
+    background: #4ecdc4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-badge i {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+    color: #fff;
+}
