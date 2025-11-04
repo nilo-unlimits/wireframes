@@ -493,7 +493,8 @@ const BREADCRUMB_TITLES = {
     'credits': 'DREAM CREDITS',
     'manage-account': 'MANAGE ACCOUNT',
     'learn-more': 'SUBSCRIPTION',
-    'dream-report': 'DREAM REPORT'
+    'dream-report': 'DREAM REPORT',
+    'dream-gallery': 'DREAM GALLERY'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -987,8 +988,29 @@ function openBookmarks() {
 
 // Filter menu functionality
 function openFilterMenu() {
-    // Placeholder for filter menu functionality
-    console.log('Opening filter menu...');
+    const modal = document.getElementById('filter-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFilterMenu() {
+    const modal = document.getElementById('filter-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function selectFilter(category) {
+    // Update filter modal selection
+    document.querySelectorAll('.filter-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+    
+    // Apply the filter
+    filterByCategory(category);
+    
+    // Close the modal
+    closeFilterMenu();
 }
 
 // Add new dream functionality
@@ -1011,5 +1033,7 @@ window.closeSearch = closeSearch;
 window.filterDreams = filterDreams;
 window.openBookmarks = openBookmarks;
 window.openFilterMenu = openFilterMenu;
+window.closeFilterMenu = closeFilterMenu;
+window.selectFilter = selectFilter;
 window.addNewDream = addNewDream;
 window.showDreamDetail = showDreamDetail;

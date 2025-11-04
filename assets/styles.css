@@ -5655,6 +5655,87 @@ h1, h2 {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Filter Modal Styles */
+.filter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px;
+    max-width: 300px;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+}
+
+.filter-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-option:hover {
+    background: #e9ecef;
+}
+
+.filter-option.active {
+    background: #007AFF;
+    color: #fff;
+}
+
+.filter-option span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.filter-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #8e8e93;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.filter-option.active .filter-check {
+    background: #fff;
+    border-color: #fff;
+    opacity: 1;
+}
+
+.filter-check i {
+    width: 12px !important;
+    height: 12px !important;
+    font-size: 12px !important;
+    color: #007AFF;
+}
+
 /* List View for Active and Achieved Dreams */
 .dreams-list-view {
     display: flex;

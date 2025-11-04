@@ -249,3 +249,40 @@
             </div>
         </div>
     </div>
+<!-- Filter Modal -->
+<div class="filter-modal-overlay" id="filter-modal" style="display: none;" onclick="closeFilterMenu()">
+    <div class="filter-modal" onclick="event.stopPropagation()">
+        <div class="filter-modal-content">
+            <div class="filter-option active" data-filter="all" onclick="selectFilter('all')">
+                <span>All</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="work" onclick="selectFilter('work')">
+                <span>Work</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="play" onclick="selectFilter('play')">
+                <span>Play</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="self" onclick="selectFilter('self')">
+                <span>Self</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="love" onclick="selectFilter('love')">
+                <span>Love</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
