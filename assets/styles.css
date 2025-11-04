@@ -5525,56 +5525,7 @@ h1, h2 {
     opacity: 0.8;
 }
 
-/* Challenge Filters */
-.challenge-filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-.challenge-filters::-webkit-scrollbar {
-    display: none;
-}
-.filter-pill {
-    padding: 8px 16px;
-    background: #f8f8f8;
-    border: 1px solid #e5e5ea;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-.filter-pill.active {
-    background: #007AFF;
-    border-color: #007AFF;
-    color: #fff;
-}
-.filter-pill:hover:not(.active) {
-    background: #f0f0f0;
-    border-color: #d1d1d6;
-}
 
-/* Challenge Carousel Containers */
-.active-challenges-carousel,
-.completed-challenges-carousel {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 4px;
-}
-.active-challenges-carousel::-webkit-scrollbar,
-.completed-challenges-carousel::-webkit-scrollbar {
-    display: none;
-}
 
 
 /* ===============================================
