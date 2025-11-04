@@ -4745,3 +4745,559 @@ h1, h2 {
     padding: 12px;
     margin: 4px 0;
 }
+
+/* ===============================================
+   MEDITATION PAGE STYLES
+   =============================================== */
+
+/* Meditation Hero Section */
+.meditation-hero {
+    margin-bottom: 24px;
+}
+
+.hero-video-container {
+    margin-bottom: 16px;
+}
+
+.hero-video-thumbnail {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 20px;
+    color: white;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.video-author {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 16px;
+}
+
+.video-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.progress-time,
+.progress-duration {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.progress-bar-video {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill-video {
+    height: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+.video-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.video-control-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.video-control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.video-control-btn.play-btn {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.video-control-btn i {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+}
+
+.video-control-btn.play-btn i {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 24px !important;
+}
+
+.video-control-btn.small {
+    width: 30px;
+    height: 30px;
+}
+
+.video-control-btn.small i {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+}
+
+/* Hero Recommendation */
+.hero-recommendation {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 20px;
+}
+
+.headset-icon {
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.headset-icon i {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    color: #666;
+}
+
+.recommendation-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.2;
+}
+
+.recommendation-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* Meditation Categories - Animated Ticker */
+.meditation-ticker {
+    overflow: hidden;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.ticker-content {
+    display: flex;
+    gap: 12px;
+    animation: scroll-left 20s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.meditation-pill {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.meditation-pill:hover {
+    background: #007AFF;
+    color: white;
+}
+
+.meditation-pill:active {
+    background: #005bb5;
+}
+
+/* Paul McKenna Banner */
+.paul-mckenna-banner {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0 20px 32px;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    color: white;
+}
+
+.banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #4fc3f7;
+}
+
+.banner-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.banner-description {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.banner-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.banner-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Section Headers */
+.section-header {
+    padding: 0 20px;
+    margin-bottom: 16px;
+}
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.view-all-btn {
+    background: none;
+    border: none;
+    color: #007AFF;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Quick Start Section */
+.quick-start-section {
+    margin-bottom: 32px;
+}
+
+.quick-start-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px;
+}
+
+.quick-start-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.meditation-session-card {
+    flex: 0 0 280px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 16px;
+    scroll-snap-align: start;
+}
+
+.session-thumbnail {
+    position: relative;
+    height: 120px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.session-play-btn {
+    width: 40px;
+    height: 40px;
+    background: #007AFF;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.session-play-btn i {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+    color: white;
+}
+
+.session-duration {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.session-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 4px 0;
+}
+
+.session-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.session-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-author,
+.session-plays {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+}
+
+/* Discover Section */
+.discover-section {
+    margin-bottom: 32px;
+}
+
+.discover-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px;
+}
+
+.discover-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.discover-category {
+    flex: 0 0 160px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    scroll-snap-align: start;
+}
+
+.discover-icon {
+    width: 48px;
+    height: 48px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+
+.discover-icon i {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 24px !important;
+    color: #007AFF;
+}
+
+.discover-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 4px 0;
+}
+
+.discover-description {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Playlists Section */
+.playlists-section {
+    margin-bottom: 32px;
+}
+
+.playlists-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 20px;
+}
+
+.playlist-card {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.playlist-thumbnail {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playlist-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.playlist-card:hover .playlist-play-overlay {
+    opacity: 1;
+}
+
+.playlist-play-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.playlist-play-btn i {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 14px !important;
+    color: #333;
+}
+
+.playlist-count {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.playlist-info {
+    flex: 1;
+}
+
+.playlist-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 4px 0;
+}
+
+.playlist-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.playlist-meta {
+    display: flex;
+    gap: 16px;
+}
+
+.playlist-duration,
+.playlist-updated {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+}
