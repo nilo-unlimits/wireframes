@@ -51,120 +51,147 @@
     <!-- Get Inspired Dreams -->
     <div class="gallery-section" id="inspired-section">
         <div class="dreams-masonry-grid">
-            <div class="gallery-dream-card" data-category="play" onclick="showDreamDetail('rock-climbing')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="play" onclick="showDreamDetail('rock-climbing')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Learn Rock Climbing</h3>
-                    <p class="gallery-dream-count">120 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Learn Rock Climbing</h3>
+                    <p class="suggested-dream-subtitle">120 Dreamers</p>
                 </div>
             </div>
             
-            <div class="gallery-dream-card" data-category="play" onclick="showDreamDetail('white-water')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="play" onclick="showDreamDetail('white-water')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Do White Water Rafting</h3>
-                    <p class="gallery-dream-count">120 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Do White Water Rafting</h3>
+                    <p class="suggested-dream-subtitle">120 Dreamers</p>
                 </div>
             </div>
             
-            <div class="gallery-dream-card" data-category="self" onclick="showDreamDetail('pottery')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="self" onclick="showDreamDetail('pottery')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Start Pottery Classes</h3>
-                    <p class="gallery-dream-count">120 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Start Pottery Classes</h3>
+                    <p class="suggested-dream-subtitle">120 Dreamers</p>
                 </div>
             </div>
             
-            <div class="gallery-dream-card" data-category="self" onclick="showDreamDetail('art-class')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="self" onclick="showDreamDetail('art-class')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Try An Art Class</h3>
-                    <p class="gallery-dream-count">120 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Try An Art Class</h3>
+                    <p class="suggested-dream-subtitle">120 Dreamers</p>
                 </div>
             </div>
             
-            <div class="gallery-dream-card" data-category="work" onclick="showDreamDetail('startup')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="work" onclick="showDreamDetail('startup')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Launch My Own Startup</h3>
-                    <p class="gallery-dream-count">340 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Launch My Own Startup</h3>
+                    <p class="suggested-dream-subtitle">340 Dreamers</p>
                 </div>
             </div>
             
-            <div class="gallery-dream-card" data-category="love" onclick="showDreamDetail('cooking')">
-                <div class="gallery-card-image"></div>
-                <button class="gallery-bookmark-btn">
+            <div class="suggested-dream-card" data-category="love" onclick="showDreamDetail('cooking')">
+                <div class="suggested-dream-bookmark">
                     <i data-lucide="bookmark"></i>
-                </button>
-                <div class="gallery-card-content">
-                    <h3 class="gallery-dream-title">Master Home Cooking</h3>
-                    <p class="gallery-dream-count">89 Dreamers</p>
+                </div>
+                <div class="suggested-dream-overlay">
+                    <h3 class="suggested-dream-title">Master Home Cooking</h3>
+                    <p class="suggested-dream-subtitle">89 Dreamers</p>
                 </div>
             </div>
-            
         </div>
     </div>
 
     <!-- Active Dreams -->
     <div class="gallery-section" id="active-section" style="display: none;">
-        <div class="dreams-masonry-grid">
-            <div class="suggested-dream-card" data-category="self" onclick="showDreamDetail('photography')">
-                <div class="suggested-dream-bookmark">
-                    <i data-lucide="bookmark"></i>
+        <div class="active-dreams-carousel">
+            <div class="dream-card" data-category="self" onclick="showDreamDetail('photography')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Master Photography</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="suggested-dream-overlay">
-                    <h3 class="suggested-dream-title">Master Photography</h3>
-                    <p class="suggested-dream-subtitle">65% Progress</p>
-                </div>
-                <div class="suggested-dream-actions">
-                    <button class="suggested-dream-action-btn">
-                        <i data-lucide="arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="suggested-dream-card" data-category="self" onclick="showDreamDetail('mindfulness')">
-                <div class="suggested-dream-bookmark">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="suggested-dream-overlay">
-                    <h3 class="suggested-dream-title">Master Mindfulness</h3>
-                    <p class="suggested-dream-subtitle">43% Progress</p>
-                </div>
-                <div class="suggested-dream-actions">
-                    <button class="suggested-dream-action-btn">
-                        <i data-lucide="arrow-right"></i>
-                    </button>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 73%;"></div>
+                        </div>
+                        <div class="progress-label">73% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">LM</div>
+                            <div class="avatar">NK</div>
+                            <div class="avatar">PQ</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="suggested-dream-card" data-category="work" onclick="showDreamDetail('business')">
-                <div class="suggested-dream-bookmark">
-                    <i data-lucide="bookmark"></i>
+            <div class="dream-card" data-category="self" onclick="showDreamDetail('mindfulness')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Run Marathon</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="suggested-dream-overlay">
-                    <h3 class="suggested-dream-title">Launch My Business</h3>
-                    <p class="suggested-dream-subtitle">28% Progress</p>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;"></div>
+                        </div>
+                        <div class="progress-label">45% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="suggested-dream-actions">
-                    <button class="suggested-dream-action-btn">
-                        <i data-lucide="arrow-right"></i>
-                    </button>
+            </div>
+            
+            <div class="dream-card" data-category="work" onclick="showDreamDetail('business')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Learn French Fluently</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 62%;"></div>
+                        </div>
+                        <div class="progress-label">62% Progress</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">AB</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,34 +199,57 @@
 
     <!-- Achieved Dreams -->
     <div class="gallery-section" id="achieved-section" style="display: none;">
-        <div class="dreams-masonry-grid">
-            <div class="suggested-dream-card" data-category="work" onclick="showDreamDetail('degree')">
-                <div class="suggested-dream-bookmark">
-                    <i data-lucide="bookmark"></i>
+        <div class="active-dreams-carousel">
+            <div class="dream-card" data-category="work" onclick="showDreamDetail('degree')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Complete My Degree</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="suggested-dream-overlay">
-                    <h3 class="suggested-dream-title">Complete My Degree</h3>
-                    <p class="suggested-dream-subtitle">100% Complete</p>
-                </div>
-                <div class="suggested-dream-actions">
-                    <button class="suggested-dream-action-btn">
-                        <i data-lucide="arrow-right"></i>
-                    </button>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-label">100% Complete</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">JS</div>
+                            <div class="avatar">MK</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="suggested-dream-card" data-category="self" onclick="showDreamDetail('marathon')">
-                <div class="suggested-dream-bookmark">
-                    <i data-lucide="bookmark"></i>
+            <div class="dream-card" data-category="self" onclick="showDreamDetail('marathon')">
+                <div class="dream-card-header">
+                    <h3 class="dream-title">Run My First Marathon</h3>
+                    <div class="dream-actions">
+                        <button class="dream-action-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="suggested-dream-overlay">
-                    <h3 class="suggested-dream-title">Run My First Marathon</h3>
-                    <p class="suggested-dream-subtitle">100% Complete</p>
-                </div>
-                <div class="suggested-dream-actions">
-                    <button class="suggested-dream-action-btn">
-                        <i data-lucide="arrow-right"></i>
-                    </button>
+                <div class="dream-image-placeholder"></div>
+                <div class="dream-card-footer">
+                    <div class="dream-progress-section">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-label">100% Complete</div>
+                    </div>
+                    <div class="dream-collaborators">
+                        <div class="collaborator-avatars">
+                            <div class="avatar">TR</div>
+                            <button class="add-collaborator">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -908,8 +908,8 @@ function filterByCategory(category) {
     const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
     if (!activeSection) return;
     
-    // Filter both old gallery-dream-card and new suggested-dream-card
-    const allCards = activeSection.querySelectorAll('.gallery-dream-card, .suggested-dream-card');
+    // Filter all types of cards: gallery-dream-card, suggested-dream-card, and dream-card
+    const allCards = activeSection.querySelectorAll('.gallery-dream-card, .suggested-dream-card, .dream-card');
     
     allCards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
@@ -928,7 +928,7 @@ function resetCategoryFilters() {
     document.querySelector('[data-category="all"]').classList.add('active');
     
     // Show all cards in all sections
-    document.querySelectorAll('.gallery-dream-card, .suggested-dream-card').forEach(card => {
+    document.querySelectorAll('.gallery-dream-card, .suggested-dream-card, .dream-card').forEach(card => {
         card.style.display = 'block';
     });
 }
@@ -955,10 +955,10 @@ function filterDreams() {
     const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
     if (!activeSection) return;
     
-    // Filter all cards (both gallery-dream-card and suggested-dream-card)
-    const allCards = activeSection.querySelectorAll('.gallery-dream-card, .suggested-dream-card');
+    // Filter all cards (gallery-dream-card, suggested-dream-card, and dream-card)
+    const allCards = activeSection.querySelectorAll('.gallery-dream-card, .suggested-dream-card, .dream-card');
     allCards.forEach(card => {
-        const title = card.querySelector('.gallery-dream-title, .suggested-dream-title');
+        const title = card.querySelector('.gallery-dream-title, .suggested-dream-title, .dream-title');
         if (title) {
             const titleText = title.textContent.toLowerCase();
             if (titleText.includes(searchTerm)) {
