@@ -1,88 +1,181 @@
-<!-- Zero State for New Users - Explore Page -->
+<!-- Homepage Content - Zero State (No Data) -->
 
-<!-- Welcome Message for New Users -->
-<div class="zero-state-welcome">
-    <h1>Welcome to Unlimits!</h1>
-    <p>Start your journey of transformation</p>
+<!-- Morning Message -->
+<div class="morning-message">
+    <h1>Welcome Sid</h1>
 </div>
 
-<!-- Getting Started Cards -->
-<div class="zero-state-onboarding">
-    <div class="onboarding-card" onclick="showPage('dreams')">
-        <div class="onboarding-icon">
-            <i data-lucide="brain"></i>
+<!-- Level Progress Card -->
+<div class="level-progress-card">
+    <!-- Level Circle and Progress Bar -->
+    <div class="progress-section">
+        <div class="level-circle">
+            <span class="level-text">LVL 1</span>
         </div>
-        <h3>Set Your First Dream</h3>
-        <p>Define what you want to achieve and let us guide your journey</p>
-        <div class="onboarding-cta">Get Started</div>
+        <div class="progress-bar-container">
+            <div class="progress-labels">
+                <span class="progress-start">0</span>
+                <span class="progress-end">100</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-titles">
+                <span class="progress-title-left">Dreamer</span>
+                <span class="progress-title-right">Visionary</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Cards -->
+    <div class="action-cards">
+        <div class="action-card">
+            <h3>Invite Friends</h3>
+            <p class="points">+20 pts</p>
+        </div>
+        <div class="action-card">
+            <h3>Join A Challenge</h3>
+            <p class="points">+50 pts</p>
+        </div>
+        <div class="action-card">
+            <h3>Talk To Future Self</h3>
+            <p class="points">+30 pts</p>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Unlock Your Potential -->
+<div class="discovery-message-container">
+    <div class="discovery-message">
+        Unlock Your Potential
+    </div>
+</div>
+
+<div class="overview-cards">
+    <div class="overview-card" onclick="showPage('dreams')" style="text-align: center;">
+        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #FF6B6B; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
+            <i data-lucide="gallery-horizontal" style="width: 30px; height: 30px; color: white;"></i>
+        </div>
+        <div class="overview-stats">
+            <div class="overview-label">Browse Dream Gallery</div>
+        </div>
+        <div style="margin-top: 8px;">
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
+        </div>
     </div>
     
-    <div class="onboarding-card" onclick="showPage('challenges')">
-        <div class="onboarding-icon">
-            <i data-lucide="target"></i>
+    <div class="overview-card" onclick="showPage('challenges')" style="text-align: center;">
+        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #4ECDC4; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
+            <i data-lucide="list-checks" style="width: 30px; height: 30px; color: white;"></i>
         </div>
-        <h3>Take Your First Challenge</h3>
-        <p>Build momentum with small, achievable actions</p>
-        <div class="onboarding-cta">Explore Challenges</div>
+        <div class="overview-stats">
+            <div class="overview-label">Find Challenges</div>
+        </div>
+        <div style="margin-top: 8px;">
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
+        </div>
     </div>
     
-    <div class="onboarding-card" onclick="showPage('meditation')">
-        <div class="onboarding-icon">
-            <i data-lucide="heart"></i>
+    <div class="overview-card" onclick="showPage('meditation')" style="text-align: center;">
+        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #FFD93D; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
+            <i data-lucide="sparkles" style="width: 30px; height: 30px; color: white;"></i>
         </div>
-        <h3>Start Meditating</h3>
-        <p>Develop mindfulness and inner peace</p>
-        <div class="onboarding-cta">Begin Practice</div>
-    </div>
-</div>
-
-<!-- How It Works Section -->
-<div class="zero-state-how-it-works">
-    <h2>How Unlimits Works</h2>
-    <div class="how-it-works-steps">
-        <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-                <h4>Set Your Dreams</h4>
-                <p>Define your aspirations and goals</p>
-            </div>
+        <div class="overview-stats">
+            <div class="overview-label">Practice Meditation</div>
         </div>
-        <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-                <h4>Take Daily Actions</h4>
-                <p>Complete challenges and tasks</p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-                <h4>Track Your Progress</h4>
-                <p>See your transformation unfold</p>
-            </div>
+        <div style="margin-top: 8px;">
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
         </div>
     </div>
 </div>
 
-<!-- Quick Actions for New Users -->
-<div class="zero-state-quick-actions">
-    <h3>Quick Actions to Get Started</h3>
-    <div class="zero-quick-actions-grid">
-        <div class="zero-quick-action" onclick="showPage('future-self')">
-            <i data-lucide="sparkles"></i>
-            <span>Talk to Future Self</span>
+<!-- Breathing Message -->
+<div class="breathing-message">
+    Live a life without regrets
+</div>
+
+<!-- Section 3: Quick Actions (For The Seeker) -->
+<div class="quick-actions-section">
+    <div class="quick-actions-carousel">
+        <div class="quick-action-card" onclick="showPage('dream-gallery')">
+            <div class="quick-card-icon"><i data-lucide="gallery-horizontal"></i></div>
+            <div class="quick-card-title">Find Hidden Patterns</div>
+            <div class="quick-card-subtitle">Browse Dream Gallery</div>
         </div>
-        <div class="zero-quick-action" onclick="showPage('dreams')">
-            <i data-lucide="plus-circle"></i>
-            <span>Create Your First Dream</span>
+        <div class="quick-action-card">
+            <div class="quick-card-icon"><i data-lucide="list-checks"></i></div>
+            <div class="quick-card-title">Question Everything</div>
+            <div class="quick-card-subtitle">Browse Today's Tasks</div>
         </div>
-        <div class="zero-quick-action" onclick="showPage('challenges')">
-            <i data-lucide="zap"></i>
-            <span>Join a Challenge</span>
+        <div class="quick-action-card">
+            <div class="quick-card-icon"><i data-lucide="sparkles"></i></div>
+            <div class="quick-card-title">Discover What Matters</div>
+            <div class="quick-card-subtitle">Speak To Future Self</div>
         </div>
-        <div class="zero-quick-action" onclick="showPage('meditation')">
-            <i data-lucide="circle"></i>
-            <span>Start Meditation</span>
+    </div>
+</div>
+
+<!-- Section 5: Today's Tasks + Future Self Message -->
+<div class="task-checklist-section">
+    <div class="task-checklist-header">Today isn't about doing more. It's about doing what matters. These are the few things that move you forward.</div>
+    <div class="task-checklist">
+        <div class="task-item-detailed">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="home-task1">
+                <label for="home-task1" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details">
+                <div class="task-row">
+                    <div class="task-name">Discover your dream personality</div>
+                    <span class="task-streak"></span>
+                </div>
+                <div class="task-row">
+                    <div class="task-category" onclick="showPage('dreams')">Personal growth</div>
+                    <span class="task-due">Today</span>
+                </div>
+            </div>
         </div>
+        
+        <div class="task-item-detailed">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="home-task2">
+                <label for="home-task2" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details">
+                <div class="task-row">
+                    <div class="task-name">Browse available challenges</div>
+                    <span class="task-streak"></span>
+                </div>
+                <div class="task-row">
+                    <div class="task-category" onclick="showPage('challenges')">Explore possibilities</div>
+                    <span class="task-due">Today</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-item-detailed">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="home-task3">
+                <label for="home-task3" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details">
+                <div class="task-row">
+                    <div class="task-name">Try your first meditation</div>
+                    <span class="task-streak"></span>
+                </div>
+                <div class="task-row">
+                    <div class="task-category" onclick="showPage('meditation')">Mindfulness journey</div>
+                    <span class="task-due">Today</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- View All Tasks Button -->
+    <div class="view-all-tasks">
+        <button class="view-all-btn" onclick="showPage('tasks')">
+            <span>View All Tasks</span>
+            <i data-lucide="chevron-right"></i>
+        </button>
     </div>
 </div>

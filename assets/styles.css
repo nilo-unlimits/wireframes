@@ -6169,3 +6169,115 @@ h1, h2 {
     color: #1a1a1a;
     line-height: 1.3;
 }
+
+/* ===== DREAMS ZERO STATE STYLES ===== */
+
+/* Dream Personality Section */
+.dream-personality-section {
+    margin-bottom: 32px;
+}
+
+.dream-personality-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.dream-personality-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    backdrop-filter: blur(10px);
+}
+
+.dream-personality-icon i {
+    width: 32px !important;
+    height: 32px !important;
+    color: white;
+}
+
+.dream-personality-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dream-personality-card p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.personality-cta-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.personality-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.personality-cta-btn i {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+/* Simple Task Items */
+.task-item-simple {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.task-item-simple:last-child {
+    border-bottom: none;
+}
+
+.task-details-simple {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-details-simple .task-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.task-details-simple .task-due {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+}
+
+/* Empty State Styling */
+.week-day-item .day-circle.empty {
+    background: #f8f8f8;
+    border: 1px solid #e5e5ea;
+    color: #8e8e93;
+}

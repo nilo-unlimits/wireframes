@@ -1,0 +1,151 @@
+<!-- Dreams Page Content - Zero State -->
+
+<!-- Dreams Page Header -->
+<div class="page-header">
+    <h1 class="page-title">Dreams</h1>
+    <div class="dreams-header-divider"></div>
+</div>
+
+<!-- Active Dreams - First Section -->
+<div class="active-dreams-section">
+    <div class="active-dreams-header">
+        <div class="active-dreams-title-row">
+            <h2 class="active-dreams-title">Active dreams</h2>
+            <button class="view-all-dreams-btn" onclick="showPage('dream-gallery'); setTimeout(() => switchGalleryTab('active'), 100)">View All</button>
+        </div>
+    </div>
+    
+    <div class="dreams-carousel">
+        <!-- Single full-width discover card -->
+        <div class="dream-card" style="width: 100%; margin-right: 0;">
+            <div class="dream-card-header">
+                <h3 class="dream-title">Discover</h3>
+                <button class="dream-action-btn">
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+            <div class="dream-image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="sparkles" style="width: 48px; height: 48px; color: white;"></i>
+            </div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <div class="progress-label">Start your dream journey</div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dream Personality Discovery -->
+<div class="dream-personality-section">
+    <div class="dream-personality-card">
+        <div class="dream-personality-icon">
+            <i data-lucide="brain"></i>
+        </div>
+        <h3>Dream Personality</h3>
+        <p>Discover your unique dreaming style and unlock personalized dream recommendations</p>
+        <button class="personality-cta-btn">
+            <span>Discover</span>
+            <i data-lucide="chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Upcoming Tasks Section -->
+<div class="upcoming-tasks-section">
+    <div class="upcoming-tasks-header">
+        <h2 class="upcoming-tasks-title">Upcoming Tasks</h2>
+        <button class="view-all-tasks-btn" onclick="showPage('tasks')">View All</button>
+    </div>
+    
+    <div class="upcoming-tasks-list">
+        <div class="task-item-simple">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="dream-task1">
+                <label for="dream-task1" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details-simple">
+                <div class="task-name">Complete dream personality quiz</div>
+                <div class="task-due">Today</div>
+            </div>
+        </div>
+        
+        <div class="task-item-simple">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="dream-task2">
+                <label for="dream-task2" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details-simple">
+                <div class="task-name">Browse dream gallery for inspiration</div>
+                <div class="task-due">This week</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Suggested Dreams Section -->
+<div class="suggested-dreams-section">
+    <div class="suggested-dreams-header">
+        <h2 class="suggested-dreams-title">Suggested dreams</h2>
+        <button class="view-all-suggested-btn" onclick="showPage('dream-gallery'); setTimeout(() => switchGalleryTab('suggested'), 100)">View All</button>
+    </div>
+    
+    <!-- Keep original suggested dreams content -->
+    <div class="suggested-dreams-grid">
+        <div class="suggested-dream-card" data-category="all health">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Master mindfulness</h3>
+                <div class="suggested-dream-stats">
+                    <span>2 weeks</span>
+                    <span>•</span>
+                    <span>4.8 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all creative">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Photography potential</h3>
+                <div class="suggested-dream-stats">
+                    <span>6 weeks</span>
+                    <span>•</span>
+                    <span>4.7 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all creative">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Learn guitar</h3>
+                <div class="suggested-dream-stats">
+                    <span>3 months</span>
+                    <span>•</span>
+                    <span>4.6 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all health">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Morning routine ritual</h3>
+                <div class="suggested-dream-stats">
+                    <span>1 month</span>
+                    <span>•</span>
+                    <span>4.9 ⭐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

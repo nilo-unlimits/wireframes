@@ -1,0 +1,177 @@
+<!-- Challenges Page Content - Zero State -->
+
+<!-- Challenges Page Header -->
+<div class="page-header">
+    <h1 class="page-title">Challenges</h1>
+    <div class="dreams-header-divider"></div>
+</div>
+
+<!-- Today's Tasks Section -->
+<div class="upcoming-tasks-header">
+    <div class="upcoming-tasks-title-row">
+        <h2 class="upcoming-tasks-title">Today's tasks</h2>
+        <button class="view-all-tasks-btn" onclick="showPage('tasks')">View All</button>
+    </div>
+</div>
+
+<!-- Recommended starter tasks -->
+<div class="task-item-detailed">
+    <div class="task-checkbox-wrapper">
+        <input type="checkbox" class="task-checkbox" id="challenges-task1">
+        <label for="challenges-task1" class="task-checkbox-label"></label>
+    </div>
+    <div class="task-details">
+        <div class="task-row">
+            <div class="task-name">Browse available challenges</div>
+            <span class="task-streak"></span>
+        </div>
+        <div class="task-row">
+            <span class="task-category">Getting started</span>
+            <span class="task-due">Today</span>
+        </div>
+    </div>
+</div>
+
+<div class="task-item-detailed">
+    <div class="task-checkbox-wrapper">
+        <input type="checkbox" class="task-checkbox" id="challenges-task2">
+        <label for="challenges-task2" class="task-checkbox-label"></label>
+    </div>
+    <div class="task-details">
+        <div class="task-row">
+            <div class="task-name">Join your first challenge</div>
+            <span class="task-streak"></span>
+        </div>
+        <div class="task-row">
+            <span class="task-category">Take action</span>
+            <span class="task-due">Today</span>
+        </div>
+    </div>
+</div>
+
+<!-- Weekly Overview Section -->
+<div class="weekly-overview-section">
+    <div class="weekly-overview-header">
+        <h2 class="weekly-overview-title">Weekly Overview</h2>
+    </div>
+    
+    <!-- Empty state for week days -->
+    <div class="week-days-container">
+        <div class="week-day-item" data-day="Mon">
+            <div class="day-name">Mon</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Tue">
+            <div class="day-name">Tue</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Wed">
+            <div class="day-name">Wed</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Thu">
+            <div class="day-name">Thu</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Fri">
+            <div class="day-name">Fri</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Sat">
+            <div class="day-name">Sat</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+        <div class="week-day-item" data-day="Sun">
+            <div class="day-name">Sun</div>
+            <div class="day-circle empty">
+                <span class="day-number">0</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Active Challenges Section -->
+<div class="active-challenges-section">
+    <div class="active-challenges-header">
+        <h2 class="active-challenges-title">Active challenges</h2>
+        <button class="view-all-challenges-btn" onclick="showPage('challenge-gallery'); setTimeout(() => switchChallengeTab('active'), 100)">View All</button>
+    </div>
+    
+    <!-- Empty state message -->
+    <div style="text-align: center; padding: 40px 20px; color: #8e8e93;">
+        <i data-lucide="target" style="width: 48px; height: 48px; margin-bottom: 16px;"></i>
+        <div style="font-size: 20px; margin-bottom: 8px; color: #1a1a1a; font-weight: 400;">No active challenges</div>
+        <p style="font-size: 14px; line-height: 1.5;">Browse and join challenges to start your transformation journey</p>
+    </div>
+</div>
+
+<!-- Suggested Challenges Section -->
+<div class="suggested-challenges-section">
+    <div class="suggested-challenges-header">
+        <h2 class="suggested-challenges-title">Suggested challenges</h2>
+        <button class="view-all-suggested-challenges-btn" onclick="showPage('challenge-gallery'); setTimeout(() => switchChallengeTab('suggested'), 100)">View All</button>
+    </div>
+    
+    <!-- Keep original suggested challenges content -->
+    <div class="suggested-dreams-grid">
+        <div class="suggested-dream-card" data-category="all health">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Daily water challenge</h3>
+                <div class="suggested-dream-stats">
+                    <span>1 week</span>
+                    <span>•</span>
+                    <span>4.8 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all health">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Morning routine ritual</h3>
+                <div class="suggested-dream-stats">
+                    <span>2 weeks</span>
+                    <span>•</span>
+                    <span>4.9 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all productivity">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">Digital detox challenge</h3>
+                <div class="suggested-dream-stats">
+                    <span>3 days</span>
+                    <span>•</span>
+                    <span>4.7 ⭐</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="all creative">
+            <div class="suggested-dream-image-placeholder"></div>
+            <div class="suggested-dream-content">
+                <h3 class="suggested-dream-title">30-day photo challenge</h3>
+                <div class="suggested-dream-stats">
+                    <span>1 month</span>
+                    <span>•</span>
+                    <span>4.6 ⭐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
