@@ -1,5 +1,7 @@
 // Clean Unlimits App - Main JavaScript
 
+// Zero State Toggle
+let isZeroState = false;
 
 // Header and Navigation Scroll Behavior
 function initializeScrollBehavior() {
@@ -48,12 +50,33 @@ function initializeScrollBehavior() {
 // Page content loader
 async function loadPageContent(pageId) {
     try {
-        const response = await fetch(`pages/${pageId}.html`);
+        let fileName = `pages/${pageId}.html`;
+        
+        // Check if we should load zero state version for supported pages
+        if (isZeroState && ['explore', 'dreams', 'challenges', 'meditation'].includes(pageId)) {
+            const zeroStateFile = `pages/${pageId}-zero-state.html`;
+            // Try to load zero state version, fallback to regular if not found
+            try {
+                const zeroStateResponse = await fetch(zeroStateFile);
+                if (zeroStateResponse.ok) {
+                    fileName = zeroStateFile;
+                }
+            } catch (e) {
+                // Fall back to regular file
+            }
+        }
+        
+        const response = await fetch(fileName);
         if (response.ok) {
             const content = await response.text();
             const pageElement = document.getElementById(pageId);
             if (pageElement) {
                 pageElement.innerHTML = content;
+                
+                // Re-initialize lucide icons for the new content
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
             }
         }
     } catch (error) {
@@ -1139,9 +1162,39 @@ function showChallengeDetail(challengeId) {
     console.log('Showing challenge detail for:', challengeId);
 }
 
+// Zero State Toggle Functionality
+function toggleZeroState() {
+    isZeroState = !isZeroState;
+    const toggleButton = document.querySelector('.zero-state-toggle');
+    const icon = document.getElementById('zero-state-icon');
+    
+    // Update toggle button appearance
+    if (isZeroState) {
+        toggleButton.classList.add('active');
+        icon.setAttribute('data-lucide', 'user-check');
+    } else {
+        toggleButton.classList.remove('active');
+        icon.setAttribute('data-lucide', 'user-x');
+    }
+    
+    // Refresh the current page to show/hide zero state
+    const currentPage = document.querySelector('.page.active');
+    if (currentPage) {
+        const pageId = currentPage.id;
+        loadPageContent(pageId);
+    }
+    
+    // Re-initialize lucide icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
 window.filterChallengesByCategory = filterChallengesByCategory;
 window.filterChallenges = filterChallenges;
 window.showChallengeDetail = showChallengeDetail;
+window.toggleZeroState = toggleZeroState;
