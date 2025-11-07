@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-gallery', 'challenge-gallery'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -179,8 +179,13 @@ function enhancedShowPage(pageId) {
                     // Initialize carousel when dream report page loads
                     setTimeout(initAutoMessageCarousel, 100);
                 });
-            } else if (pageId === 'dream-gallery') {
-                loadComponent('breadcrumb', 'dream-gallery-breadcrumb-container').then(() => {
+            } else if (pageId === 'dream-browse') {
+                loadComponent('breadcrumb', 'dream-browse-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'dream-management') {
+                loadComponent('breadcrumb', 'dream-management-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
@@ -451,7 +456,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('challenges');
         await loadPageContent('meditation');
         await loadPageContent('notifications');
-        await loadPageContent('dream-gallery');
+        await loadPageContent('dream-browse');
+        await loadPageContent('dream-management');
         await loadPageContent('challenge-gallery');
         await loadPageContent('dream-detail');
         await loadPageContent('future-self');
@@ -460,9 +466,13 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadComponent('breadcrumb', 'future-self-breadcrumb-container');
         updateBreadcrumbTitle('future-self');
         
-        // Load breadcrumb for dream-gallery since it's preloaded
-        await loadComponent('breadcrumb', 'dream-gallery-breadcrumb-container');
-        updateBreadcrumbTitle('dream-gallery');
+        // Load breadcrumb for dream-browse since it's preloaded
+        await loadComponent('breadcrumb', 'dream-browse-breadcrumb-container');
+        updateBreadcrumbTitle('dream-browse');
+        
+        // Load breadcrumb for dream-management since it's preloaded
+        await loadComponent('breadcrumb', 'dream-management-breadcrumb-container');
+        updateBreadcrumbTitle('dream-management');
         
         // Load breadcrumb for challenge-gallery since it's preloaded
         await loadComponent('breadcrumb', 'challenge-gallery-breadcrumb-container');
@@ -531,7 +541,8 @@ const BREADCRUMB_TITLES = {
     'manage-account': 'MANAGE ACCOUNT',
     'learn-more': 'SUBSCRIPTION',
     'dream-report': 'DREAM REPORT',
-    'dream-gallery': 'DREAM GALLERY',
+    'dream-browse': 'BROWSE DREAMS',
+    'dream-management': 'MY DREAMS',
     'challenge-gallery': 'CHALLENGE GALLERY'
 };
 
@@ -1076,6 +1087,27 @@ window.selectFilter = selectFilter;
 window.addNewDream = addNewDream;
 window.showDreamDetail = showDreamDetail;
 
+// Dream Management Tab Switching (for dream-management page)
+function switchManagementTab(tabName) {
+    // Update tab buttons
+    const tabs = document.querySelectorAll('.gallery-tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Hide all sections
+    document.getElementById('active-management-section').style.display = 'none';
+    document.getElementById('achieved-management-section').style.display = 'none';
+    
+    // Show selected section
+    if (tabName === 'active') {
+        document.getElementById('active-management-section').style.display = 'block';
+    } else if (tabName === 'achieved') {
+        document.getElementById('achieved-management-section').style.display = 'block';
+    }
+}
+
+window.switchManagementTab = switchManagementTab;
+
 // ===============================================
 // CHALLENGE GALLERY FUNCTIONALITY
 // ===============================================
@@ -1165,7 +1197,7 @@ function showChallengeDetail(challengeId) {
 // Zero State Toggle Functionality
 function toggleZeroState() {
     isZeroState = !isZeroState;
-    const toggleButton = document.querySelector('.zero-state-toggle');
+    const toggleButton = document.querySelector('.external-zero-state-toggle');
     const icon = document.getElementById('zero-state-icon');
     
     // Update toggle button appearance

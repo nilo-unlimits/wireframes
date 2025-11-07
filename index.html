@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+    <!-- Zero State Toggle - positioned outside mobile frame -->
+    <div class="external-zero-state-toggle" onclick="toggleZeroState()" title="Toggle Zero State">
+        <div class="toggle-label">Zero State</div>
+        <div class="toggle-switch">
+            <i data-lucide="user-x" id="zero-state-icon"></i>
+        </div>
+    </div>
+
     <div class="phone-container">
         <!-- Header will be loaded here -->
         <div id="header-container"></div>
@@ -52,8 +60,11 @@
             <!-- Notifications Page -->
             <div class="page" id="notifications"></div>
             
-            <!-- Dream Gallery Page -->
-            <div class="page" id="dream-gallery"></div>
+            <!-- Dream Browse Page -->
+            <div class="page" id="dream-browse"></div>
+            
+            <!-- Dream Management Page -->
+            <div class="page" id="dream-management"></div>
             
             <!-- Challenge Gallery Page -->
             <div class="page" id="challenge-gallery"></div>

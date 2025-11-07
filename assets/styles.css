@@ -146,33 +146,68 @@ body {
     stroke-width: 1.5;
 }
 
-/* Zero State Toggle */
-.zero-state-toggle {
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background: #f8f8f8;
+/* External Zero State Toggle - positioned outside mobile frame */
+.external-zero-state-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #8e8e93;
-    cursor: pointer;
+    gap: 12px;
+    background: rgba(248, 248, 248, 0.95);
+    padding: 12px 16px;
+    border-radius: 24px;
     border: 1px solid #e5e5ea;
+    cursor: pointer;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
     transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.zero-state-toggle:hover {
-    background: #e5e5ea;
+.external-zero-state-toggle:hover {
+    background: rgba(229, 229, 234, 0.95);
+    transform: translateY(-1px);
 }
 
-.zero-state-toggle.active {
-    background: #007AFF;
+.external-zero-state-toggle.active {
+    background: rgba(0, 122, 255, 0.95);
     color: white;
     border-color: #007AFF;
 }
 
-.zero-state-toggle i,
-.zero-state-toggle svg {
+.external-zero-state-toggle.active .toggle-label {
+    color: white;
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d1d1f;
+    white-space: nowrap;
+}
+
+.toggle-switch {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8e8e93;
+    border: 1px solid #e5e5ea;
+    transition: all 0.2s ease;
+}
+
+.external-zero-state-toggle.active .toggle-switch {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-switch i,
+.toggle-switch svg {
     width: 16px !important;
     height: 16px !important;
     stroke-width: 1.5;
@@ -2019,9 +2054,29 @@ h1, h2 {
 }
 
 .tell-me-more-btn span {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     color: #000;
+}
+
+.tell-me-more-btn.disabled {
+    background: #f5f5f5;
+    border-color: #e8e8e8;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.tell-me-more-btn.disabled:hover {
+    background: #f5f5f5;
+    transform: none;
+}
+
+.tell-me-more-btn.disabled i {
+    color: #8e8e93 !important;
+}
+
+.tell-me-more-btn.disabled span {
+    color: #8e8e93 !important;
 }
 
 .overview-cards {
@@ -2059,6 +2114,58 @@ h1, h2 {
     font-size: 12px;
     font-weight: 700;
     color: #000;
+}
+
+.overview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.placeholder-box {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    border: 2px dashed #d0d0d0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.placeholder-text {
+    font-size: 10px;
+    font-weight: 500;
+    color: #8e8e93;
+}
+
+.placeholder-card {
+    background: transparent;
+    border: 2px dashed #d0d0d0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 120px;
+}
+
+.placeholder-card:hover {
+    border-color: #bbb;
+    transform: translateY(-1px);
+}
+
+.placeholder-card-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8e8e93;
 }
 
 .overview-stats {
@@ -5071,15 +5178,6 @@ h1, h2 {
     margin: 0;
 }
 
-.view-all-btn {
-    background: none;
-    border: none;
-    color: #007AFF;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-}
 
 /* Quick Start Section */
 .quick-start-section {

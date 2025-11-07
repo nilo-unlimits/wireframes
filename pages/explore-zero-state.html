@@ -14,11 +14,11 @@
         </div>
         <div class="progress-bar-container">
             <div class="progress-labels">
-                <span class="progress-start">0</span>
+                <span class="progress-start">10</span>
                 <span class="progress-end">100</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 0%;"></div>
+                <div class="progress-fill" style="width: 10%;"></div>
             </div>
             <div class="progress-titles">
                 <span class="progress-title-left">Dreamer</span>
@@ -44,48 +44,42 @@
     </div>
 </div>
 
-<!-- Section 2: Unlock Your Potential -->
+<!-- Section 2: Discovery Message + Overview Cards -->
 <div class="discovery-message-container">
     <div class="discovery-message">
-        Unlock Your Potential
+        Your Progress
     </div>
+    <button class="tell-me-more-btn disabled">
+        <i data-lucide="bar-chart-3"></i>
+        <span>Your Dream Report</span>
+    </button>
 </div>
 
 <div class="overview-cards">
-    <div class="overview-card" onclick="showPage('dreams')" style="text-align: center;">
-        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #FF6B6B; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
-            <i data-lucide="gallery-horizontal" style="width: 30px; height: 30px; color: white;"></i>
-        </div>
-        <div class="overview-stats">
-            <div class="overview-label">Browse Dream Gallery</div>
-        </div>
-        <div style="margin-top: 8px;">
-            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
-        </div>
+    <div class="placeholder-card" onclick="showPage('dreams')">
+        <i data-lucide="gallery-horizontal" style="width: 24px; height: 24px; color: #8e8e93;"></i>
+        <div class="placeholder-card-text">Browse Dreams</div>
     </div>
     
-    <div class="overview-card" onclick="showPage('challenges')" style="text-align: center;">
-        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #4ECDC4; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
-            <i data-lucide="list-checks" style="width: 30px; height: 30px; color: white;"></i>
+    <div class="overview-card" onclick="showPage('challenges')">
+        <div class="overview-donut">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" fill="none" stroke="#f0f0f0" stroke-width="6"/>
+                <circle cx="30" cy="30" r="24" fill="none" stroke="#4ECDC4" stroke-width="6" 
+                        stroke-dasharray="150.8" stroke-dashoffset="150.8" 
+                        stroke-linecap="round" transform="rotate(-90 30 30)"/>
+            </svg>
+            <div class="donut-number">0/1</div>
         </div>
         <div class="overview-stats">
-            <div class="overview-label">Find Challenges</div>
+            <div class="overview-label">Challenges</div>
         </div>
-        <div style="margin-top: 8px;">
-            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
-        </div>
+        <button class="overview-pill-btn">View All</button>
     </div>
     
-    <div class="overview-card" onclick="showPage('meditation')" style="text-align: center;">
-        <div class="overview-icon" style="width: 60px; height: 60px; border-radius: 50%; background: #FFD93D; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
-            <i data-lucide="sparkles" style="width: 30px; height: 30px; color: white;"></i>
-        </div>
-        <div class="overview-stats">
-            <div class="overview-label">Practice Meditation</div>
-        </div>
-        <div style="margin-top: 8px;">
-            <i data-lucide="chevron-right" style="width: 16px; height: 16px; color: #8e8e93;"></i>
-        </div>
+    <div class="placeholder-card" onclick="showPage('meditation')">
+        <i data-lucide="sparkles" style="width: 24px; height: 24px; color: #8e8e93;"></i>
+        <div class="placeholder-card-text">Browse Meditation</div>
     </div>
 </div>
 
@@ -97,7 +91,7 @@
 <!-- Section 3: Quick Actions (For The Seeker) -->
 <div class="quick-actions-section">
     <div class="quick-actions-carousel">
-        <div class="quick-action-card" onclick="showPage('dream-gallery')">
+        <div class="quick-action-card" onclick="showPage('dream-browse')">
             <div class="quick-card-icon"><i data-lucide="gallery-horizontal"></i></div>
             <div class="quick-card-title">Find Hidden Patterns</div>
             <div class="quick-card-subtitle">Browse Dream Gallery</div>
