@@ -1,0 +1,155 @@
+<!-- Challenge Browse Page Content -->
+
+<!-- Breadcrumb -->
+<div id="challenge-browse-breadcrumb-container"></div>
+
+<!-- Gallery Header (Browse Only) -->
+<div class="gallery-header">
+    <div class="gallery-tabs">
+    </div>
+    <div class="gallery-actions">
+        <button class="dream-action-btn" onclick="openFilterMenu()">
+            <i data-lucide="sliders-horizontal"></i>
+            <span class="action-label">Filter</span>
+        </button>
+        <button class="dream-action-btn" onclick="openBookmarks()">
+            <i data-lucide="bookmark"></i>
+        </button>
+        <button class="dream-action-btn" onclick="openSearch()">
+            <i data-lucide="search"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Search Bar (Initially Hidden) -->
+<div class="gallery-search-container" id="gallery-search" style="display: none;">
+    <div class="gallery-search-wrapper">
+        <i data-lucide="search" class="gallery-search-icon"></i>
+        <input type="text" class="gallery-search-input" placeholder="Search challenges..." oninput="filterChallenges()">
+        <button class="gallery-search-close" onclick="closeSearch()">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Challenge Type Selection -->
+<div class="challenge-type-tabs">
+    <button class="challenge-type-tab active" data-type="starter" onclick="selectChallengeType('starter')">
+        <span class="challenge-type-icon">S</span>
+        <span class="challenge-type-label">Starter</span>
+        <span class="challenge-type-duration">21 Days</span>
+    </button>
+    <button class="challenge-type-tab" data-type="warrior" onclick="selectChallengeType('warrior')">
+        <span class="challenge-type-icon">W</span>
+        <span class="challenge-type-label">Warrior</span>
+        <span class="challenge-type-duration">60 Days</span>
+    </button>
+    <button class="challenge-type-tab" data-type="unlimiter" onclick="selectChallengeType('unlimiter')">
+        <span class="challenge-type-icon">U</span>
+        <span class="challenge-type-label">Unlimiter</span>
+        <span class="challenge-type-duration">100 Days</span>
+    </button>
+</div>
+
+<!-- Browse Challenges Section -->
+<div class="gallery-section" id="browse-section">
+    <div class="dreams-masonry-grid">
+        <div class="suggested-dream-card" data-category="habits" onclick="showChallengeDetail('no-snoozing')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">No Snoozing Daily</h3>
+                <p class="suggested-dream-subtitle">1.2k Participants</p>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="habits" onclick="showChallengeDetail('morning-routine')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">Perfect Morning Routine</h3>
+                <p class="suggested-dream-subtitle">890 Participants</p>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="mindset" onclick="showChallengeDetail('gratitude')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">Daily Gratitude Practice</h3>
+                <p class="suggested-dream-subtitle">567 Participants</p>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="goals" onclick="showChallengeDetail('water-intake')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">Daily Water Challenge</h3>
+                <p class="suggested-dream-subtitle">2.1k Participants</p>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="mindset" onclick="showChallengeDetail('meditation')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">21-Day Meditation Streak</h3>
+                <p class="suggested-dream-subtitle">1.5k Participants</p>
+            </div>
+        </div>
+        
+        <div class="suggested-dream-card" data-category="goals" onclick="showChallengeDetail('reading')">
+            <div class="suggested-dream-bookmark">
+                <i data-lucide="bookmark"></i>
+            </div>
+            <div class="suggested-dream-overlay">
+                <h3 class="suggested-dream-title">Read 30 Minutes Daily</h3>
+                <p class="suggested-dream-subtitle">734 Participants</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="filter-modal-overlay" id="filter-modal" style="display: none;" onclick="closeFilterMenu()">
+    <div class="filter-modal" onclick="event.stopPropagation()">
+        <div class="filter-modal-content">
+            <div class="filter-option active" data-filter="all" onclick="selectFilter('all')">
+                <span>All</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="habits" onclick="selectFilter('habits')">
+                <span>Habits</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="mindset" onclick="selectFilter('mindset')">
+                <span>Mindset</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="goals" onclick="selectFilter('goals')">
+                <span>Goals</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="wellness" onclick="selectFilter('wellness')">
+                <span>Wellness</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,261 @@
+<!-- Challenge Management Page Content -->
+
+<!-- Breadcrumb -->
+<div id="challenge-management-breadcrumb-container"></div>
+
+<!-- Gallery Tab Navigation (Active + Completed) -->
+<div class="gallery-header">
+    <div class="gallery-tabs">
+        <button class="gallery-tab active" data-tab="active" onclick="switchChallengeManagementTab('active')">Active</button>
+        <button class="gallery-tab" data-tab="completed" onclick="switchChallengeManagementTab('completed')">Completed</button>
+    </div>
+    <div class="gallery-actions">
+        <button class="dream-action-btn" onclick="openFilterMenu()">
+            <i data-lucide="sliders-horizontal"></i>
+            <span class="action-label">Filter</span>
+        </button>
+        <button class="dream-action-btn" onclick="openBookmarks()">
+            <i data-lucide="bookmark"></i>
+        </button>
+        <button class="dream-action-btn" onclick="openSearch()">
+            <i data-lucide="search"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Search Bar (Initially Hidden) -->
+<div class="gallery-search-container" id="gallery-search" style="display: none;">
+    <div class="gallery-search-wrapper">
+        <i data-lucide="search" class="gallery-search-icon"></i>
+        <input type="text" class="gallery-search-input" placeholder="Search challenges..." oninput="filterChallenges()">
+        <button class="gallery-search-close" onclick="closeSearch()">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Active Challenges Section -->
+<div class="gallery-section" id="active-management-section">
+    <div class="active-dreams-carousel">
+        <div class="dream-card" data-category="habits" onclick="showChallengeDetail('water-active')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#1</div>
+                <h3 class="dream-title">Daily Water Challenge</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn with-notification">
+                        <i data-lucide="message-circle"></i>
+                    </button>
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 86%;"></div>
+                    </div>
+                    <div class="progress-label">86% Progress <span class="challenge-streak">🔥18</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">AM</div>
+                        <div class="avatar">LK</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="mindset" onclick="showChallengeDetail('morning-active')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#4</div>
+                <h3 class="dream-title">Perfect Morning Routine</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn with-notification">
+                        <i data-lucide="message-circle"></i>
+                    </button>
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 52%;"></div>
+                    </div>
+                    <div class="progress-label">52% Progress <span class="challenge-streak">🔥11</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">JS</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="wellness" onclick="showChallengeDetail('gratitude-active')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#2</div>
+                <h3 class="dream-title">Daily Gratitude Practice</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn with-notification">
+                        <i data-lucide="message-circle"></i>
+                    </button>
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 76%;"></div>
+                    </div>
+                    <div class="progress-label">76% Progress <span class="challenge-streak">🔥16</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">MK</div>
+                        <div class="avatar">TL</div>
+                        <div class="avatar">RP</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="goals" onclick="showChallengeDetail('reading-active')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#8</div>
+                <h3 class="dream-title">Read 30 Minutes Daily</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn with-notification">
+                        <i data-lucide="message-circle"></i>
+                    </button>
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%;"></div>
+                    </div>
+                    <div class="progress-label">33% Progress <span class="challenge-streak">🔥7</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">NC</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Completed Challenges Section -->
+<div class="gallery-section" id="completed-management-section" style="display: none;">
+    <div class="active-dreams-carousel">
+        <div class="dream-card" data-category="habits" onclick="showChallengeDetail('meditation-completed')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#1</div>
+                <h3 class="dream-title">21-Day Meditation Streak</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="progress-label">100% Complete <span class="challenge-streak">🔥21</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">MR</div>
+                        <div class="avatar">TK</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dream-card" data-category="goals" onclick="showChallengeDetail('reading-completed')">
+            <div class="dream-card-header">
+                <div class="challenge-rank-circle">#3</div>
+                <h3 class="dream-title">Read 30 Minutes Daily</h3>
+                <div class="dream-actions">
+                    <button class="dream-action-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-card-footer">
+                <div class="dream-progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <div class="progress-label">100% Complete <span class="challenge-streak">🔥30</span></div>
+                </div>
+                <div class="dream-collaborators">
+                    <div class="collaborator-avatars">
+                        <div class="avatar">BR</div>
+                        <button class="add-collaborator">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="filter-modal-overlay" id="filter-modal" style="display: none;" onclick="closeFilterMenu()">
+    <div class="filter-modal" onclick="event.stopPropagation()">
+        <div class="filter-modal-content">
+            <div class="filter-option active" data-filter="all" onclick="selectFilter('all')">
+                <span>All</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="habits" onclick="selectFilter('habits')">
+                <span>Habits</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="mindset" onclick="selectFilter('mindset')">
+                <span>Mindset</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="goals" onclick="selectFilter('goals')">
+                <span>Goals</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="filter-option" data-filter="wellness" onclick="selectFilter('wellness')">
+                <span>Wellness</span>
+                <div class="filter-check">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

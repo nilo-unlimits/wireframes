@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -196,6 +196,20 @@ function enhancedShowPage(pageId) {
                     // Initialize Challenge Gallery with Browse tab active
                     setTimeout(() => {
                         switchChallengeTab('browse');
+                    }, 100);
+                });
+            } else if (pageId === 'challenge-browse') {
+                loadComponent('breadcrumb', 'challenge-browse-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'challenge-management') {
+                loadComponent('breadcrumb', 'challenge-management-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                    // Initialize Challenge Management with Active tab active
+                    setTimeout(() => {
+                        switchChallengeManagementTab('active');
                     }, 100);
                 });
             }
@@ -459,6 +473,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('dream-browse');
         await loadPageContent('dream-management');
         await loadPageContent('challenge-gallery');
+        await loadPageContent('challenge-browse');
+        await loadPageContent('challenge-management');
         await loadPageContent('dream-detail');
         await loadPageContent('future-self');
         
@@ -477,6 +493,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for challenge-gallery since it's preloaded
         await loadComponent('breadcrumb', 'challenge-gallery-breadcrumb-container');
         updateBreadcrumbTitle('challenge-gallery');
+        
+        // Load breadcrumb for challenge-browse since it's preloaded
+        await loadComponent('breadcrumb', 'challenge-browse-breadcrumb-container');
+        updateBreadcrumbTitle('challenge-browse');
+        
+        // Load breadcrumb for challenge-management since it's preloaded
+        await loadComponent('breadcrumb', 'challenge-management-breadcrumb-container');
+        updateBreadcrumbTitle('challenge-management');
         
     } catch (error) {
         console.error('Error loading app content:', error);
@@ -532,6 +556,8 @@ function navigateBack() {
         // Route to appropriate parent page
         if (pageId === 'dream-browse' || pageId === 'dream-management') {
             showPage('dreams');
+        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management') {
+            showPage('challenges');
         } else {
             showPage('explore'); // Default for other pages
         }
@@ -547,6 +573,8 @@ function navigateClose() {
         // Route to appropriate parent page
         if (pageId === 'dream-browse' || pageId === 'dream-management') {
             showPage('dreams');
+        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management') {
+            showPage('challenges');
         } else {
             showPage('explore'); // Default for other pages
         }
@@ -565,7 +593,9 @@ const BREADCRUMB_TITLES = {
     'dream-report': 'DREAM REPORT',
     'dream-browse': 'BROWSE DREAMS',
     'dream-management': 'MY DREAMS',
-    'challenge-gallery': 'CHALLENGE GALLERY'
+    'challenge-gallery': 'CHALLENGE GALLERY',
+    'challenge-browse': 'BROWSE CHALLENGES',
+    'challenge-management': 'MY CHALLENGES'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1129,6 +1159,39 @@ function switchManagementTab(tabName) {
 }
 
 window.switchManagementTab = switchManagementTab;
+
+// Challenge Management Tab Switching (for challenge-management page)
+function switchChallengeManagementTab(tabName) {
+    // Only operate if we're on the challenge-management page
+    const challengeManagementPage = document.getElementById('challenge-management');
+    if (!challengeManagementPage || !challengeManagementPage.classList.contains('active')) {
+        return;
+    }
+    
+    // Update tab buttons - only in Challenge Management page
+    const challengeManagementTabs = challengeManagementPage.querySelectorAll('.gallery-tab');
+    challengeManagementTabs.forEach(tab => tab.classList.remove('active'));
+    const targetTab = challengeManagementPage.querySelector(`[data-tab="${tabName}"]`);
+    if (targetTab) {
+        targetTab.classList.add('active');
+    }
+    
+    // Hide all sections
+    const activeSection = document.getElementById('active-management-section');
+    const completedSection = document.getElementById('completed-management-section');
+    
+    if (activeSection) activeSection.style.display = 'none';
+    if (completedSection) completedSection.style.display = 'none';
+    
+    // Show selected section
+    if (tabName === 'active' && activeSection) {
+        activeSection.style.display = 'block';
+    } else if (tabName === 'completed' && completedSection) {
+        completedSection.style.display = 'block';
+    }
+}
+
+window.switchChallengeManagementTab = switchChallengeManagementTab;
 
 // ===============================================
 // CHALLENGE GALLERY FUNCTIONALITY
