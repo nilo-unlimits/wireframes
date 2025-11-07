@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -229,6 +229,11 @@ function enhancedShowPage(pageId) {
                 });
             } else if (pageId === 'challenge-water-flow') {
                 loadComponent('breadcrumb', 'challenge-water-flow-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'resources') {
+                loadComponent('breadcrumb', 'resources-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
@@ -627,7 +632,8 @@ const BREADCRUMB_TITLES = {
     'dream-scuba-diver': 'START DREAMING',
     'dream-achieve': 'ACHIEVE',
     'challenge-water-daily': 'START CHALLENGING',
-    'challenge-water-flow': 'CHALLENGE'
+    'challenge-water-flow': 'CHALLENGE',
+    'resources': 'MY RESOURCES'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1501,6 +1507,37 @@ function toggleAccordion(sectionId) {
     }
 }
 
+// Resources tab switching function
+function switchResourcesTab(tabName) {
+    try {
+        // Remove active class from all tabs
+        document.querySelectorAll('.resources-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Add active class to selected tab
+        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+        
+        // Hide all content
+        document.querySelectorAll('.resources-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // Show selected content
+        const selectedContent = document.querySelector(`#${tabName}-content`);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+        
+        console.log(`Switched to ${tabName} resources tab`);
+    } catch (error) {
+        console.error('Error switching resources tab:', error);
+    }
+}
+
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
@@ -1514,3 +1551,4 @@ window.selectFilter = selectFilter;
 window.switchAchieveTab = switchAchieveTab;
 window.switchChallengeFlowTab = switchChallengeFlowTab;
 window.toggleAccordion = toggleAccordion;
+window.switchResourcesTab = switchResourcesTab;
