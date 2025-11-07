@@ -1484,6 +1484,23 @@ function switchChallengeFlowTab(tabName) {
     }
 }
 
+// Accordion toggle function
+function toggleAccordion(sectionId) {
+    try {
+        const content = document.querySelector(`#${sectionId}-content`);
+        const header = document.querySelector(`[onclick="toggleAccordion('${sectionId}')"]`);
+        
+        if (content && header) {
+            content.classList.toggle('collapsed');
+            header.classList.toggle('collapsed');
+            
+            console.log(`Toggled accordion: ${sectionId}`);
+        }
+    } catch (error) {
+        console.error('Error toggling accordion:', error);
+    }
+}
+
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
@@ -1496,3 +1513,4 @@ window.closeFilterMenu = closeFilterMenu;
 window.selectFilter = selectFilter;
 window.switchAchieveTab = switchAchieveTab;
 window.switchChallengeFlowTab = switchChallengeFlowTab;
+window.toggleAccordion = toggleAccordion;

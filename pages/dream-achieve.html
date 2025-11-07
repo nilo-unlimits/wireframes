@@ -11,14 +11,63 @@
 
 <!-- Manifest Tab Content -->
 <div class="achieve-content" id="manifest-content" style="display: none;">
-    <div class="page-header">
-        <h1 class="page-title">Manifest Your Dream</h1>
-        <div class="dreams-header-divider"></div>
-    </div>
-    
-    <div class="manifest-section" style="margin-bottom: 80px;">
-        <!-- Manifest content will go here -->
-        <p>Manifest tab content</p>
+    <div class="dream-detail-page" style="padding: 20px;">
+        <!-- Action Buttons -->
+        <div class="dream-actions-row">
+            <button class="dream-action-btn">
+                <i data-lucide="share-2"></i>
+            </button>
+            <button class="dream-action-btn">
+                <i data-lucide="sparkles"></i>
+                <span class="action-label">Make it yours</span>
+            </button>
+        </div>
+        
+        <!-- Dream Title Section -->
+        <div class="dream-title-section">
+            <h1 class="dream-main-title">Become a certified scuba diver</h1>
+            <p class="dream-target-date">1 Dec 2025</p>
+        </div>
+        
+        <!-- Dream content goes here -->
+        <div class="dream-content" style="margin-bottom: 80px;">
+            <!-- Manifestation Content -->
+            <div class="manifestation-section">
+                <div class="manifestation-text">
+                    <p>Picture yourself descending into the crystal-clear waters, your breathing steady and calm as you explore an underwater world that few get to experience. The gentle rhythm of your fins propelling you forward, the mesmerizing dance of light filtering through the water above.</p>
+                </div>
+                
+                <div class="manifestation-image">
+                    <div class="placeholder-image"></div>
+                </div>
+                
+                <div class="manifestation-text">
+                    <p>Every breath you take underwater is a testament to your courage and determination. You've conquered your fears, mastered the skills, and earned the respect that comes with being a certified diver. The ocean is no longer a mystery—it's your playground.</p>
+                </div>
+                
+                <div class="manifestation-image">
+                    <div class="placeholder-image"></div>
+                </div>
+                
+                <div class="manifestation-text">
+                    <p>Imagine the stories you'll tell—swimming alongside sea turtles, discovering hidden coral reefs, exploring shipwrecks that have been resting on the ocean floor for decades. Each dive is an adventure, each moment underwater a reminder of what's possible when you commit to your dreams.</p>
+                    
+                    <p>Your certification card isn't just a piece of plastic—it's proof that you've joined an elite community of underwater explorers. You've pushed past your comfort zone and unlocked access to 71% of our planet that most people never see.</p>
+                    
+                    <p>The confidence you've gained extends far beyond diving. If you can master the art of breathing underwater, navigating in three dimensions, and staying calm in an alien environment, what else can you achieve? This dream is just the beginning.</p>
+                </div>
+                
+                <div class="manifestation-image">
+                    <div class="placeholder-image"></div>
+                </div>
+                
+                <div class="manifestation-text">
+                    <p>Feel the excitement building as you plan your first certified dive trip. Maybe it's the Great Barrier Reef, the cenotes of Mexico, or the wrecks of the Red Sea. The world's most incredible dive sites are now within your reach.</p>
+                    
+                    <p>You've transformed from someone who dreams about the underwater world to someone who lives in it. Every time you zip up that wetsuit, you're not just getting ready to dive—you're stepping into the person you've always wanted to become.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -72,6 +121,121 @@
                 <button class="achieve-pill">Mindset</button>
                 <button class="achieve-pill">Articles</button>
                 <button class="achieve-pill">Videos</button>
+            </div>
+        </div>
+        
+        <!-- Task Lists Section -->
+        <div class="achieve-tasks-section">
+            <!-- Today Section -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion('today')">
+                    <h3 class="accordion-title">Today</h3>
+                    <i class="accordion-icon" data-lucide="chevron-down"></i>
+                </div>
+                <div class="accordion-content" id="today-content">
+                    <div class="task-item-detailed">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" class="task-checkbox" id="achieve-task1">
+                            <label for="achieve-task1" class="task-checkbox-label"></label>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-row">
+                                <div class="task-name">Research scuba certification courses</div>
+                                <span class="task-streak">🔥3</span>
+                            </div>
+                            <div class="task-row">
+                                <span class="task-category">Getting started</span>
+                                <span class="task-due">Today</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-item-detailed">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" class="task-checkbox" id="achieve-task2">
+                            <label for="achieve-task2" class="task-checkbox-label"></label>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-row">
+                                <div class="task-name">Book medical check for diving</div>
+                                <span class="task-streak"></span>
+                            </div>
+                            <div class="task-row">
+                                <span class="task-category">Preparation</span>
+                                <span class="task-due">Today</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- This Week Section -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion('thisweek')">
+                    <h3 class="accordion-title">This Week</h3>
+                    <i class="accordion-icon" data-lucide="chevron-down"></i>
+                </div>
+                <div class="accordion-content collapsed" id="thisweek-content">
+                    <div class="task-item-detailed">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" class="task-checkbox" id="achieve-task3">
+                            <label for="achieve-task3" class="task-checkbox-label"></label>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-row">
+                                <div class="task-name">Complete PADI Open Water theory</div>
+                                <span class="task-streak"></span>
+                            </div>
+                            <div class="task-row">
+                                <span class="task-category">Learning</span>
+                                <span class="task-due">This Week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- This Month Section -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion('thismonth')">
+                    <h3 class="accordion-title">This Month</h3>
+                    <i class="accordion-icon" data-lucide="chevron-down"></i>
+                </div>
+                <div class="accordion-content collapsed" id="thismonth-content">
+                    <div class="task-item-detailed">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" class="task-checkbox" id="achieve-task4">
+                            <label for="achieve-task4" class="task-checkbox-label"></label>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-row">
+                                <div class="task-name">Complete pool training sessions</div>
+                                <span class="task-streak"></span>
+                            </div>
+                            <div class="task-row">
+                                <span class="task-category">Practice</span>
+                                <span class="task-due">This Month</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-item-detailed">
+                        <div class="task-checkbox-wrapper">
+                            <input type="checkbox" class="task-checkbox" id="achieve-task5">
+                            <label for="achieve-task5" class="task-checkbox-label"></label>
+                        </div>
+                        <div class="task-details">
+                            <div class="task-row">
+                                <div class="task-name">Schedule open water dives</div>
+                                <span class="task-streak"></span>
+                            </div>
+                            <div class="task-row">
+                                <span class="task-category">Final step</span>
+                                <span class="task-due">This Month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
