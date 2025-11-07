@@ -10,6 +10,10 @@
         <button class="gallery-tab" data-tab="achieved" onclick="switchManagementTab('achieved')">Achieved</button>
     </div>
     <div class="gallery-actions">
+        <button class="dream-action-btn" onclick="openFilterMenu()">
+            <i data-lucide="sliders-horizontal"></i>
+            <span class="action-label">Filter</span>
+        </button>
         <button class="dream-action-btn" onclick="openBookmarks()">
             <i data-lucide="bookmark"></i>
         </button>
@@ -30,17 +34,6 @@
     </div>
 </div>
 
-<!-- Category Filter Pills -->
-<div class="category-filters">
-    <button class="category-pill active" data-category="all" onclick="filterByCategory('all')">All</button>
-    <button class="category-pill" data-category="work" onclick="filterByCategory('work')">Work</button>
-    <button class="category-pill" data-category="play" onclick="filterByCategory('play')">Play</button>
-    <button class="category-pill" data-category="self" onclick="filterByCategory('self')">Self</button>
-    <button class="category-pill" data-category="love" onclick="filterByCategory('love')">Love</button>
-    <button class="filter-menu-btn" onclick="openFilterMenu()">
-        <i data-lucide="sliders-horizontal"></i>
-    </button>
-</div>
 
 <!-- Active Dreams Section -->
 <div class="gallery-section" id="active-management-section">

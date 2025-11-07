@@ -2533,6 +2533,11 @@ h1, h2 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.active-dreams-carousel .dream-card {
+    width: 100%;
+    min-width: unset;
+}
+
 .dream-card-header {
     display: flex;
     justify-content: space-between;
@@ -3194,16 +3199,25 @@ h1, h2 {
 }
 
 .dream-action-btn {
-    width: 32px;
+    min-width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: 16px;
     background: #f0f0f0;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    padding: 0 8px;
+    gap: 6px;
+}
+
+.dream-action-btn:not(:has(.action-label)) {
+    width: 32px;
+    border-radius: 50%;
+    padding: 0;
+    gap: 0;
 }
 
 .dream-action-btn:hover {
@@ -3225,6 +3239,13 @@ h1, h2 {
 .dream-action-btn i[data-lucide] {
     width: 14px !important;
     height: 14px !important;
+}
+
+.action-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    white-space: nowrap;
 }
 
 /* Red notification dot for message icons */
@@ -5808,6 +5829,9 @@ h1, h2 {
 
 .active-dreams-carousel {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .gallery-dream-card {

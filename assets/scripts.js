@@ -526,11 +526,33 @@ function initializeSubscriptionOptions() {
 
 // Breadcrumb navigation functions
 function navigateBack() {
-    showPage('explore'); // Go back to home page
+    const currentPage = document.querySelector('.page.active');
+    if (currentPage) {
+        const pageId = currentPage.id;
+        // Route to appropriate parent page
+        if (pageId === 'dream-browse' || pageId === 'dream-management') {
+            showPage('dreams');
+        } else {
+            showPage('explore'); // Default for other pages
+        }
+    } else {
+        showPage('explore');
+    }
 }
 
 function navigateClose() {
-    showPage('explore'); // Close to home page
+    const currentPage = document.querySelector('.page.active');
+    if (currentPage) {
+        const pageId = currentPage.id;
+        // Route to appropriate parent page
+        if (pageId === 'dream-browse' || pageId === 'dream-management') {
+            showPage('dreams');
+        } else {
+            showPage('explore'); // Default for other pages
+        }
+    } else {
+        showPage('explore');
+    }
 }
 
 // New Breadcrumb System
