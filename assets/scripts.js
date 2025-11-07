@@ -1162,32 +1162,42 @@ window.switchManagementTab = switchManagementTab;
 
 // Challenge Management Tab Switching (for challenge-management page)
 function switchChallengeManagementTab(tabName) {
-    // Only operate if we're on the challenge-management page
-    const challengeManagementPage = document.getElementById('challenge-management');
-    if (!challengeManagementPage || !challengeManagementPage.classList.contains('active')) {
-        return;
-    }
-    
-    // Update tab buttons - only in Challenge Management page
-    const challengeManagementTabs = challengeManagementPage.querySelectorAll('.gallery-tab');
-    challengeManagementTabs.forEach(tab => tab.classList.remove('active'));
-    const targetTab = challengeManagementPage.querySelector(`[data-tab="${tabName}"]`);
-    if (targetTab) {
-        targetTab.classList.add('active');
-    }
-    
-    // Hide all sections
-    const activeSection = document.getElementById('active-management-section');
-    const completedSection = document.getElementById('completed-management-section');
-    
-    if (activeSection) activeSection.style.display = 'none';
-    if (completedSection) completedSection.style.display = 'none';
-    
-    // Show selected section
-    if (tabName === 'active' && activeSection) {
-        activeSection.style.display = 'block';
-    } else if (tabName === 'completed' && completedSection) {
-        completedSection.style.display = 'block';
+    try {
+        console.log('Switching to challenge management tab:', tabName);
+        
+        // Only operate if we're on the challenge-management page
+        const challengeManagementPage = document.getElementById('challenge-management');
+        if (!challengeManagementPage || !challengeManagementPage.classList.contains('active')) {
+            console.log('Challenge management page not active');
+            return;
+        }
+        
+        // Update tab buttons - only in Challenge Management page
+        const challengeManagementTabs = challengeManagementPage.querySelectorAll('.gallery-tab');
+        challengeManagementTabs.forEach(tab => tab.classList.remove('active'));
+        const targetTab = challengeManagementPage.querySelector(`[data-tab="${tabName}"]`);
+        if (targetTab) {
+            targetTab.classList.add('active');
+            console.log('Tab updated successfully');
+        }
+        
+        // Hide all sections
+        const activeSection = challengeManagementPage.querySelector('#active-management-section');
+        const completedSection = challengeManagementPage.querySelector('#completed-management-section');
+        
+        if (activeSection) activeSection.style.display = 'none';
+        if (completedSection) completedSection.style.display = 'none';
+        
+        // Show selected section
+        if (tabName === 'active' && activeSection) {
+            activeSection.style.display = 'block';
+            console.log('Active section shown');
+        } else if (tabName === 'completed' && completedSection) {
+            completedSection.style.display = 'block';
+            console.log('Completed section shown');
+        }
+    } catch (error) {
+        console.error('Error in switchChallengeManagementTab:', error);
     }
 }
 
@@ -1222,14 +1232,21 @@ function switchChallengeTab(tabName) {
 
 // Challenge type selection
 function selectChallengeType(type) {
-    // Update challenge type tab styling
-    document.querySelectorAll('.challenge-type-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.querySelector(`[data-type="${type}"]`).classList.add('active');
-    
-    // Filter challenges based on selected type (could be used to show different challenge sets)
-    console.log(`Selected challenge type: ${type}`);
+    try {
+        // Update challenge type tab styling
+        document.querySelectorAll('.challenge-type-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        const targetTab = document.querySelector(`[data-type="${type}"]`);
+        if (targetTab) {
+            targetTab.classList.add('active');
+        }
+        
+        // Filter challenges based on selected type (could be used to show different challenge sets)
+        console.log(`Selected challenge type: ${type}`);
+    } catch (error) {
+        console.error('Error in selectChallengeType:', error);
+    }
 }
 
 // Filter challenges by category
@@ -1276,7 +1293,13 @@ function filterChallenges() {
 
 // Challenge detail functionality
 function showChallengeDetail(challengeId) {
-    console.log('Showing challenge detail for:', challengeId);
+    try {
+        console.log('Showing challenge detail for:', challengeId);
+        // TODO: Implement challenge detail view
+        alert(`Opening challenge: ${challengeId}`);
+    } catch (error) {
+        console.error('Error in showChallengeDetail:', error);
+    }
 }
 
 // Zero State Toggle Functionality
@@ -1308,6 +1331,66 @@ function toggleZeroState() {
 }
 
 
+// Filter modal functions
+function openFilterMenu() {
+    try {
+        const filterModal = document.getElementById('filter-modal');
+        if (filterModal) {
+            filterModal.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error opening filter menu:', error);
+    }
+}
+
+function closeFilterMenu() {
+    try {
+        const filterModal = document.getElementById('filter-modal');
+        if (filterModal) {
+            filterModal.style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error closing filter menu:', error);
+    }
+}
+
+function selectFilter(filter) {
+    try {
+        // Update filter option styling
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.classList.remove('active');
+        });
+        const targetOption = document.querySelector(`[data-filter="${filter}"]`);
+        if (targetOption) {
+            targetOption.classList.add('active');
+        }
+        
+        // Filter challenges/dreams based on selected filter
+        if (filter === 'all') {
+            // Show all items
+            document.querySelectorAll('[data-category]').forEach(item => {
+                item.style.display = 'block';
+            });
+        } else {
+            // Show only items matching the filter
+            document.querySelectorAll('[data-category]').forEach(item => {
+                if (item.dataset.category === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Close filter menu
+        closeFilterMenu();
+        
+        console.log(`Filter applied: ${filter}`);
+    } catch (error) {
+        console.error('Error selecting filter:', error);
+    }
+}
+
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
@@ -1315,3 +1398,6 @@ window.filterChallengesByCategory = filterChallengesByCategory;
 window.filterChallenges = filterChallenges;
 window.showChallengeDetail = showChallengeDetail;
 window.toggleZeroState = toggleZeroState;
+window.openFilterMenu = openFilterMenu;
+window.closeFilterMenu = closeFilterMenu;
+window.selectFilter = selectFilter;
