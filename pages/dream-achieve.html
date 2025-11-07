@@ -1,0 +1,81 @@
+<!-- Dream Achieve Page -->
+
+<!-- Breadcrumb -->
+<div id="dream-achieve-breadcrumb-container"></div>
+
+<!-- Tab Navigation -->
+<div class="achieve-tabs">
+    <button class="achieve-tab" data-tab="manifest" onclick="switchAchieveTab('manifest')">Manifest</button>
+    <button class="achieve-tab active" data-tab="achieve" onclick="switchAchieveTab('achieve')">Achieve</button>
+</div>
+
+<!-- Manifest Tab Content -->
+<div class="achieve-content" id="manifest-content" style="display: none;">
+    <div class="page-header">
+        <h1 class="page-title">Manifest Your Dream</h1>
+        <div class="dreams-header-divider"></div>
+    </div>
+    
+    <div class="manifest-section" style="margin-bottom: 80px;">
+        <!-- Manifest content will go here -->
+        <p>Manifest tab content</p>
+    </div>
+</div>
+
+<!-- Achieve Tab Content -->
+<div class="achieve-content" id="achieve-content">
+    <div class="achieve-section" style="margin-bottom: 80px;">
+        <!-- Progress Section -->
+        <div class="achieve-progress-section">
+            <div class="progress-row">
+                <span class="progress-label">Progress</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <span class="progress-percentage">60%</span>
+                </div>
+            </div>
+            
+            <div class="streak-row">
+                <span class="streak-label">Streak</span>
+                <span class="streak-text">4 Day Streak</span>
+            </div>
+            
+            <div class="date-row">
+                <span class="date-label">Started</span>
+                <span class="date-value">20 Dec 2025</span>
+            </div>
+            
+            <div class="date-row">
+                <span class="date-label">Achieve By</span>
+                <div class="achieve-by-section">
+                    <i data-lucide="calendar"></i>
+                    <span class="date-value">20 Dec 2025</span>
+                </div>
+            </div>
+            
+            <div class="friends-row">
+                <span class="friends-label">Friends</span>
+                <div class="collaborator-avatars">
+                    <div class="avatar">SK</div>
+                    <div class="avatar">RD</div>
+                    <button class="add-collaborator">+</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pills Navigation Section -->
+        <div class="achieve-pills-section">
+            <div class="achieve-pills">
+                <button class="achieve-pill active">Tasks</button>
+                <button class="achieve-pill">Mindset</button>
+                <button class="achieve-pill">Articles</button>
+                <button class="achieve-pill">Videos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sticky Bottom Button -->
+<button class="sticky-bottom-btn">I have achieved this dream</button>

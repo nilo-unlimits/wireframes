@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -211,6 +211,26 @@ function enhancedShowPage(pageId) {
                     setTimeout(() => {
                         switchChallengeManagementTab('active');
                     }, 100);
+                });
+            } else if (pageId === 'dream-scuba-diver') {
+                loadComponent('breadcrumb', 'dream-scuba-diver-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'dream-achieve') {
+                loadComponent('breadcrumb', 'dream-achieve-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'challenge-water-daily') {
+                loadComponent('breadcrumb', 'challenge-water-daily-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
+            } else if (pageId === 'challenge-water-flow') {
+                loadComponent('breadcrumb', 'challenge-water-flow-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
                 });
             }
         });
@@ -554,9 +574,13 @@ function navigateBack() {
     if (currentPage) {
         const pageId = currentPage.id;
         // Route to appropriate parent page
-        if (pageId === 'dream-browse' || pageId === 'dream-management') {
+        if (pageId === 'dream-achieve') {
+            showPage('dream-scuba-diver');
+        } else if (pageId === 'challenge-water-flow') {
+            showPage('challenge-water-daily');
+        } else if (pageId === 'dream-browse' || pageId === 'dream-management' || pageId === 'dream-scuba-diver') {
             showPage('dreams');
-        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management') {
+        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management' || pageId === 'challenge-water-daily') {
             showPage('challenges');
         } else {
             showPage('explore'); // Default for other pages
@@ -571,9 +595,13 @@ function navigateClose() {
     if (currentPage) {
         const pageId = currentPage.id;
         // Route to appropriate parent page
-        if (pageId === 'dream-browse' || pageId === 'dream-management') {
+        if (pageId === 'dream-achieve') {
+            showPage('dreams'); // Close goes directly to Dreams landing page
+        } else if (pageId === 'challenge-water-flow') {
+            showPage('challenges'); // Close goes directly to Challenges landing page
+        } else if (pageId === 'dream-browse' || pageId === 'dream-management' || pageId === 'dream-scuba-diver') {
             showPage('dreams');
-        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management') {
+        } else if (pageId === 'challenge-browse' || pageId === 'challenge-management' || pageId === 'challenge-water-daily') {
             showPage('challenges');
         } else {
             showPage('explore'); // Default for other pages
@@ -595,7 +623,11 @@ const BREADCRUMB_TITLES = {
     'dream-management': 'MY DREAMS',
     'challenge-gallery': 'CHALLENGE GALLERY',
     'challenge-browse': 'BROWSE CHALLENGES',
-    'challenge-management': 'MY CHALLENGES'
+    'challenge-management': 'MY CHALLENGES',
+    'dream-scuba-diver': 'START DREAMING',
+    'dream-achieve': 'ACHIEVE',
+    'challenge-water-daily': 'START CHALLENGING',
+    'challenge-water-flow': 'CHALLENGE'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1391,6 +1423,67 @@ function selectFilter(filter) {
     }
 }
 
+// Tab switching functions for inner pages
+function switchAchieveTab(tabName) {
+    try {
+        // Remove active class from all tabs
+        document.querySelectorAll('.achieve-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Add active class to selected tab
+        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+        
+        // Hide all content
+        document.querySelectorAll('.achieve-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // Show selected content
+        const selectedContent = document.querySelector(`#${tabName}-content`);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+        
+        console.log(`Switched to ${tabName} tab`);
+    } catch (error) {
+        console.error('Error switching achieve tab:', error);
+    }
+}
+
+function switchChallengeFlowTab(tabName) {
+    try {
+        // Remove active class from all tabs
+        document.querySelectorAll('.challenge-flow-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Add active class to selected tab
+        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+        
+        // Hide all content
+        document.querySelectorAll('.challenge-flow-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        // Show selected content
+        const selectedContent = document.querySelector(`#${tabName}-content`);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+        
+        console.log(`Switched to ${tabName} tab`);
+    } catch (error) {
+        console.error('Error switching challenge flow tab:', error);
+    }
+}
+
 // Make functions globally available
 window.switchChallengeTab = switchChallengeTab;
 window.selectChallengeType = selectChallengeType;
@@ -1401,3 +1494,5 @@ window.toggleZeroState = toggleZeroState;
 window.openFilterMenu = openFilterMenu;
 window.closeFilterMenu = closeFilterMenu;
 window.selectFilter = selectFilter;
+window.switchAchieveTab = switchAchieveTab;
+window.switchChallengeFlowTab = switchChallengeFlowTab;

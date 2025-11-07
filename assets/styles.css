@@ -6397,3 +6397,386 @@ h1, h2 {
     border: 1px solid #e5e5ea;
     color: #8e8e93;
 }
+
+/* Dream Detail Page Styles */
+.dream-detail-page {
+    padding: 20px;
+}
+
+.dream-header {
+    margin-bottom: 16px;
+}
+
+.dream-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.dream-date {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+}
+
+.dream-title-section {
+    margin-bottom: 16px;
+}
+
+.dream-main-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.dream-target-date {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+    margin: 0;
+}
+
+.manifestation-section {
+    margin-bottom: 20px;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 200px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8e8e93;
+    font-size: 14px;
+}
+
+.dream-actions-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.dream-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dream-action-btn:hover {
+    background: #f8f9fa;
+}
+
+.dream-action-btn i {
+    width: 16px;
+    height: 16px;
+}
+
+.action-label {
+    font-weight: 600;
+}
+
+.dream-content {
+    margin-bottom: 80px;
+}
+
+.manifestation-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.manifestation-image {
+    width: 100%;
+    height: 200px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8e8e93;
+    font-size: 14px;
+}
+
+.sticky-bottom-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 374px;
+    margin: 0 auto;
+    background: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 24px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: none;
+}
+
+.sticky-bottom-btn:hover {
+    background: #0056CC;
+}
+
+/* Achieve Tabs Styles */
+.achieve-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e5ea;
+    margin: 0 20px 20px 20px;
+}
+
+.achieve-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8e8e93;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.achieve-tab.active {
+    color: #007AFF;
+}
+
+.achieve-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #007AFF;
+}
+
+.achieve-content {
+    padding: 20px;
+}
+
+/* Challenge Flow Styles */
+.challenge-flow-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e5ea;
+    margin: 0 20px 20px 20px;
+}
+
+.challenge-flow-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8e8e93;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.challenge-flow-tab.active {
+    color: #007AFF;
+}
+
+.challenge-flow-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #007AFF;
+}
+
+.challenge-flow-content {
+    padding: 20px;
+}
+
+/* Achieve Progress Section */
+.achieve-progress-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.progress-label, .streak-label, .date-label, .friends-label {
+    font-size: 12px;
+    color: #8e8e93;
+    font-weight: 500;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    margin-left: 16px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #e5e5ea;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #007AFF;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-percentage {
+    font-size: 12px;
+    color: #1a1a1a;
+    font-weight: 600;
+    min-width: 32px;
+}
+
+.streak-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.streak-text {
+    font-size: 12px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.date-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.date-row:last-child {
+    margin-bottom: 0;
+}
+
+.friends-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.date-value {
+    font-size: 12px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.achieve-by-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.achieve-by-section i {
+    width: 12px;
+    height: 12px;
+    color: #8e8e93;
+}
+
+.achieve-by-section .collaborator-avatars,
+.friends-row .collaborator-avatars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.achieve-by-section .avatar,
+.friends-row .avatar {
+    width: 20px;
+    height: 20px;
+    background: #007AFF;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.achieve-by-section .add-collaborator,
+.friends-row .add-collaborator {
+    width: 20px;
+    height: 20px;
+    background: #e5e5ea;
+    color: #8e8e93;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Achieve Pills Section */
+.achieve-pills-section {
+    margin: 20px;
+    margin-top: 24px;
+}
+
+.achieve-pills {
+    display: flex;
+    gap: 8px;
+}
+
+.achieve-pill {
+    background: #f0f0f0;
+    color: #8e8e93;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.achieve-pill.active {
+    background: #1a1a1a;
+    color: white;
+}
+
+.achieve-pill:hover:not(.active) {
+    background: #e5e5ea;
+}
