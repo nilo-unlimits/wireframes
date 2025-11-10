@@ -1,17 +1,7 @@
 <!-- Resources Page Content -->
 
-<!-- Resources Page Header -->
-<div class="page-header">
-    <h1 class="page-title">MY RESOURCES</h1>
-    <div class="page-header-actions">
-        <button class="page-action-btn">
-            <i data-lucide="bell"></i>
-        </button>
-        <button class="page-action-btn">
-            <i data-lucide="menu"></i>
-        </button>
-    </div>
-</div>
+<!-- Breadcrumb Container -->
+<div id="resources-breadcrumb-container"></div>
 
 <!-- Resources Tabs -->
 <div class="resources-tabs">
@@ -23,177 +13,204 @@
 <!-- Reprogram Tab Content -->
 <div class="resources-content" id="reprogram-content">
     <div class="resources-section-header">
-        <h2 class="resources-section-title">Reprogram Your Potential</h2>
-        <p class="resources-section-subtitle">8 Powerful life-changing program</p>
-        
         <div class="modules-filter">
-            <button class="filter-dropdown">
-                <span>All Modules</span>
-                <i data-lucide="chevron-down"></i>
-            </button>
+            <div class="filter-dropdown-wrapper">
+                <button class="filter-dropdown" onclick="toggleModulesFilter()">
+                    <span id="selected-filter">All Modules</span>
+                    <i data-lucide="chevron-down" id="dropdown-chevron"></i>
+                </button>
+                <div class="filter-dropdown-menu" id="modules-filter-menu">
+                    <div class="filter-option active" onclick="selectModuleFilter('all')">All Modules</div>
+                    <div class="filter-option" onclick="selectModuleFilter('free')">Free Modules</div>
+                    <div class="filter-option" onclick="selectModuleFilter('paid')">Paid Modules</div>
+                </div>
+            </div>
         </div>
     </div>
     
     <div class="modules-list">
-        <div class="module-card">
-            <div class="module-image">
-                <img src="#" alt="Begin to Unlimits" style="display: none;">
-                <div class="module-image-placeholder blue-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card" onclick="navigateToModule('Begin to Unlimits')">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-play-btn">
+                        <i data-lucide="play"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Begin to Unlimits</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Begin to Unlimits</h3>
+                </div>
                 <p class="module-description">Shape your own destiny and lives your ideal life.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">05 Lessons</span>
-                    <span class="module-price">Free</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>05 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge free">Free</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder green-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimits your destiny</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimits your destiny</h3>
+                </div>
                 <p class="module-description">Shape your own destiny and lives your ideal life.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">05 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>05 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder yellow-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimits your confidence</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimits your confidence</h3>
+                </div>
                 <p class="module-description">Transform your mindset on being limitless in 7 days</p>
                 <div class="module-meta">
-                    <span class="lesson-count">04 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder orange-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimits your Potential</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimits your Potential</h3>
+                </div>
                 <p class="module-description">Shape your own destiny and live your ideal life.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">03 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>03 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder gold-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimits your Health Quit Smoking</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimits your Health Quit Smoking</h3>
+                </div>
                 <p class="module-description">Quit smoking and embrace a healthier lifestyle.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">04 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder red-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimits your Wealth</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimits your Wealth</h3>
+                </div>
                 <p class="module-description">Unlock the secret of wealth creation.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">04 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder dark-red-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimit your health. Lose Weight</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimit your health. Lose Weight</h3>
+                </div>
                 <p class="module-description">Change your health mindset and begin your weight lost journey.</p>
                 <div class="module-meta">
-                    <span class="lesson-count">04 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
         
-        <div class="module-card">
-            <div class="module-image">
-                <div class="module-image-placeholder brown-gradient">
-                    <div class="instructor-avatar">👨‍💼</div>
+        <div class="module-card locked">
+            <div class="module-thumbnail">
+                <div class="module-thumbnail-placeholder">
+                    <button class="module-lock-btn">
+                        <i data-lucide="lock" class="lock-icon"></i>
+                    </button>
                 </div>
             </div>
             <div class="module-content">
-                <h3 class="module-title">Unlimit your happiness</h3>
+                <div class="module-header">
+                    <h3 class="module-title">Unlimit your happiness</h3>
+                </div>
                 <p class="module-description">Creative lasting joy in your life</p>
                 <div class="module-meta">
-                    <span class="lesson-count">04 Lessons</span>
-                    <span class="module-price">10$</span>
+                    <div class="module-meta-left">
+                        <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                        <span class="module-duration"><i data-lucide="clock"></i>24 min</span>
+                    </div>
+                    <div class="module-badge paid">$10</div>
                 </div>
-                <div class="module-duration">24 min</div>
             </div>
-            <button class="module-play-btn">
-                <i data-lucide="play"></i>
-            </button>
         </div>
     </div>
 </div>
@@ -202,42 +219,48 @@
 <div class="resources-content" id="articles-content" style="display: none;">
     <div class="articles-list">
         <div class="article-card">
-            <div class="article-image">
-                <div class="article-image-placeholder"></div>
+            <div class="article-thumbnail">
+                <div class="article-thumbnail-placeholder"></div>
             </div>
             <div class="article-content">
-                <h3 class="article-title">Launch my own startup</h3>
-                <p class="article-subtitle">How to find your startup idea</p>
+                <div class="article-header">
+                    <h3 class="article-title">10 Steps to Launch Your Startup</h3>
+                    <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="article-subtitle">A comprehensive guide to turning your idea into reality</p>
             </div>
-            <button class="article-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
         
         <div class="article-card">
-            <div class="article-image">
-                <div class="article-image-placeholder purple"></div>
+            <div class="article-thumbnail">
+                <div class="article-thumbnail-placeholder"></div>
             </div>
             <div class="article-content">
-                <h3 class="article-title">Launch my own startup</h3>
-                <p class="article-subtitle">Start a podcast and build up your brand</p>
+                <div class="article-header">
+                    <h3 class="article-title">Building a Personal Brand</h3>
+                    <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="article-subtitle">How to establish your online presence and credibility</p>
             </div>
-            <button class="article-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
         
         <div class="article-card">
-            <div class="article-image">
-                <div class="article-image-placeholder blue"></div>
+            <div class="article-thumbnail">
+                <div class="article-thumbnail-placeholder"></div>
             </div>
             <div class="article-content">
-                <h3 class="article-title">Launch my own startup</h3>
-                <p class="article-subtitle">Top 10 trends for AI startup today</p>
+                <div class="article-header">
+                    <h3 class="article-title">AI Trends in 2024</h3>
+                    <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="article-subtitle">Emerging technologies that will shape the future</p>
             </div>
-            <button class="article-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
     </div>
 </div>
@@ -247,50 +270,59 @@
     <div class="videos-list">
         <div class="video-card">
             <div class="video-thumbnail">
-                <div class="video-thumbnail-placeholder dark"></div>
-                <button class="video-play-btn">
-                    <i data-lucide="play"></i>
-                </button>
+                <div class="video-thumbnail-placeholder">
+                    <button class="video-play-btn">
+                        <i data-lucide="play"></i>
+                    </button>
+                </div>
             </div>
             <div class="video-content">
-                <h3 class="video-title">Every Entrepreneur needs to hear this</h3>
-                <p class="video-description">A gripping motivational video loaded with hard-hitting truths and motivational fuel for pushing past obstacles.</p>
+                <div class="video-header">
+                    <h3 class="video-title">Mindset for Success</h3>
+                    <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="video-description">Learn the mental frameworks that drive achievement</p>
             </div>
-            <button class="video-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
         
         <div class="video-card">
             <div class="video-thumbnail">
-                <div class="video-thumbnail-placeholder"></div>
-                <button class="video-play-btn">
-                    <i data-lucide="play"></i>
-                </button>
+                <div class="video-thumbnail-placeholder">
+                    <button class="video-play-btn">
+                        <i data-lucide="play"></i>
+                    </button>
+                </div>
             </div>
             <div class="video-content">
-                <h3 class="video-title">Best Entrepreneur Motivational Compilation</h3>
-                <p class="video-description">A fast-paced montage of top-tier motivational speeches designed to get you moving first thing in the morning.</p>
+                <div class="video-header">
+                    <h3 class="video-title">Morning Motivation Routine</h3>
+                    <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="video-description">Start your day with purpose and energy</p>
             </div>
-            <button class="video-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
         
         <div class="video-card">
             <div class="video-thumbnail">
-                <div class="video-thumbnail-placeholder gray"></div>
-                <button class="video-play-btn">
-                    <i data-lucide="play"></i>
-                </button>
+                <div class="video-thumbnail-placeholder">
+                    <button class="video-play-btn">
+                        <i data-lucide="play"></i>
+                    </button>
+                </div>
             </div>
             <div class="video-content">
-                <h3 class="video-title">Steve jobs Motivational Speech</h3>
-                <p class="video-description">A classic motivational speech from Steve Jobs packed with insight and inspiration that transcends time.</p>
+                <div class="video-header">
+                    <h3 class="video-title">Innovation and Leadership</h3>
+                    <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                        <i data-lucide="bookmark"></i>
+                    </button>
+                </div>
+                <p class="video-description">Timeless lessons from visionary leaders</p>
             </div>
-            <button class="video-bookmark-btn">
-                <i data-lucide="bookmark"></i>
-            </button>
         </div>
     </div>
 </div>

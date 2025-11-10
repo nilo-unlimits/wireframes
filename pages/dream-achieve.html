@@ -88,7 +88,7 @@
             
             <div class="streak-row">
                 <span class="streak-label">Streak</span>
-                <span class="streak-text">4 Day Streak</span>
+                <span class="streak-text">🔥4 Day Streak</span>
             </div>
             
             <div class="date-row">
@@ -125,7 +125,7 @@
         </div>
         
         <!-- Task Lists Section -->
-        <div class="achieve-tasks-section">
+        <div class="achieve-tasks-section" id="tasks-section">
             <!-- Today Section -->
             <div class="accordion-section">
                 <div class="accordion-header" onclick="toggleAccordion('today')">
@@ -234,6 +234,169 @@
                                 <span class="task-due">This Month</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mindset Section -->
+        <div class="achieve-mindset-section" id="mindset-section" style="display: none;">
+            <div class="modules-list">
+                <div class="module-card" onclick="navigateToModule('Scuba Confidence Builder')">
+                    <div class="module-thumbnail">
+                        <div class="module-thumbnail-placeholder">
+                            <button class="module-play-btn">
+                                <i data-lucide="play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-header">
+                            <h3 class="module-title">Scuba Confidence Builder</h3>
+                        </div>
+                        <p class="module-description">Overcome underwater anxiety and build diving confidence.</p>
+                        <div class="module-meta">
+                            <div class="module-meta-left">
+                                <span class="lesson-count"><i data-lucide="play-circle"></i>05 Lessons</span>
+                                <span class="module-duration"><i data-lucide="clock"></i>20 min</span>
+                            </div>
+                            <div class="module-badge free">Free</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-card locked">
+                    <div class="module-thumbnail">
+                        <div class="module-thumbnail-placeholder">
+                            <button class="module-lock-btn">
+                                <i data-lucide="lock" class="lock-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-header">
+                            <h3 class="module-title">Deep Sea Meditation</h3>
+                        </div>
+                        <p class="module-description">Mindful breathing techniques for diving preparation.</p>
+                        <div class="module-meta">
+                            <div class="module-meta-left">
+                                <span class="lesson-count"><i data-lucide="play-circle"></i>04 Lessons</span>
+                                <span class="module-duration"><i data-lucide="clock"></i>15 min</span>
+                            </div>
+                            <div class="module-badge paid">$5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Articles Section -->
+        <div class="achieve-articles-section" id="articles-section" style="display: none;">
+            <div class="articles-list">
+                <div class="article-card">
+                    <div class="article-thumbnail">
+                        <div class="article-thumbnail-placeholder"></div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-header">
+                            <h3 class="article-title">Essential Scuba Safety Tips for Beginners</h3>
+                            <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="article-subtitle">A comprehensive guide to safe diving practices</p>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-thumbnail">
+                        <div class="article-thumbnail-placeholder"></div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-header">
+                            <h3 class="article-title">Choosing Your First Scuba Gear</h3>
+                            <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="article-subtitle">What equipment to buy vs rent when starting out</p>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-thumbnail">
+                        <div class="article-thumbnail-placeholder"></div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-header">
+                            <h3 class="article-title">Top 10 Beginner Dive Sites Worldwide</h3>
+                            <button class="article-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="article-subtitle">Perfect locations to get certified and gain experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Videos Section -->
+        <div class="achieve-videos-section" id="videos-section" style="display: none;">
+            <div class="videos-list">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-thumbnail-placeholder">
+                            <button class="video-play-btn">
+                                <i data-lucide="play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <div class="video-header">
+                            <h3 class="video-title">Scuba Diving Basics for Absolute Beginners</h3>
+                            <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="video-description">Everything you need to know before your first dive</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-thumbnail-placeholder">
+                            <button class="video-play-btn">
+                                <i data-lucide="play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <div class="video-header">
+                            <h3 class="video-title">Underwater Hand Signals Every Diver Should Know</h3>
+                            <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="video-description">Essential communication skills for safe diving</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-thumbnail-placeholder">
+                            <button class="video-play-btn">
+                                <i data-lucide="play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <div class="video-header">
+                            <h3 class="video-title">How to Equalize Pressure While Diving</h3>
+                            <button class="video-bookmark-btn" onclick="toggleBookmark(this)">
+                                <i data-lucide="bookmark"></i>
+                            </button>
+                        </div>
+                        <p class="video-description">Master this critical skill for comfortable diving</p>
                     </div>
                 </div>
             </div>

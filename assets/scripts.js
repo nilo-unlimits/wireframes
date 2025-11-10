@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -237,6 +237,11 @@ function enhancedShowPage(pageId) {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
+            } else if (pageId === 'module-detail') {
+                loadComponent('breadcrumb', 'module-detail-breadcrumb-container').then(() => {
+                    updateBreadcrumbTitle(pageId);
+                    initializeLucideIcons();
+                });
             }
         });
     } else {
@@ -251,6 +256,13 @@ function enhancedShowPage(pageId) {
             setTimeout(() => {
                 updateBreadcrumbTitle(pageId);
                 initAutoMessageCarousel();
+            }, 100);
+        }
+        
+        // Handle dream-achieve page pill initialization
+        if (pageId === 'dream-achieve') {
+            setTimeout(() => {
+                initializeAchievePills();
             }, 100);
         }
     }
@@ -501,11 +513,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('challenge-browse');
         await loadPageContent('challenge-management');
         await loadPageContent('dream-detail');
+        await loadPageContent('dream-achieve');
         await loadPageContent('future-self');
+        await loadPageContent('resources');
         
         // Load breadcrumb for future-self since it's preloaded
         await loadComponent('breadcrumb', 'future-self-breadcrumb-container');
         updateBreadcrumbTitle('future-self');
+        
+        // Load breadcrumb for resources since it's preloaded
+        await loadComponent('breadcrumb', 'resources-breadcrumb-container');
+        updateBreadcrumbTitle('resources');
         
         // Load breadcrumb for dream-browse since it's preloaded
         await loadComponent('breadcrumb', 'dream-browse-breadcrumb-container');
@@ -526,6 +544,13 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for challenge-management since it's preloaded
         await loadComponent('breadcrumb', 'challenge-management-breadcrumb-container');
         updateBreadcrumbTitle('challenge-management');
+        
+        // Load breadcrumb for dream-achieve since it's preloaded
+        await loadComponent('breadcrumb', 'dream-achieve-breadcrumb-container');
+        updateBreadcrumbTitle('dream-achieve');
+        
+        // Initialize dream-achieve pills since it's preloaded
+        initializeAchievePills();
         
     } catch (error) {
         console.error('Error loading app content:', error);
@@ -587,6 +612,8 @@ function navigateBack() {
             showPage('dreams');
         } else if (pageId === 'challenge-browse' || pageId === 'challenge-management' || pageId === 'challenge-water-daily') {
             showPage('challenges');
+        } else if (pageId === 'module-detail') {
+            showPage('resources');
         } else {
             showPage('explore'); // Default for other pages
         }
@@ -633,7 +660,8 @@ const BREADCRUMB_TITLES = {
     'dream-achieve': 'ACHIEVE',
     'challenge-water-daily': 'START CHALLENGING',
     'challenge-water-flow': 'CHALLENGE',
-    'resources': 'MY RESOURCES'
+    'resources': 'MY RESOURCES',
+    'module-detail': 'MODULE DETAILS'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1552,3 +1580,224 @@ window.switchAchieveTab = switchAchieveTab;
 window.switchChallengeFlowTab = switchChallengeFlowTab;
 window.toggleAccordion = toggleAccordion;
 window.switchResourcesTab = switchResourcesTab;
+
+// Modules filter functions
+function toggleModulesFilter() {
+    const menu = document.getElementById('modules-filter-menu');
+    const chevron = document.getElementById('dropdown-chevron');
+    
+    if (menu) {
+        menu.classList.toggle('active');
+        if (chevron) {
+            chevron.style.transform = menu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+}
+
+function selectModuleFilter(filter) {
+    const selectedText = document.getElementById('selected-filter');
+    const menu = document.getElementById('modules-filter-menu');
+    const chevron = document.getElementById('dropdown-chevron');
+    
+    // Update selected text
+    if (selectedText) {
+        if (filter === 'all') {
+            selectedText.textContent = 'All Modules';
+        } else if (filter === 'free') {
+            selectedText.textContent = 'Free Modules';
+        } else if (filter === 'paid') {
+            selectedText.textContent = 'Paid Modules';
+        }
+    }
+    
+    // Update active option
+    document.querySelectorAll('.filter-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    
+    let selectedOption;
+    if (filter === 'all') {
+        selectedOption = document.querySelector('.filter-option[onclick*="all"]');
+    } else if (filter === 'free') {
+        selectedOption = document.querySelector('.filter-option[onclick*="free"]');
+    } else if (filter === 'paid') {
+        selectedOption = document.querySelector('.filter-option[onclick*="paid"]');
+    }
+    
+    if (selectedOption) {
+        selectedOption.classList.add('active');
+    }
+    
+    // Close dropdown
+    if (menu) {
+        menu.classList.remove('active');
+    }
+    if (chevron) {
+        chevron.style.transform = 'rotate(0deg)';
+    }
+    
+    // Filter modules
+    filterModulesByType(filter);
+}
+
+function filterModulesByType(type) {
+    // Only filter module cards in the reprogram section
+    const moduleCards = document.querySelectorAll('#reprogram-content .module-card');
+    
+    moduleCards.forEach(card => {
+        // Check if card has locked class (paid) or free badge
+        const isLocked = card.classList.contains('locked');
+        const freeBadge = card.querySelector('.module-badge.free');
+        const isFree = freeBadge !== null;
+        
+        if (type === 'all') {
+            card.style.display = 'flex';
+        } else if (type === 'free') {
+            card.style.display = isFree ? 'flex' : 'none';
+        } else if (type === 'paid') {
+            card.style.display = isLocked ? 'flex' : 'none';
+        }
+    });
+}
+
+window.toggleModulesFilter = toggleModulesFilter;
+window.selectModuleFilter = selectModuleFilter;
+window.filterModulesByType = filterModulesByType;
+
+// Bookmark toggle function
+function toggleBookmark(button) {
+    button.classList.toggle('bookmarked');
+    
+    // Optional: Add visual feedback
+    if (button.classList.contains('bookmarked')) {
+        // Could add analytics or save state here
+        console.log('Article bookmarked');
+    } else {
+        console.log('Article bookmark removed');
+    }
+}
+
+window.toggleBookmark = toggleBookmark;
+
+// Module Detail Tab Switching
+function switchModuleDetailTab(tabName) {
+    // Update active tab
+    const tabs = document.querySelectorAll('.module-detail-tab');
+    const contents = document.querySelectorAll('.module-detail-content');
+    
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('data-tab') === tabName) {
+            tab.classList.add('active');
+        }
+    });
+    
+    // Show/hide content
+    contents.forEach(content => {
+        content.style.display = 'none';
+        if (content.id === tabName + '-content') {
+            content.style.display = 'block';
+        }
+    });
+}
+
+// Navigation to module detail page
+function navigateToModule(moduleTitle) {
+    enhancedShowPage('module-detail');
+    
+    // Update breadcrumb title to show module name
+    setTimeout(() => {
+        const breadcrumbTitle = document.getElementById('breadcrumb-title');
+        if (breadcrumbTitle) {
+            breadcrumbTitle.textContent = moduleTitle || 'Module Details';
+        }
+    }, 100);
+}
+
+window.switchModuleDetailTab = switchModuleDetailTab;
+window.navigateToModule = navigateToModule;
+
+// Achieve Page Pill Switching
+function switchAchievePill(pillName) {
+    console.log('switchAchievePill called with:', pillName);
+    
+    try {
+        // Update active pill
+        const pills = document.querySelectorAll('.achieve-pill');
+        console.log('Found pills:', pills.length);
+        
+        pills.forEach(pill => {
+            pill.classList.remove('active');
+        });
+        
+        // Find and activate the clicked pill by text content
+        pills.forEach(pill => {
+            if (pill.textContent.toLowerCase() === pillName.toLowerCase()) {
+                pill.classList.add('active');
+                console.log('Activated pill:', pill.textContent);
+            }
+        });
+        
+        // Show/hide content sections
+        const sections = {
+            'tasks': document.getElementById('tasks-section'),
+            'mindset': document.getElementById('mindset-section'),
+            'articles': document.getElementById('articles-section'),
+            'videos': document.getElementById('videos-section')
+        };
+        
+        console.log('Found sections:', Object.keys(sections).filter(key => sections[key]));
+        
+        // Hide all sections
+        Object.values(sections).forEach(section => {
+            if (section) {
+                section.style.display = 'none';
+                console.log('Hidden section:', section.id);
+            }
+        });
+        
+        // Show selected section
+        if (sections[pillName]) {
+            sections[pillName].style.display = 'block';
+            console.log('Showing section:', pillName);
+        } else {
+            console.log('Section not found for:', pillName);
+        }
+        
+    } catch (error) {
+        console.error('Error in switchAchievePill:', error);
+    }
+}
+
+// Initialize achieve pills functionality
+function initializeAchievePills() {
+    console.log('Initializing achieve pills...');
+    
+    // Add a small delay to ensure DOM is ready
+    setTimeout(() => {
+        const pills = document.querySelectorAll('.achieve-pill');
+        console.log('Found pills to initialize:', pills.length);
+        
+        if (pills.length === 0) {
+            console.log('No pills found, retrying in 500ms...');
+            setTimeout(initializeAchievePills, 500);
+            return;
+        }
+        
+        pills.forEach((pill, index) => {
+            // Remove any existing listeners
+            pill.replaceWith(pill.cloneNode(true));
+            const newPill = document.querySelectorAll('.achieve-pill')[index];
+            
+            newPill.addEventListener('click', function() {
+                const pillText = this.textContent.toLowerCase();
+                console.log('Pill clicked:', pillText);
+                switchAchievePill(pillText);
+            });
+            console.log(`Initialized pill ${index}:`, newPill.textContent);
+        });
+    }, 100);
+}
+
+window.switchAchievePill = switchAchievePill;
+window.initializeAchievePills = initializeAchievePills;
