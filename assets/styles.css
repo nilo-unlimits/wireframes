@@ -6623,9 +6623,9 @@ h1, h2 {
 
 .progress-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    gap: 16px;
 }
 
 .progress-label, .streak-label, .date-label, .friends-label {
@@ -6653,8 +6653,8 @@ h1, h2 {
 }
 
 .achieve-by-section i {
-    width: 16px;
-    height: 16px;
+    width: 16px !important;
+    height: 16px !important;
     color: #8e8e93;
 }
 
