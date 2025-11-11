@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail', 'saved'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -516,6 +516,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('dream-achieve');
         await loadPageContent('future-self');
         await loadPageContent('resources');
+        await loadPageContent('saved');
         
         // Load breadcrumb for future-self since it's preloaded
         await loadComponent('breadcrumb', 'future-self-breadcrumb-container');
@@ -528,6 +529,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for dream-browse since it's preloaded
         await loadComponent('breadcrumb', 'dream-browse-breadcrumb-container');
         updateBreadcrumbTitle('dream-browse');
+        
+        // Load breadcrumb for saved since it's preloaded
+        await loadComponent('breadcrumb', 'saved-breadcrumb-container');
+        updateBreadcrumbTitle('saved');
         
         // Load breadcrumb for dream-management since it's preloaded
         await loadComponent('breadcrumb', 'dream-management-breadcrumb-container');
@@ -661,7 +666,8 @@ const BREADCRUMB_TITLES = {
     'challenge-water-daily': 'START CHALLENGING',
     'challenge-water-flow': 'CHALLENGE',
     'resources': 'MY RESOURCES',
-    'module-detail': 'MODULE DETAILS'
+    'module-detail': 'MODULE DETAILS',
+    'saved': 'SAVED'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1073,6 +1079,41 @@ function switchGalleryTab(tabName) {
     resetCategoryFilters();
 }
 
+// Saved page tab switching functionality
+function switchSavedTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.gallery-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Show/hide sections
+    document.querySelectorAll('.gallery-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(`${tabName}-section`).style.display = 'block';
+}
+
+// Search functionality for saved page
+function filterSaved() {
+    const searchInput = document.querySelector('#gallery-search input');
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const activeSection = document.querySelector('.gallery-section:not([style*="display: none"])');
+    if (!activeSection) return;
+    
+    // Filter all saved cards
+    const allCards = activeSection.querySelectorAll('.suggested-dream-card');
+    allCards.forEach(card => {
+        const title = card.querySelector('.suggested-dream-title');
+        if (title && title.textContent.toLowerCase().includes(searchTerm)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
 // Category filtering functionality
 function filterByCategory(category) {
     // Update active pill
@@ -1149,8 +1190,8 @@ function filterDreams() {
 
 // Bookmark functionality
 function openBookmarks() {
-    // Placeholder for bookmark functionality
-    console.log('Opening bookmarks...');
+    // Navigate to saved page
+    showPage('saved');
 }
 
 // Filter menu functionality
@@ -1194,6 +1235,8 @@ function showDreamDetail(dreamId) {
 
 // Make functions globally available
 window.switchGalleryTab = switchGalleryTab;
+window.switchSavedTab = switchSavedTab;
+window.filterSaved = filterSaved;
 window.filterByCategory = filterByCategory;
 window.openSearch = openSearch;
 window.closeSearch = closeSearch;

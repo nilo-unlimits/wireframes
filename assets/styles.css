@@ -3687,8 +3687,8 @@ h1, h2 {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 50%;
@@ -3700,9 +3700,33 @@ h1, h2 {
 }
 
 .suggested-dream-bookmark i {
-    width: 24px;
-    height: 24px;
+    width: 12px !important;
+    height: 12px !important;
     color: #fff;
+}
+
+.suggested-dream-bookmark i[data-lucide="bookmark"] {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.suggested-dream-bookmark svg {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.suggested-dream-bookmark * {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.suggested-dream-bookmark.active {
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.suggested-dream-bookmark.active i {
+    color: #FF6B6B;
 }
 
 .suggested-dream-title {
