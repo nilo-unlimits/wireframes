@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail', 'saved'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail', 'saved', 'start-challenge'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -517,6 +517,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('future-self');
         await loadPageContent('resources');
         await loadPageContent('saved');
+        await loadPageContent('start-challenge');
         
         // Load breadcrumb for future-self since it's preloaded
         await loadComponent('breadcrumb', 'future-self-breadcrumb-container');
@@ -533,6 +534,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for saved since it's preloaded
         await loadComponent('breadcrumb', 'saved-breadcrumb-container');
         updateBreadcrumbTitle('saved');
+        
+        // Load breadcrumb for start-challenge since it's preloaded
+        await loadComponent('breadcrumb', 'start-challenge-breadcrumb-container');
+        updateBreadcrumbTitle('start-challenge');
         
         // Load breadcrumb for dream-management since it's preloaded
         await loadComponent('breadcrumb', 'dream-management-breadcrumb-container');
@@ -667,7 +672,8 @@ const BREADCRUMB_TITLES = {
     'challenge-water-flow': 'CHALLENGE',
     'resources': 'MY RESOURCES',
     'module-detail': 'MODULE DETAILS',
-    'saved': 'SAVED'
+    'saved': 'SAVED',
+    'start-challenge': 'START CHALLENGE'
 };
 
 function updateBreadcrumbTitle(pageId) {

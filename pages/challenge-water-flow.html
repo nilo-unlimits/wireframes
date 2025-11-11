@@ -12,14 +12,99 @@
 
 <!-- Progress Tab Content -->
 <div class="achieve-content" id="progress-content">
-    <div class="page-header">
-        <h1 class="page-title">Your Progress</h1>
-        <div class="dreams-header-divider"></div>
+    <!-- Progress Section -->
+    <div class="achieve-progress-section">
+        <div class="streak-row">
+            <span class="streak-label">Streak</span>
+            <span class="streak-text">🔥5 Days</span>
+        </div>
+        
+        <div class="date-row selectable" onclick="selectStartDate()">
+            <span class="date-label">Start Date</span>
+            <div class="achieve-by-section">
+                <i data-lucide="calendar"></i>
+                <span class="date-value">21 Sep 2025</span>
+            </div>
+        </div>
+        
+        <div class="date-row">
+            <span class="date-label">End Date</span>
+            <div class="achieve-by-section">
+                <i data-lucide="calendar"></i>
+                <span class="date-value">21 Oct 2025</span>
+            </div>
+        </div>
     </div>
     
-    <div class="progress-section">
-        <!-- Progress content will go here -->
-        <p>Progress tab content</p>
+    <!-- Weekly Tracker Section -->
+    <div class="weekly-tracker-section" style="margin-bottom: 24px;">
+        <div class="week-days">
+            <div class="day-item completed">
+                <span class="day-label">Mo</span>
+                <div class="day-circle">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">Tu</span>
+                <div class="day-circle"></div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">We</span>
+                <div class="day-circle"></div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">Th</span>
+                <div class="day-circle"></div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">Fr</span>
+                <div class="day-circle"></div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">Sa</span>
+                <div class="day-circle"></div>
+            </div>
+            <div class="day-item">
+                <span class="day-label">Su</span>
+                <div class="day-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Today Section -->
+    <div class="today-section" style="margin-bottom: 24px;">
+        <h2 class="today-title">Today</h2>
+        
+        <div class="task-item-detailed">
+            <div class="task-checkbox-wrapper">
+                <input type="checkbox" class="task-checkbox" id="progress-task1">
+                <label for="progress-task1" class="task-checkbox-label"></label>
+            </div>
+            <div class="task-details">
+                <div class="task-row">
+                    <div class="task-name">Read 10 Pages</div>
+                    <span class="task-streak"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Challenge Image Section -->
+    <div class="challenge-description-section" style="margin-bottom: 120px;">
+        <div class="challenge-image">
+            <div class="placeholder-image"></div>
+        </div>
+    </div>
+    
+    <!-- Challenge Bottom Buttons -->
+    <div class="challenge-bottom-actions">
+        <button class="challenge-secondary-btn">
+            Leave Challenge
+        </button>
+        <button class="challenge-primary-btn">
+            End Challenge
+        </button>
     </div>
 </div>
 
