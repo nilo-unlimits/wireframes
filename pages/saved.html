@@ -5,6 +5,7 @@
     <h1 class="header-page-title">Saved</h1>
     <div class="feed-filter-container">
         <select class="feed-time-filter" onchange="switchSavedCategory(this.value)">
+            <option value="all">All</option>
             <option value="dreams">Dreams</option>
             <option value="challenges">Challenges</option>
             <option value="videos">Videos</option>
@@ -15,8 +16,240 @@
     </div>
 </div>
 
+<!-- All Saved Items Section -->
+<div class="gallery-section" id="all-section">
+    <div class="saved-items-list">
+        <!-- Mix of all content types will be populated here -->
+        <div class="saved-item" data-type="dream" data-id="scuba-diver" onclick="showPage('dream-scuba-diver')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="target"></i>
+                    <span>Dream</span>
+                </div>
+                <h3 class="saved-item-title">Become a certified scuba diver</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="water-intake" onclick="showPage('challenge-water-daily')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="zap"></i>
+                    <span>Challenge</span>
+                </div>
+                <h3 class="saved-item-title">Daily Water Challenge</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="productivity-tips" onclick="showVideoDetail('productivity-tips')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">5 Productivity Tips That Actually Work</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="leadership-skills" onclick="showArticleDetail('leadership-skills')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Building Leadership Skills in 2024</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="notion" onclick="showResourceDetail('notion')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="package"></i>
+                    <span>Resource</span>
+                </div>
+                <h3 class="saved-item-title">Notion - All-in-one workspace</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="story" onclick="showPage('dream-story')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="target"></i>
+                    <span>Dream</span>
+                </div>
+                <h3 class="saved-item-title">Write and self-publish a short story</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="gratitude" onclick="showChallengeDetail('gratitude')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="zap"></i>
+                    <span>Challenge</span>
+                </div>
+                <h3 class="saved-item-title">Daily Gratitude Practice</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="morning-routine" onclick="showVideoDetail('morning-routine')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Perfect Morning Routine for Success</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="mental-health" onclick="showArticleDetail('mental-health')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">The Science of Mental Resilience</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="headspace" onclick="showResourceDetail('headspace')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="package"></i>
+                    <span>Resource</span>
+                </div>
+                <h3 class="saved-item-title">Headspace - Meditation made simple</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader-2"></i>
+        </div>
+        <div class="loading-text">Loading More...</div>
+    </div>
+</div>
+
 <!-- Saved Dreams Section -->
-<div class="gallery-section" id="dreams-section">
+<div class="gallery-section" id="dreams-section" style="display: none;">
     <div class="saved-items-list">
         <div class="saved-item" data-type="dream" data-id="scuba-diver" onclick="showPage('dream-scuba-diver')">
             <div class="saved-item-image">

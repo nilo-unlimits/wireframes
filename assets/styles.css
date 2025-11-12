@@ -8732,8 +8732,7 @@ h1, h2 {
 .saved-item-category span {
     font-size: 11px;
     color: #8e8e93;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: none;
     font-weight: 500;
 }
 
