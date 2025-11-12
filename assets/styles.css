@@ -8674,6 +8674,40 @@ h1, h2 {
     height: 60px;
     background: #e5e5ea;
     border-radius: 8px;
+    position: relative;
+}
+
+.video-placeholder {
+    background: #e5e5ea;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.play-button:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-button i,
+.play-button svg {
+    width: 12px !important;
+    height: 12px !important;
+    color: #007AFF;
+    margin-left: 1px;
 }
 
 .saved-item-content {
@@ -8748,4 +8782,38 @@ h1, h2 {
     width: 20px !important;
     height: 20px !important;
     color: #c7c7cc;
+}
+
+/* Video Placeholder Styles for Saved Page */
+.video-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f5;
+}
+
+.video-placeholder .play-button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.video-placeholder .play-button:hover {
+    transform: scale(1.1);
+}
+
+.video-placeholder .play-button i,
+.video-placeholder .play-button svg {
+    width: 12px !important;
+    height: 12px !important;
+    color: #007AFF;
+    margin-left: 1px;
 }

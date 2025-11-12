@@ -9,6 +9,7 @@
             <option value="challenges">Challenges</option>
             <option value="videos">Videos</option>
             <option value="articles">Articles</option>
+            <option value="resources">Resources</option>
         </select>
         <i data-lucide="chevron-down" class="filter-dropdown-arrow"></i>
     </div>
@@ -70,6 +71,122 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="dream" data-id="language-fluency" onclick="showPage('dream-language')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Become fluent in Spanish</h3>
+                <p class="saved-item-description">Master conversational Spanish through immersive learning and practice</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="marathon" onclick="showPage('dream-marathon')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Run a full marathon</h3>
+                <p class="saved-item-description">Complete 26.2 miles through dedicated training and perseverance</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="photography" onclick="showPage('dream-photography')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Master landscape photography</h3>
+                <p class="saved-item-description">Capture stunning natural landscapes with professional photography techniques</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="cooking-skills" onclick="showPage('dream-cooking')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Learn advanced cooking techniques</h3>
+                <p class="saved-item-description">Master culinary skills and create restaurant-quality meals at home</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="minimalist-lifestyle" onclick="showPage('dream-minimalism')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Adopt a minimalist lifestyle</h3>
+                <p class="saved-item-description">Simplify life by focusing on what truly matters and reducing clutter</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="dream" data-id="music-instrument" onclick="showPage('dream-guitar')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Learn to play guitar proficiently</h3>
+                <p class="saved-item-description">Develop musical skills and express creativity through guitar playing</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dreams Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader"></i>
+        </div>
+        <div class="loading-text">Loading more dreams...</div>
     </div>
 </div>
 
@@ -129,6 +246,122 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="meditation" onclick="showChallengeDetail('meditation')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">30-Day Meditation Challenge</h3>
+                <p class="saved-item-description">Build mindfulness through daily meditation practice and inner peace</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="digital-detox" onclick="showChallengeDetail('digital-detox')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Weekend Digital Detox</h3>
+                <p class="saved-item-description">Disconnect from devices to reconnect with yourself and the real world</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="exercise" onclick="showChallengeDetail('exercise')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Daily Exercise Streak</h3>
+                <p class="saved-item-description">Commit to 30 minutes of physical activity every day for better health</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="reading" onclick="showChallengeDetail('reading')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Read 52 Books This Year</h3>
+                <p class="saved-item-description">Expand knowledge and vocabulary by reading one book per week</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="sleep-optimization" onclick="showChallengeDetail('sleep-optimization')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Optimize Sleep Schedule</h3>
+                <p class="saved-item-description">Improve sleep quality with consistent bedtime and wake-up routines</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="challenge" data-id="healthy-eating" onclick="showChallengeDetail('healthy-eating')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Clean Eating Challenge</h3>
+                <p class="saved-item-description">Nourish your body with whole foods and mindful eating habits</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Challenges Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader"></i>
+        </div>
+        <div class="loading-text">Loading more challenges...</div>
     </div>
 </div>
 
@@ -137,7 +370,11 @@
     <div class="saved-items-list">
         <div class="saved-item" data-type="video" data-id="productivity-tips" onclick="showVideoDetail('productivity-tips')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <h3 class="saved-item-title">5 Productivity Tips That Actually Work</h3>
@@ -155,7 +392,11 @@
         
         <div class="saved-item" data-type="video" data-id="morning-routine" onclick="showVideoDetail('morning-routine')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <h3 class="saved-item-title">Perfect Morning Routine for Success</h3>
@@ -173,7 +414,11 @@
         
         <div class="saved-item" data-type="video" data-id="goal-setting" onclick="showVideoDetail('goal-setting')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <h3 class="saved-item-title">How to Set Goals That Stick</h3>
@@ -188,6 +433,146 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="video" data-id="time-management" onclick="showVideoDetail('time-management')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Master Your Time: Advanced Planning</h3>
+                <p class="saved-item-description">Transform your productivity with strategic time management techniques</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="mindfulness-basics" onclick="showVideoDetail('mindfulness-basics')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Mindfulness for Beginners</h3>
+                <p class="saved-item-description">Simple meditation techniques to reduce stress and increase awareness</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="public-speaking" onclick="showVideoDetail('public-speaking')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Overcome Fear of Public Speaking</h3>
+                <p class="saved-item-description">Build confidence and deliver compelling presentations with ease</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="creative-thinking" onclick="showVideoDetail('creative-thinking')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Unlock Your Creative Potential</h3>
+                <p class="saved-item-description">Innovative techniques to boost creativity and problem-solving skills</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="financial-literacy" onclick="showVideoDetail('financial-literacy')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Personal Finance Fundamentals</h3>
+                <p class="saved-item-description">Essential money management skills for long-term financial success</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="learning-techniques" onclick="showVideoDetail('learning-techniques')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Science-Based Learning Methods</h3>
+                <p class="saved-item-description">Accelerate your learning with proven cognitive techniques and strategies</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Videos Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader"></i>
+        </div>
+        <div class="loading-text">Loading more videos...</div>
     </div>
 </div>
 
@@ -247,5 +632,314 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="article" data-id="emotional-intelligence" onclick="showArticleDetail('emotional-intelligence')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Developing Emotional Intelligence</h3>
+                <p class="saved-item-description">Master self-awareness and interpersonal skills for better relationships</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="cognitive-biases" onclick="showArticleDetail('cognitive-biases')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Common Cognitive Biases and How to Avoid Them</h3>
+                <p class="saved-item-description">Recognize mental shortcuts that can lead to poor decision-making</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="work-life-balance" onclick="showArticleDetail('work-life-balance')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Achieving True Work-Life Balance</h3>
+                <p class="saved-item-description">Strategies for maintaining harmony between career and personal life</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="sustainable-living" onclick="showArticleDetail('sustainable-living')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">The Complete Guide to Sustainable Living</h3>
+                <p class="saved-item-description">Practical tips for reducing environmental impact in daily life</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="digital-wellness" onclick="showArticleDetail('digital-wellness')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Digital Wellness in the Modern Age</h3>
+                <p class="saved-item-description">Maintain healthy relationships with technology and social media</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="innovation-mindset" onclick="showArticleDetail('innovation-mindset')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Cultivating an Innovation Mindset</h3>
+                <p class="saved-item-description">Foster creativity and adaptability in an ever-changing world</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Articles Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader"></i>
+        </div>
+        <div class="loading-text">Loading more articles...</div>
+    </div>
+</div>
+
+<!-- Saved Resources Section -->
+<div class="gallery-section" id="resources-section" style="display: none;">
+    <div class="saved-items-list">
+        <div class="saved-item" data-type="resource" data-id="notion" onclick="showResourceDetail('notion')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Notion - All-in-One Workspace</h3>
+                <p class="saved-item-description">Powerful productivity app for notes, databases, and project management</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="headspace" onclick="showResourceDetail('headspace')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Headspace - Meditation & Mindfulness</h3>
+                <p class="saved-item-description">Guided meditation app for stress relief and better sleep</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="atomic-habits" onclick="showResourceDetail('atomic-habits')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Atomic Habits by James Clear</h3>
+                <p class="saved-item-description">Essential book on building good habits and breaking bad ones</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="coursera" onclick="showResourceDetail('coursera')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Coursera - Online Learning Platform</h3>
+                <p class="saved-item-description">University-quality courses and certifications from top institutions</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="forest-app" onclick="showResourceDetail('forest-app')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Forest - Focus & Productivity</h3>
+                <p class="saved-item-description">Gamified app to stay focused and avoid phone distractions</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="masterclass" onclick="showResourceDetail('masterclass')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">MasterClass - Learn from Experts</h3>
+                <p class="saved-item-description">Premium courses taught by world-renowned experts and celebrities</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="todoist" onclick="showResourceDetail('todoist')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Todoist - Task Management</h3>
+                <p class="saved-item-description">Intuitive task manager for organizing projects and daily routines</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="thinking-fast-slow" onclick="showResourceDetail('thinking-fast-slow')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Thinking, Fast and Slow</h3>
+                <p class="saved-item-description">Daniel Kahneman's groundbreaking book on decision-making psychology</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="khan-academy" onclick="showResourceDetail('khan-academy')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Khan Academy - Free Education</h3>
+                <p class="saved-item-description">Comprehensive free courses in math, science, and humanities</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="resource" data-id="calm-app" onclick="showResourceDetail('calm-app')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <h3 class="saved-item-title">Calm - Sleep & Relaxation</h3>
+                <p class="saved-item-description">Premium app for meditation, sleep stories, and relaxation</p>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Resources Loading Spinner -->
+    <div class="loading-spinner-container">
+        <div class="loading-spinner">
+            <i data-lucide="loader"></i>
+        </div>
+        <div class="loading-text">Loading more resources...</div>
     </div>
 </div>
