@@ -8494,7 +8494,7 @@ h1, h2 {
     letter-spacing: 0.5px;
     margin-bottom: 12px;
     margin-top: 20px;
-    padding-left: 20px;
+    padding-left: 0;
 }
 
 .feed-time-section:first-child .feed-time-label {
