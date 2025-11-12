@@ -1129,7 +1129,11 @@ function switchSavedCategory(categoryName) {
     document.querySelectorAll('.gallery-section').forEach(section => {
         section.style.display = 'none';
     });
-    document.getElementById(`${categoryName}-section`).style.display = 'block';
+    
+    const targetSection = document.getElementById(`${categoryName}-section`);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+    }
 }
 
 // Search functionality for saved page
