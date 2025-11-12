@@ -79,9 +79,9 @@ body {
 
 .notification-icon {
     position: relative;
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
     background: #f8f8f8;
     border: 1px solid #e5e5ea;
     display: flex;
@@ -102,9 +102,67 @@ body {
     border: 2px solid #fff;
 }
 
-.stat-item {
+.activity-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #f8f8f8;
+    border: 1px solid #e5e5ea;
     display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.activity-icon i {
+    width: 20px !important;
+    height: 20px !important;
+    color: #8e8e93;
+}
+
+.activity-icon.selected {
+    background: #007AFF;
+    border-color: #007AFF;
+}
+
+.activity-icon.selected i {
+    color: white !important;
+}
+
+.activity-icon .notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: #ff3b30;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.notification-icon i {
+    width: 20px !important;
+    height: 20px !important;
+    color: #8e8e93;
+}
+
+.notification-icon.selected {
+    background: #007AFF;
+    border-color: #007AFF;
+}
+
+.notification-icon.selected i {
+    color: white !important;
+}
+
+.stat-item {
+    display: none;
+}
+
+.avatar {
+    display: none !important;
+}
     gap: 4px;
     font-size: 12px;
     font-weight: 600;
@@ -127,9 +185,9 @@ body {
 }
 
 .header .menu-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
     background: #f8f8f8;
     display: flex;
     align-items: center;
@@ -141,8 +199,8 @@ body {
 
 .menu-icon i,
 .menu-icon svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
     stroke-width: 1.5;
 }
 
@@ -8041,4 +8099,442 @@ h1, h2 {
 
 .day-item.completed .day-circle:hover {
     background: #0056CC !important;
+}
+
+/* Activity Feed Styles */
+.activity-feed-page {
+    padding: 20px;
+}
+
+.activity-feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+}
+
+.activity-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.activity-comment {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.activity-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.activity-challenge {
+    color: #999;
+    font-weight: 400;
+}
+
+.activity-time {
+    color: #8e8e93;
+    font-weight: 400;
+}
+
+.activity-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.activity-meta {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Saved Page Dropdown Styles */
+.saved-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.saved-dropdown {
+    appearance: none;
+    background: #f8f8f8;
+    border: 1px solid #e5e5ea;
+    border-radius: 20px;
+    padding: 8px 40px 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.saved-dropdown:focus {
+    outline: none;
+    border-color: #007AFF;
+    background: #fff;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+    color: #8e8e93;
+}
+
+/* Universal Card Component */
+.universal-card {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.universal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e5e5ea 100%);
+}
+
+.card-bookmark {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card-bookmark i {
+    width: 16px;
+    height: 16px;
+    color: #8e8e93;
+}
+
+.card-bookmark.active i {
+    color: #007AFF;
+}
+
+.card-content {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-text {
+    flex: 1;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.card-description {
+    font-size: 12px;
+    color: #8e8e93;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.card-chevron {
+    flex-shrink: 0;
+}
+
+.card-chevron i {
+    width: 16px;
+    height: 16px;
+    color: #c7c7cc;
+}
+
+/* Universal Card Grid Layout */
+.universal-card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+}
+
+/* Latest Messages Section */
+.latest-messages-section {
+    margin: 32px 20px 20px 20px;
+}
+
+.latest-messages-header {
+    margin-bottom: 16px;
+}
+
+.latest-messages-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.latest-messages-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.view-all-messages-btn {
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: #007AFF;
+    cursor: pointer;
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.message-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.message-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.message-text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.message-challenge {
+    color: #999;
+    font-weight: 400;
+}
+
+.message-time {
+    color: #8e8e93;
+    font-weight: 400;
+}
+
+/* Sleek Activity Feed Styles */
+.feed-filter-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 16px 20px;
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: 1px solid #e5e5ea;
+}
+
+.feed-time-filter {
+    appearance: none;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.feed-time-filter:focus {
+    outline: none;
+}
+
+.filter-dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 14px;
+    height: 14px;
+    color: #8e8e93;
+}
+
+.activity-feed-page {
+    padding: 0;
+}
+
+.activity-feed-list {
+    padding: 0 20px 20px 20px;
+}
+
+.feed-time-section {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.feed-time-section:not(:last-child):after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #d1d1d6;
+}
+
+.feed-time-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-left: 44px;
+}
+
+.activity-item-sleek {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+}
+
+.activity-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.activity-content-sleek {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-message-sleek {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #1a1a1a;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.activity-meta-sleek {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+}
+
+.activity-challenge-sleek {
+    color: #8e8e93;
+    font-weight: 400;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-time-sleek {
+    color: #c7c7cc;
+    font-weight: 400;
+    margin-left: 8px;
+    flex-shrink: 0;
 }

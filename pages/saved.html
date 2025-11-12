@@ -5,78 +5,71 @@
 
 <!-- Gallery Header -->
 <div class="gallery-header">
-    <div class="gallery-tabs">
-        <button class="gallery-tab active" data-tab="dreams" onclick="switchSavedTab('dreams')">Dreams</button>
-        <button class="gallery-tab" data-tab="challenges" onclick="switchSavedTab('challenges')">Challenges</button>
-    </div>
-    <div class="gallery-actions">
-        <button class="dream-action-btn" onclick="openSearch()">
-            <i data-lucide="search"></i>
-        </button>
-    </div>
-</div>
-
-<!-- Search Bar (Initially Hidden) -->
-<div class="gallery-search-container" id="gallery-search" style="display: none;">
-    <div class="gallery-search-wrapper">
-        <i data-lucide="search" class="gallery-search-icon"></i>
-        <input type="text" class="gallery-search-input" placeholder="Search saved items..." oninput="filterSaved()">
-        <button class="gallery-search-close" onclick="closeSearch()">
-            <i data-lucide="x"></i>
-        </button>
+    <div class="saved-dropdown-container">
+        <select class="saved-dropdown" onchange="switchSavedCategory(this.value)">
+            <option value="dreams">Dreams</option>
+            <option value="challenges">Challenges</option>
+            <option value="videos">Videos</option>
+            <option value="articles">Articles</option>
+        </select>
+        <i data-lucide="chevron-down" class="dropdown-arrow"></i>
     </div>
 </div>
 
 <!-- Saved Dreams Section -->
 <div class="gallery-section" id="dreams-section">
-    <div class="dreams-masonry-grid">
-        <div class="suggested-dream-card" data-category="goals" onclick="showPage('dream-scuba-diver')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+    <div class="universal-card-grid">
+        <div class="universal-card" data-type="dream" data-id="scuba-diver" onclick="showPage('dream-scuba-diver')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Become a certified scuba diver</h3>
-                <p class="suggested-dream-subtitle">120 Dreamers</p>
-            </div>
-        </div>
-        
-        <div class="suggested-dream-card" data-category="creative" onclick="showPage('dream-story')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
-            </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Write and self-publish a short story</h3>
-                <p class="suggested-dream-subtitle">89 Dreamers</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Become a certified scuba diver</h3>
+                    <p class="card-description">Explore underwater worlds and discover marine life through professional certification</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
         
-        <div class="suggested-dream-card" data-category="career" onclick="showPage('dream-website')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+        <div class="universal-card" data-type="dream" data-id="story" onclick="showPage('dream-story')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Build a personal brand website</h3>
-                <p class="suggested-dream-subtitle">247 Dreamers</p>
-            </div>
-        </div>
-        
-        <div class="suggested-dream-card" data-category="adventure" onclick="showPage('dream-travel')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
-            </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Travel solo to a new country</h3>
-                <p class="suggested-dream-subtitle">356 Dreamers</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Write and self-publish a short story</h3>
+                    <p class="card-description">Share your creativity with the world through storytelling and publishing</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
         
-        <div class="suggested-dream-card" data-category="creative" onclick="showPage('dream-music')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+        <div class="universal-card" data-type="dream" data-id="website" onclick="showPage('dream-website')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Record a 1-minute song idea</h3>
-                <p class="suggested-dream-subtitle">92 Dreamers</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Build a personal brand website</h3>
+                    <p class="card-description">Create an online presence that showcases your skills and personality</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -84,64 +77,176 @@
 
 <!-- Saved Challenges Section -->
 <div class="gallery-section" id="challenges-section" style="display: none;">
-    <div class="dreams-masonry-grid">
-        <div class="suggested-dream-card" data-category="habits" onclick="showChallengeDetail('water-intake')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+    <div class="universal-card-grid">
+        <div class="universal-card" data-type="challenge" data-id="water-intake" onclick="showPage('challenge-water-daily')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Daily Water Challenge</h3>
-                <p class="suggested-dream-subtitle">2.1k Participants</p>
-            </div>
-        </div>
-        
-        <div class="suggested-dream-card" data-category="mindset" onclick="showChallengeDetail('gratitude')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
-            </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Daily Gratitude Practice</h3>
-                <p class="suggested-dream-subtitle">567 Participants</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Daily Water Challenge</h3>
+                    <p class="card-description">Build healthy hydration habits with daily water intake tracking</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
         
-        <div class="suggested-dream-card" data-category="habits" onclick="showChallengeDetail('morning-routine')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+        <div class="universal-card" data-type="challenge" data-id="gratitude" onclick="showChallengeDetail('gratitude')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Perfect Morning Routine</h3>
-                <p class="suggested-dream-subtitle">890 Participants</p>
-            </div>
-        </div>
-        
-        <div class="suggested-dream-card" data-category="wellness" onclick="showChallengeDetail('digital-detox')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
-            </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Digital detox challenge</h3>
-                <p class="suggested-dream-subtitle">745 Participants</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Daily Gratitude Practice</h3>
+                    <p class="card-description">Cultivate positivity by reflecting on daily moments of gratitude</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
         
-        <div class="suggested-dream-card" data-category="mindset" onclick="showChallengeDetail('meditation')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+        <div class="universal-card" data-type="challenge" data-id="morning-routine" onclick="showChallengeDetail('morning-routine')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">21-Day Meditation Streak</h3>
-                <p class="suggested-dream-subtitle">1.5k Participants</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Perfect Morning Routine</h3>
+                    <p class="card-description">Start each day with intention through a structured morning routine</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Saved Videos Section -->
+<div class="gallery-section" id="videos-section" style="display: none;">
+    <div class="universal-card-grid">
+        <div class="universal-card" data-type="video" data-id="productivity-tips" onclick="showVideoDetail('productivity-tips')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">5 Productivity Tips That Actually Work</h3>
+                    <p class="card-description">Practical strategies to boost your daily productivity and focus</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
         
-        <div class="suggested-dream-card" data-category="wellness" onclick="showChallengeDetail('rest-recharge')">
-            <div class="suggested-dream-bookmark active">
-                <i data-lucide="bookmark"></i>
+        <div class="universal-card" data-type="video" data-id="morning-routine" onclick="showVideoDetail('morning-routine')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
             </div>
-            <div class="suggested-dream-overlay">
-                <h3 class="suggested-dream-title">Rest and recharge challenge</h3>
-                <p class="suggested-dream-subtitle">1.8k Participants</p>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Perfect Morning Routine for Success</h3>
+                    <p class="card-description">Design a morning routine that sets you up for daily success</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="universal-card" data-type="video" data-id="goal-setting" onclick="showVideoDetail('goal-setting')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">How to Set Goals That Stick</h3>
+                    <p class="card-description">Learn proven techniques for setting and achieving meaningful goals</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Saved Articles Section -->
+<div class="gallery-section" id="articles-section" style="display: none;">
+    <div class="universal-card-grid">
+        <div class="universal-card" data-type="article" data-id="leadership-skills" onclick="showArticleDetail('leadership-skills')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">Building Leadership Skills in 2024</h3>
+                    <p class="card-description">Essential leadership qualities and development strategies for modern professionals</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="universal-card" data-type="article" data-id="mental-health" onclick="showArticleDetail('mental-health')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">The Science of Mental Resilience</h3>
+                    <p class="card-description">Research-backed strategies for building psychological strength and adaptability</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="universal-card" data-type="article" data-id="habit-formation" onclick="showArticleDetail('habit-formation')">
+            <div class="card-image">
+                <div class="image-placeholder"></div>
+                <div class="card-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h3 class="card-title">The Psychology of Habit Formation</h3>
+                    <p class="card-description">Understanding how habits work and how to create lasting behavioral changes</p>
+                </div>
+                <div class="card-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,120 @@
+<!-- Activity Feed Page -->
+
+<!-- Activity Feed Content -->
+<div class="activity-feed-page">
+    <!-- Time Filter Dropdown -->
+    <div class="feed-filter-container">
+        <select class="feed-time-filter" onchange="filterFeedByTime(this.value)">
+            <option value="today">Today</option>
+            <option value="this-week">This week</option>
+            <option value="this-month">This month</option>
+            <option value="all-time">All time</option>
+        </select>
+        <i data-lucide="chevron-down" class="filter-dropdown-arrow"></i>
+    </div>
+    
+    <div class="activity-feed-list">
+        <!-- Today Section -->
+        <div class="feed-time-section" data-period="today">
+            <div class="feed-time-label">Today</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">SK</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Just completed day 5 of staying hydrated! Feeling amazing and energized 💧</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Daily Water Challenge</span>
+                        <span class="activity-time-sleek">2h</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">RD</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Morning meditation streak continues! 🧘‍♀️ This practice is changing my mindset completely</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">21-Day Meditation Challenge</span>
+                        <span class="activity-time-sleek">4h</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">JM</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Read an incredible chapter about ocean conservation today. Can't wait to become a certified diver! 🤿</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Become a Scuba Diver</span>
+                        <span class="activity-time-sleek">6h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Yesterday Section -->
+        <div class="feed-time-section" data-period="yesterday">
+            <div class="feed-time-label">Yesterday</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">AL</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Week 1 done! Photography composition is becoming second nature. The golden hour shots yesterday were magical ✨</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Master Photography</span>
+                        <span class="activity-time-sleek">1d</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">MH</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">No snooze button for 3 days straight! My morning routine is finally coming together 🌅</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Perfect Morning Routine</span>
+                        <span class="activity-time-sleek">1d</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- This Week Section -->
+        <div class="feed-time-section" data-period="this-week">
+            <div class="feed-time-label">This week</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">LK</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Started my gratitude journal today. Three things I'm grateful for: coffee, sunshine, and this supportive community!</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Daily Gratitude Practice</span>
+                        <span class="activity-time-sleek">2d</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">TS</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Digital detox day 2 complete! Amazing how much more present I feel without constant notifications 📱</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Digital Detox Challenge</span>
+                        <span class="activity-time-sleek">3d</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">NK</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Finished my first short story draft! 2,000 words down, editing phase here I come 📝</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Write and Self-Publish</span>
+                        <span class="activity-time-sleek">5d</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

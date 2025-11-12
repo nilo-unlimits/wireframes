@@ -142,37 +142,58 @@ function enhancedShowPage(pageId) {
         }
     }
     
-    // Load content if page is empty (only for inner pages that aren't preloaded)
+    // Update header icon selected states
+    const activityIcon = document.querySelector('.activity-icon');
+    const notificationIcon = document.querySelector('.notification-icon');
+    
+    if (activityIcon) {
+        if (pageId === 'activity-feed') {
+            activityIcon.classList.add('selected');
+        } else {
+            activityIcon.classList.remove('selected');
+        }
+    }
+    
+    if (notificationIcon) {
+        if (pageId === 'notifications') {
+            notificationIcon.classList.add('selected');
+        } else {
+            notificationIcon.classList.remove('selected');
+        }
+    }
+    
+    // Load content if page is empty (for inner pages and special pages like activity-feed, notifications)
     const pageElement = document.getElementById(pageId);
-    if (pageElement && !pageElement.innerHTML.trim() && innerPages.includes(pageId)) {
+    const specialPages = ['activity-feed', 'notifications'];
+    if (pageElement && !pageElement.innerHTML.trim() && (innerPages.includes(pageId) || specialPages.includes(pageId))) {
         loadPageContent(pageId).then(() => {
-            // Load breadcrumb for inner pages
-            if (pageId === 'learn-more') {
+            // Load breadcrumb for inner pages only (not special pages)
+            if (innerPages.includes(pageId) && pageId === 'learn-more') {
                 loadComponent('breadcrumb', 'breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
-            } else if (pageId === 'manage-account') {
+            } else if (innerPages.includes(pageId) && pageId === 'manage-account') {
                 loadComponent('breadcrumb', 'account-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
-            } else if (pageId === 'credits') {
+            } else if (innerPages.includes(pageId) && pageId === 'credits') {
                 loadComponent('breadcrumb', 'credits-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
-            } else if (pageId === 'future-self') {
+            } else if (innerPages.includes(pageId) && pageId === 'future-self') {
                 loadComponent('breadcrumb', 'future-self-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
-            } else if (pageId === 'tasks') {
+            } else if (innerPages.includes(pageId) && pageId === 'tasks') {
                 loadComponent('breadcrumb', 'tasks-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
                 });
-            } else if (pageId === 'dream-report') {
+            } else if (innerPages.includes(pageId) && pageId === 'dream-report') {
                 loadComponent('breadcrumb', 'dream-report-breadcrumb-container').then(() => {
                     updateBreadcrumbTitle(pageId);
                     initializeLucideIcons();
@@ -673,7 +694,8 @@ const BREADCRUMB_TITLES = {
     'resources': 'MY RESOURCES',
     'module-detail': 'MODULE DETAILS',
     'saved': 'SAVED',
-    'start-challenge': 'START CHALLENGE'
+    'start-challenge': 'START CHALLENGE',
+    'activity-feed': 'ACTIVITY FEED'
 };
 
 function updateBreadcrumbTitle(pageId) {
@@ -1086,18 +1108,12 @@ function switchGalleryTab(tabName) {
 }
 
 // Saved page tab switching functionality
-function switchSavedTab(tabName) {
-    // Update tab buttons
-    document.querySelectorAll('.gallery-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-    
+function switchSavedCategory(categoryName) {
     // Show/hide sections
     document.querySelectorAll('.gallery-section').forEach(section => {
         section.style.display = 'none';
     });
-    document.getElementById(`${tabName}-section`).style.display = 'block';
+    document.getElementById(`${categoryName}-section`).style.display = 'block';
 }
 
 // Search functionality for saved page
@@ -1241,7 +1257,28 @@ function showDreamDetail(dreamId) {
 
 // Make functions globally available
 window.switchGalleryTab = switchGalleryTab;
-window.switchSavedTab = switchSavedTab;
+window.switchSavedCategory = switchSavedCategory;
+
+// Activity Feed Time Filtering
+function filterFeedByTime(period) {
+    const sections = document.querySelectorAll('.feed-time-section');
+    
+    sections.forEach(section => {
+        const sectionPeriod = section.getAttribute('data-period');
+        
+        if (period === 'all-time') {
+            section.style.display = 'block';
+        } else if (period === 'today') {
+            section.style.display = sectionPeriod === 'today' ? 'block' : 'none';
+        } else if (period === 'this-week') {
+            section.style.display = ['today', 'yesterday', 'this-week'].includes(sectionPeriod) ? 'block' : 'none';
+        } else if (period === 'this-month') {
+            section.style.display = 'block'; // Show all for this month
+        }
+    });
+}
+
+window.filterFeedByTime = filterFeedByTime;
 window.filterSaved = filterSaved;
 window.filterByCategory = filterByCategory;
 window.openSearch = openSearch;
