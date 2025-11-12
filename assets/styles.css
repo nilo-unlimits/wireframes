@@ -117,8 +117,8 @@ body {
 
 .activity-icon i,
 .activity-icon svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 18px !important;
+    height: 18px !important;
     color: #8e8e93;
 }
 
@@ -234,8 +234,8 @@ body {
 
 .menu-icon i,
 .menu-icon svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 18px !important;
+    height: 18px !important;
     stroke-width: 1.5;
 }
 
@@ -4820,9 +4820,10 @@ h1, h2 {
     color: white !important;
 }
 
-.tasks-button i {
-    width: 16px;
-    height: 16px;
+.tasks-button i,
+.tasks-button svg {
+    width: 16px !important;
+    height: 16px !important;
 }
 
 .tasks-notification-dot {
