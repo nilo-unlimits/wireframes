@@ -10,7 +10,6 @@
             <option value="challenges">Challenges</option>
             <option value="videos">Videos</option>
             <option value="articles">Articles</option>
-            <option value="resources">Resources</option>
         </select>
         <i data-lucide="chevron-down" class="filter-dropdown-arrow"></i>
     </div>
@@ -108,26 +107,6 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="notion" onclick="showResourceDetail('notion')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Notion - All-in-one workspace</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
         
         <div class="saved-item" data-type="dream" data-id="story" onclick="showPage('dream-story')">
             <div class="saved-item-image">
@@ -217,16 +196,20 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="headspace" onclick="showResourceDetail('headspace')">
+        <div class="saved-item" data-type="video" data-id="time-management-tips" onclick="showVideoDetail('time-management-tips')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
                 </div>
-                <h3 class="saved-item-title">Headspace - Meditation made simple</h3>
+                <h3 class="saved-item-title">Master Time Management in 10 Minutes</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -237,6 +220,233 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="article" data-id="remote-work-future" onclick="showArticleDetail('remote-work-future')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">The Future of Remote Work</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="public-speaking-course" onclick="showVideoDetail('public-speaking-course')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Public Speaking Confidence Course</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="cognitive-biases-understanding" onclick="showArticleDetail('cognitive-biases-understanding')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Understanding Cognitive Biases</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="creative-thinking-techniques" onclick="showVideoDetail('creative-thinking-techniques')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Creative Thinking Techniques</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="work-life-balance-strategies" onclick="showArticleDetail('work-life-balance-strategies')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Work-Life Balance Strategies</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="financial-literacy-basics" onclick="showVideoDetail('financial-literacy-basics')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Financial Literacy Basics</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="sustainable-living-guide" onclick="showArticleDetail('sustainable-living-guide')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Sustainable Living Guide</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="leadership-development" onclick="showVideoDetail('leadership-development')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Leadership Skills Development</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="digital-wellness-tips" onclick="showArticleDetail('digital-wellness-tips')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Digital Wellness Tips</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="emotional-intelligence-work" onclick="showArticleDetail('emotional-intelligence-work')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Emotional Intelligence at Work</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
     </div>
     
     <!-- Loading Spinner -->
@@ -440,68 +650,6 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="goal-setting-masterclass" onclick="showResourceDetail('goal-setting-masterclass')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Goal Setting Masterclass</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="dream-journal-app" onclick="showResourceDetail('dream-journal-app')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Dream Journal App</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="life-coaching-program" onclick="showResourceDetail('life-coaching-program')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Life Coaching Program</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- Dreams Loading Spinner -->
@@ -705,68 +853,6 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="habit-tracker-pro" onclick="showResourceDetail('habit-tracker-pro')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Habit Tracker Pro</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="mindfulness-course" onclick="showResourceDetail('mindfulness-course')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Mindfulness Course</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="productivity-planner" onclick="showResourceDetail('productivity-planner')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Productivity Planner</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
     </div>
     
     <!-- Challenges Loading Spinner -->
@@ -994,7 +1080,7 @@
                     <i data-lucide="play-circle"></i>
                     <span>Video</span>
                 </div>
-                <h3 class="saved-item-title">Science-Based Learning Methods</h3>
+                <h3 class="saved-item-title">Effective Study Methods</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1006,16 +1092,20 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="video-editing-software" onclick="showResourceDetail('video-editing-software')">
+        <div class="saved-item" data-type="video" data-id="time-management-tips" onclick="showVideoDetail('time-management-tips')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
                 </div>
-                <h3 class="saved-item-title">Video Editing Software</h3>
+                <h3 class="saved-item-title">Master Time Management in 10 Minutes</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1027,16 +1117,20 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="online-learning-platform" onclick="showResourceDetail('online-learning-platform')">
+        <div class="saved-item" data-type="video" data-id="public-speaking-course" onclick="showVideoDetail('public-speaking-course')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
                 </div>
-                <h3 class="saved-item-title">Online Learning Platform</h3>
+                <h3 class="saved-item-title">Public Speaking Confidence Course</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1048,16 +1142,20 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="skill-development-course" onclick="showResourceDetail('skill-development-course')">
+        <div class="saved-item" data-type="video" data-id="creative-thinking-techniques" onclick="showVideoDetail('creative-thinking-techniques')">
             <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
                 </div>
-                <h3 class="saved-item-title">Skill Development Course</h3>
+                <h3 class="saved-item-title">Creative Thinking Techniques</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1068,6 +1166,57 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="video" data-id="financial-literacy-basics" onclick="showVideoDetail('financial-literacy-basics')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Financial Literacy Basics</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="video" data-id="leadership-development" onclick="showVideoDetail('leadership-development')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square video-placeholder">
+                    <div class="play-button">
+                        <i data-lucide="play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="play-circle"></i>
+                    <span>Video</span>
+                </div>
+                <h3 class="saved-item-title">Leadership Skills Development</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
     </div>
     
     <!-- Videos Loading Spinner -->
@@ -1259,7 +1408,7 @@
                     <i data-lucide="file-text"></i>
                     <span>Article</span>
                 </div>
-                <h3 class="saved-item-title">Cultivating an Innovation Mindset</h3>
+                <h3 class="saved-item-title">Innovation Mindset Development</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1271,16 +1420,16 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="research-database-access" onclick="showResourceDetail('research-database-access')">
+        <div class="saved-item" data-type="article" data-id="remote-work-future" onclick="showArticleDetail('remote-work-future')">
             <div class="saved-item-image">
                 <div class="image-placeholder-square"></div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
                 </div>
-                <h3 class="saved-item-title">Research Database Access</h3>
+                <h3 class="saved-item-title">The Future of Remote Work</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1292,16 +1441,16 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="writing-tools-suite" onclick="showResourceDetail('writing-tools-suite')">
+        <div class="saved-item" data-type="article" data-id="cognitive-biases-understanding" onclick="showArticleDetail('cognitive-biases-understanding')">
             <div class="saved-item-image">
                 <div class="image-placeholder-square"></div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
                 </div>
-                <h3 class="saved-item-title">Writing Tools Suite</h3>
+                <h3 class="saved-item-title">Understanding Cognitive Biases</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1313,16 +1462,16 @@
             </div>
         </div>
         
-        <div class="saved-item" data-type="resource" data-id="knowledge-management-app" onclick="showResourceDetail('knowledge-management-app')">
+        <div class="saved-item" data-type="article" data-id="work-life-balance-strategies" onclick="showArticleDetail('work-life-balance-strategies')">
             <div class="saved-item-image">
                 <div class="image-placeholder-square"></div>
             </div>
             <div class="saved-item-content">
                 <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
                 </div>
-                <h3 class="saved-item-title">Knowledge Management App</h3>
+                <h3 class="saved-item-title">Work-Life Balance Strategies</h3>
             </div>
             <div class="saved-item-actions">
                 <div class="saved-item-bookmark active">
@@ -1333,6 +1482,70 @@
                 </div>
             </div>
         </div>
+        
+        <div class="saved-item" data-type="article" data-id="sustainable-living-guide" onclick="showArticleDetail('sustainable-living-guide')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Sustainable Living Guide</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="digital-wellness-tips" onclick="showArticleDetail('digital-wellness-tips')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Digital Wellness Tips</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-item" data-type="article" data-id="emotional-intelligence-work" onclick="showArticleDetail('emotional-intelligence-work')">
+            <div class="saved-item-image">
+                <div class="image-placeholder-square"></div>
+            </div>
+            <div class="saved-item-content">
+                <div class="saved-item-category">
+                    <i data-lucide="file-text"></i>
+                    <span>Article</span>
+                </div>
+                <h3 class="saved-item-title">Emotional Intelligence at Work</h3>
+            </div>
+            <div class="saved-item-actions">
+                <div class="saved-item-bookmark active">
+                    <i data-lucide="bookmark"></i>
+                </div>
+                <div class="saved-item-chevron">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
     </div>
     
     <!-- Articles Loading Spinner -->
@@ -1344,225 +1557,3 @@
     </div>
 </div>
 
-<!-- Saved Resources Section -->
-<div class="gallery-section" id="resources-section" style="display: none;">
-    <div class="saved-items-list">
-        <div class="saved-item" data-type="resource" data-id="notion" onclick="showResourceDetail('notion')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Notion - All-in-One Workspace</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="headspace" onclick="showResourceDetail('headspace')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Headspace - Meditation & Mindfulness</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="atomic-habits" onclick="showResourceDetail('atomic-habits')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Atomic Habits by James Clear</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="coursera" onclick="showResourceDetail('coursera')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Coursera - Online Learning Platform</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="forest-app" onclick="showResourceDetail('forest-app')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Forest - Focus & Productivity</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="masterclass" onclick="showResourceDetail('masterclass')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">MasterClass - Learn from Experts</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="todoist" onclick="showResourceDetail('todoist')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Todoist - Task Management</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="thinking-fast-slow" onclick="showResourceDetail('thinking-fast-slow')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Thinking, Fast and Slow</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="khan-academy" onclick="showResourceDetail('khan-academy')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Khan Academy - Free Education</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        
-        <div class="saved-item" data-type="resource" data-id="calm-app" onclick="showResourceDetail('calm-app')">
-            <div class="saved-item-image">
-                <div class="image-placeholder-square"></div>
-            </div>
-            <div class="saved-item-content">
-                <div class="saved-item-category">
-                    <i data-lucide="package"></i>
-                    <span>Resource</span>
-                </div>
-                <h3 class="saved-item-title">Calm - Sleep & Relaxation</h3>
-            </div>
-            <div class="saved-item-actions">
-                <div class="saved-item-bookmark active">
-                    <i data-lucide="bookmark"></i>
-                </div>
-                <div class="saved-item-chevron">
-                    <i data-lucide="chevron-right"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Resources Loading Spinner -->
-    <div class="loading-spinner-container">
-        <div class="loading-spinner">
-            <i data-lucide="loader"></i>
-        </div>
-        <div class="loading-text">Loading More...</div>
-    </div>
-</div>
