@@ -8506,6 +8506,7 @@ h1, h2 {
     gap: 12px;
     margin-bottom: 16px;
     align-items: flex-start;
+    padding: 0 20px;
 }
 
 .activity-avatar-small {
