@@ -8641,3 +8641,111 @@ h1, h2 {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+/* Saved Page Minimal Layout */
+.saved-items-list {
+    padding: 0;
+}
+
+.saved-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    cursor: pointer;
+    border-bottom: 0.5px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.saved-item:hover {
+    background-color: #f8f9fa;
+}
+
+.saved-item:last-child {
+    border-bottom: none;
+}
+
+.saved-item-image {
+    flex-shrink: 0;
+}
+
+.image-placeholder-square {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+}
+
+.saved-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.saved-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.saved-item-description {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.saved-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.saved-item-bookmark {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.saved-item-bookmark.active {
+    background: #007AFF;
+    border-color: #007AFF;
+}
+
+.saved-item-bookmark i,
+.saved-item-bookmark svg {
+    width: 16px !important;
+    height: 16px !important;
+    color: #666;
+}
+
+.saved-item-bookmark.active i,
+.saved-item-bookmark.active svg {
+    color: white !important;
+}
+
+.saved-item-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saved-item-chevron i,
+.saved-item-chevron svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: #c7c7cc;
+}
