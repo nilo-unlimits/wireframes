@@ -1,50 +1,69 @@
 <!-- Notifications Page Content -->
 
-<!-- Notifications Page Header -->
-<div class="page-header">
-    <h1 class="page-title">Notifications</h1>
-    <div class="dreams-header-divider"></div>
+<!-- Page Title -->
+<div class="header-page-title-simple">
+    <h1 class="header-page-title">Notifications</h1>
 </div>
 
-<!-- Notification Items -->
-<div class="notifications-list">
-    <div class="notification-item" onclick="showPage('future-self')">
-        <div class="notification-text">
-            <div class="notification-title">Message from Future Self</div>
-            <div class="notification-time">2 minutes ago</div>
+<!-- Notifications List -->
+<div class="activity-feed-list">
+    <!-- Today Section -->
+    <div class="feed-time-section">
+        <div class="feed-time-label">Today</div>
+        
+        <div class="notification-item unread" onclick="markAsRead(this); showPage('future-self')">
+            <div class="activity-content-sleek">
+                <div class="activity-message-sleek">Message from Future Self</div>
+                <div class="activity-meta-sleek">
+                    <span class="activity-challenge-sleek">Personal Growth</span>
+                    <span class="activity-time-sleek">2m</span>
+                </div>
+            </div>
         </div>
-        <i data-lucide="chevron-right" class="notification-arrow"></i>
+        
+        <div class="notification-item unread" onclick="markAsRead(this); showPage('tasks')">
+            <div class="activity-content-sleek">
+                <div class="activity-message-sleek">Plan your first scuba dive is due today</div>
+                <div class="activity-meta-sleek">
+                    <span class="activity-challenge-sleek">Become a Scuba Diver</span>
+                    <span class="activity-time-sleek">15m</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notification-item read" onclick="showPage('dreams')">
+            <div class="activity-content-sleek">
+                <div class="activity-message-sleek">15% progress on Master Photography this week</div>
+                <div class="activity-meta-sleek">
+                    <span class="activity-challenge-sleek">Master Photography</span>
+                    <span class="activity-time-sleek">1h</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notification-item read" onclick="showPage('challenges')">
+            <div class="activity-content-sleek">
+                <div class="activity-message-sleek">12-day streak for Daily Water Challenge 🔥</div>
+                <div class="activity-meta-sleek">
+                    <span class="activity-challenge-sleek">Daily Water Challenge</span>
+                    <span class="activity-time-sleek">3h</span>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="notification-item" onclick="showPage('tasks')">
-        <div class="notification-text">
-            <div class="notification-title">Plan your first scuba dive is due today</div>
-            <div class="notification-time">15 minutes ago</div>
+    
+    <!-- Yesterday Section -->
+    <div class="feed-time-section">
+        <div class="feed-time-label">Yesterday</div>
+        
+        <div class="notification-item read" onclick="showPage('future-self')">
+            <div class="activity-content-sleek">
+                <div class="activity-message-sleek">Focus on morning routines this week</div>
+                <div class="activity-meta-sleek">
+                    <span class="activity-challenge-sleek">Perfect Morning Routine</span>
+                    <span class="activity-time-sleek">1d</span>
+                </div>
+            </div>
         </div>
-        <i data-lucide="chevron-right" class="notification-arrow"></i>
-    </div>
-
-    <div class="notification-item" onclick="showPage('dreams')">
-        <div class="notification-text">
-            <div class="notification-title">15% progress on Master Photography this week</div>
-            <div class="notification-time">1 hour ago</div>
-        </div>
-        <i data-lucide="chevron-right" class="notification-arrow"></i>
-    </div>
-
-    <div class="notification-item" onclick="showPage('challenges')">
-        <div class="notification-text">
-            <div class="notification-title">12-day streak for Daily Water Challenge 🔥</div>
-            <div class="notification-time">3 hours ago</div>
-        </div>
-        <i data-lucide="chevron-right" class="notification-arrow"></i>
-    </div>
-
-    <div class="notification-item" onclick="showPage('future-self')">
-        <div class="notification-text">
-            <div class="notification-title">Focus on morning routines this week</div>
-            <div class="notification-time">Yesterday</div>
-        </div>
-        <i data-lucide="chevron-right" class="notification-arrow"></i>
     </div>
 </div>

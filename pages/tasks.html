@@ -1,23 +1,17 @@
 <!-- All Tasks Page Content -->
 
-<!-- Breadcrumb -->
-<div id="tasks-breadcrumb-container"></div>
-
-<!-- Search and Filter Controls -->
-<div class="tasks-controls">
-    <div class="search-container">
-        <div class="search-input-wrapper">
-            <input type="text" class="task-search" name="task-search" placeholder="Search tasks..." oninput="filterTasks()">
-            <i data-lucide="search" class="search-icon"></i>
-        </div>
-    </div>
-    
-    <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="today" onclick="filterByDate('today')">Today</button>
-        <button class="filter-tab" data-filter="tomorrow" onclick="filterByDate('tomorrow')">Tomorrow</button>
-        <button class="filter-tab" data-filter="week" onclick="filterByDate('week')">This Week</button>
-        <button class="filter-tab" data-filter="month" onclick="filterByDate('month')">This Month</button>
-        <button class="filter-tab" data-filter="all" onclick="filterByDate('all')">All</button>
+<!-- Page Title with Filter Dropdown -->
+<div class="header-page-title-row">
+    <h1 class="header-page-title">Tasks</h1>
+    <div class="feed-filter-container">
+        <select class="feed-time-filter" onchange="filterTasksByTime(this.value)">
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="this-week">This week</option>
+            <option value="this-month">This month</option>
+            <option value="all">All tasks</option>
+        </select>
+        <i data-lucide="chevron-down" class="filter-dropdown-arrow"></i>
     </div>
 </div>
 

@@ -124,7 +124,7 @@ function enhancedShowPage(pageId) {
     // Hide/show footer and header based on page type
     const footer = document.querySelector('.bottom-nav');
     const header = document.querySelector('.header');
-    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'tasks', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail', 'saved', 'start-challenge'];
+    const innerPages = ['learn-more', 'manage-account', 'credits', 'future-self', 'dream-report', 'dream-browse', 'dream-management', 'challenge-gallery', 'challenge-browse', 'challenge-management', 'dream-scuba-diver', 'dream-achieve', 'challenge-water-daily', 'challenge-water-flow', 'resources', 'module-detail', 'start-challenge'];
     
     if (footer) {
         if (innerPages.includes(pageId)) {
@@ -145,6 +145,8 @@ function enhancedShowPage(pageId) {
     // Update header icon selected states
     const activityIcon = document.querySelector('.activity-icon');
     const notificationIcon = document.querySelector('.notification-icon');
+    const bookmarkIcon = document.querySelector('.bookmark-icon');
+    const tasksButton = document.querySelector('.tasks-button');
     
     if (activityIcon) {
         if (pageId === 'activity-feed') {
@@ -162,9 +164,25 @@ function enhancedShowPage(pageId) {
         }
     }
     
+    if (bookmarkIcon) {
+        if (pageId === 'saved') {
+            bookmarkIcon.classList.add('selected');
+        } else {
+            bookmarkIcon.classList.remove('selected');
+        }
+    }
+    
+    if (tasksButton) {
+        if (pageId === 'tasks') {
+            tasksButton.classList.add('selected');
+        } else {
+            tasksButton.classList.remove('selected');
+        }
+    }
+    
     // Load content if page is empty (for inner pages and special pages like activity-feed, notifications)
     const pageElement = document.getElementById(pageId);
-    const specialPages = ['activity-feed', 'notifications'];
+    const specialPages = ['activity-feed', 'notifications', 'saved', 'tasks'];
     if (pageElement && !pageElement.innerHTML.trim() && (innerPages.includes(pageId) || specialPages.includes(pageId))) {
         loadPageContent(pageId).then(() => {
             // Load breadcrumb for inner pages only (not special pages)
@@ -528,6 +546,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadPageContent('challenges');
         await loadPageContent('meditation');
         await loadPageContent('notifications');
+        await loadPageContent('tasks');
+        await loadPageContent('activity-feed');
         await loadPageContent('dream-browse');
         await loadPageContent('dream-management');
         await loadPageContent('challenge-gallery');
@@ -551,10 +571,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Load breadcrumb for dream-browse since it's preloaded
         await loadComponent('breadcrumb', 'dream-browse-breadcrumb-container');
         updateBreadcrumbTitle('dream-browse');
-        
-        // Load breadcrumb for saved since it's preloaded
-        await loadComponent('breadcrumb', 'saved-breadcrumb-container');
-        updateBreadcrumbTitle('saved');
         
         // Load breadcrumb for start-challenge since it's preloaded
         await loadComponent('breadcrumb', 'start-challenge-breadcrumb-container');
@@ -1279,6 +1295,58 @@ function filterFeedByTime(period) {
 }
 
 window.filterFeedByTime = filterFeedByTime;
+
+// Tasks Time Filtering
+function filterTasksByTime(period) {
+    const tasks = document.querySelectorAll('.task-item-detailed');
+    
+    tasks.forEach(task => {
+        const taskDate = task.getAttribute('data-date');
+        
+        if (period === 'all') {
+            task.style.display = 'block';
+        } else if (period === 'today') {
+            task.style.display = taskDate === 'today' ? 'block' : 'none';
+        } else if (period === 'tomorrow') {
+            task.style.display = taskDate === 'tomorrow' ? 'block' : 'none';
+        } else if (period === 'this-week') {
+            task.style.display = ['today', 'tomorrow', 'week'].includes(taskDate) ? 'block' : 'none';
+        } else if (period === 'this-month') {
+            task.style.display = ['today', 'tomorrow', 'week', 'month'].includes(taskDate) ? 'block' : 'none';
+        }
+    });
+}
+
+window.filterTasksByTime = filterTasksByTime;
+
+// Notifications Time Filtering
+function filterNotificationsByTime(period) {
+    const notifications = document.querySelectorAll('.notification-item');
+    
+    notifications.forEach(notification => {
+        const timeText = notification.querySelector('.notification-time')?.textContent || '';
+        
+        if (period === 'all') {
+            notification.style.display = 'block';
+        } else if (period === 'today') {
+            notification.style.display = (timeText.includes('minute') || timeText.includes('hour')) ? 'block' : 'none';
+        } else if (period === 'this-week') {
+            notification.style.display = (timeText.includes('minute') || timeText.includes('hour') || timeText.includes('Yesterday')) ? 'block' : 'none';
+        } else if (period === 'this-month') {
+            notification.style.display = 'block'; // Show all for this month
+        }
+    });
+}
+
+window.filterNotificationsByTime = filterNotificationsByTime;
+
+// Mark notification as read
+function markAsRead(notificationElement) {
+    notificationElement.classList.remove('unread');
+    notificationElement.classList.add('read');
+}
+
+window.markAsRead = markAsRead;
 window.filterSaved = filterSaved;
 window.filterByCategory = filterByCategory;
 window.openSearch = openSearch;
