@@ -145,8 +145,8 @@ body {
 
 .notification-icon i,
 .notification-icon svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 18px !important;
+    height: 18px !important;
     color: #8e8e93;
 }
 
@@ -176,8 +176,8 @@ body {
 
 .bookmark-icon i,
 .bookmark-icon svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 18px !important;
+    height: 18px !important;
     color: #8e8e93;
 }
 
