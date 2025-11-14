@@ -1517,8 +1517,6 @@ function showUCScenario(ucType) {
             startUC6Script();
         } else if (ucType === 'uc7') {
             startUC7Script();
-        } else if (ucType === 'uc0') {
-            startUC0Script();
         } else if (ucType === 'uc11') {
             startUC11Script();
         }
@@ -1804,22 +1802,11 @@ function getSuggestedCoach(domain) {
     return uc6CoachData.available_agents.find(agent => agent.domain === domain) || uc6CoachData.available_agents[0];
 }
 
-// UC7 - Contextual Reflection Prompt Script with Sentiment Analysis
+// UC7 - Contextual Reflection Prompt (leads to challenge creation)
 function startUC7Script() {
-    // Simulate detecting user's recent emotional state
-    const detectedSentiment = detectUserSentiment();
-    const contextualResponse = getContextualResponse(detectedSentiment);
-    
     setTimeout(() => {
-        if (detectedSentiment === 'distraction') {
-            addFutureSelfMessageWithDualButtons(contextualResponse, "Create Focus Challenge", "uc7-focus-challenge", "target", "Not Right Now", "uc7-skip");
-        } else if (detectedSentiment === 'growth') {
-            addFutureSelfMessage(contextualResponse);
-        } else if (detectedSentiment === 'struggle') {
-            addFutureSelfMessageWithDualButtons(contextualResponse, "Get Support", "uc7-support", "heart", "I'm Okay", "uc7-skip");
-        } else {
-            addFutureSelfMessage(contextualResponse);
-        }
+        const promptMessage = "How has your week been? I'm here to listen and help you turn any insights into action.";
+        addFutureSelfMessage(promptMessage);
     }, 500);
 }
 
@@ -1838,10 +1825,6 @@ function getContextualResponse(sentiment) {
     return "How are you feeling about your progress lately?";
 }
 
-// UC0 - Weekly Dream Report Script
-function startUC0Script() {
-    generateWeeklyReport();
-}
 
 // UC11 - Future Self Letter Script  
 function startUC11Script() {
@@ -1900,7 +1883,9 @@ function handleChatButton(action) {
         selectCoach(coachId);
     }
     // UC7 Actions
-    else if (action === 'uc7-focus-challenge') {
+    else if (action === 'uc7-create-challenge') {
+        createCustomChallenge();
+    } else if (action === 'uc7-focus-challenge') {
         createFocusChallenge();
     } else if (action === 'uc7-support') {
         provideSupportOptions();
@@ -2744,30 +2729,19 @@ function skipCoachIntroduction() {
     }, 500);
 }
 
-// UC7 - Enhanced Contextual Reflection Response Handlers  
+// UC7 - Reflection Response Handler (leads to challenge creation)
 function handleUC7Response(userMessage) {
-    // Analyze sentiment and store response
-    const sentiment = analyzeSentiment(userMessage);
-    uc7ReflectionData.activity_sentiment = sentiment;
+    // Store the response
     uc7ReflectionData.previous_responses.push({
         message: userMessage,
-        sentiment: sentiment,
         timestamp: new Date()
     });
     
     setTimeout(() => {
-        const contextualResponse = getContextualResponseForSentiment(sentiment, userMessage);
+        // Always lead toward challenge creation after reflection
+        const contextualResponse = "Thank you for sharing that reflection with me. Based on what you've told me, I think creating a specific challenge could help you build on this insight. What kind of challenge feels right for where you are?";
         
-        if (sentiment === 'distraction') {
-            addFutureSelfMessageWithDualButtons(contextualResponse, "Create Focus Challenge", "uc7-focus-challenge", "target", "Not Right Now", "uc7-skip");
-        } else if (sentiment === 'struggle') {
-            addFutureSelfMessageWithDualButtons(contextualResponse, "Get Support", "uc7-support", "heart", "I'm Okay", "uc7-skip");
-        } else if (sentiment === 'growth') {
-            addFutureSelfMessage(contextualResponse);
-        } else {
-            // Follow up with empathetic question
-            addFutureSelfMessage(contextualResponse);
-        }
+        addFutureSelfMessageWithDualButtons(contextualResponse, "Create Challenge", "uc7-create-challenge", "target", "Just Reflect", "uc7-skip");
     }, 800);
 }
 
@@ -2825,6 +2799,17 @@ function skipReflectionPrompt() {
     setTimeout(() => {
         const message = "That's okay. Sometimes just acknowledging how we feel is enough. I'm here when you need support.";
         addFutureSelfMessage(message);
+    }, 500);
+}
+
+function createCustomChallenge() {
+    setTimeout(() => {
+        const challengeMessage = "Let's create a challenge that fits exactly where you are right now. What's one small habit or action you'd like to practice consistently?";
+        addFutureSelfMessage(challengeMessage);
+        
+        setTimeout(() => {
+            addFutureSelfMessage("I'll help you design a 7-day challenge around this. Tell me what feels achievable but meaningful.");
+        }, 2000);
     }, 500);
 }
 
