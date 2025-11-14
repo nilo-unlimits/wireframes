@@ -1761,22 +1761,77 @@ function startUC5Script() {
     }, 500);
 }
 
-// UC6 - Coach Introduction Script
+// UC6 - Coach Introduction Script with Domain Detection
 function startUC6Script() {
-    const coachMessage = "You've been setting strong financial goals. Would you like to meet our Money Coach? They can help you set smart savings milestones.";
+    // Detect user's goal domain and suggest appropriate coach
+    const detectedDomain = detectGoalDomain();
+    const suggestedCoach = getSuggestedCoach(detectedDomain);
+    
+    let coachMessage = "";
+    if (detectedDomain === 'finance') {
+        coachMessage = `You've been setting strong financial goals. Would you like to meet our ${suggestedCoach.name}? They can help you set smart savings milestones.`;
+    } else if (detectedDomain === 'health') {
+        coachMessage = `I've noticed your focus on wellness. Our ${suggestedCoach.name} specializes in holistic health strategies. Interested in meeting them?`;
+    } else if (detectedDomain === 'career') {
+        coachMessage = `Your professional growth is impressive. Our ${suggestedCoach.name} helps with career strategy and leadership. Want an introduction?`;
+    } else {
+        // Default to showing multiple options
+        coachMessage = "Based on your journey, you might benefit from specialized coaching. Would you like to explore our expert coaches?";
+    }
     
     setTimeout(() => {
-        addFutureSelfMessageWithDualButtons(coachMessage, "Meet Money Coach", "uc6-meet-coach", "user", "Not Now", "uc6-skip");
+        if (detectedDomain) {
+            addFutureSelfMessageWithDualButtons(coachMessage, `Meet ${suggestedCoach.name}`, "uc6-meet-specific", "user", "See All Coaches", "uc6-explore-coaches");
+        } else {
+            addFutureSelfMessageWithButton(coachMessage, "Explore Coaches", "uc6-explore-coaches");
+        }
     }, 500);
 }
 
-// UC7 - Contextual Reflection Prompt Script
+// Detect goal domain based on user activity (simplified for demo)
+function detectGoalDomain() {
+    // In real implementation, this would analyze user's challenge history, goals, etc.
+    const domains = ['finance', 'health', 'career', 'mindfulness'];
+    return domains[Math.floor(Math.random() * domains.length)];
+}
+
+// Get suggested coach based on domain
+function getSuggestedCoach(domain) {
+    return uc6CoachData.available_agents.find(agent => agent.domain === domain) || uc6CoachData.available_agents[0];
+}
+
+// UC7 - Contextual Reflection Prompt Script with Sentiment Analysis
 function startUC7Script() {
-    const promptMessage = "I noticed you mentioned feeling distracted this week. That's okay — awareness is the first step. Would you like to create a focus challenge for next week?";
+    // Simulate detecting user's recent emotional state
+    const detectedSentiment = detectUserSentiment();
+    const contextualResponse = getContextualResponse(detectedSentiment);
     
     setTimeout(() => {
-        addFutureSelfMessageWithDualButtons(promptMessage, "Create Focus Challenge", "uc7-focus-challenge", "target", "Not Right Now", "uc7-skip");
+        if (detectedSentiment === 'distraction') {
+            addFutureSelfMessageWithDualButtons(contextualResponse, "Create Focus Challenge", "uc7-focus-challenge", "target", "Not Right Now", "uc7-skip");
+        } else if (detectedSentiment === 'growth') {
+            addFutureSelfMessage(contextualResponse);
+        } else if (detectedSentiment === 'struggle') {
+            addFutureSelfMessageWithDualButtons(contextualResponse, "Get Support", "uc7-support", "heart", "I'm Okay", "uc7-skip");
+        } else {
+            addFutureSelfMessage(contextualResponse);
+        }
     }, 500);
+}
+
+// Detect user sentiment from recent activity (simplified for demo)
+function detectUserSentiment() {
+    const sentiments = ['distraction', 'growth', 'struggle'];
+    return sentiments[Math.floor(Math.random() * sentiments.length)];
+}
+
+// Get contextual response based on sentiment
+function getContextualResponse(sentiment) {
+    const responses = uc7ReflectionData.contextual_responses[sentiment];
+    if (responses && responses.length > 0) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+    return "How are you feeling about your progress lately?";
 }
 
 // Handle chat button clicks
@@ -1820,14 +1875,21 @@ function handleChatButton(action) {
         skipJournaling();
     }
     // UC6 Actions
-    else if (action === 'uc6-meet-coach') {
-        introduceMoneyCoach();
+    else if (action === 'uc6-meet-coach' || action === 'uc6-meet-specific') {
+        introduceSpecificCoach();
+    } else if (action === 'uc6-explore-coaches') {
+        showCoachRegistry();
     } else if (action === 'uc6-skip') {
         skipCoachIntroduction();
+    } else if (action.startsWith('uc6-select-')) {
+        const coachId = action.replace('uc6-select-', '');
+        selectCoach(coachId);
     }
     // UC7 Actions
     else if (action === 'uc7-focus-challenge') {
         createFocusChallenge();
+    } else if (action === 'uc7-support') {
+        provideSupportOptions();
     } else if (action === 'uc7-skip') {
         skipReflectionPrompt();
     }
@@ -2330,8 +2392,12 @@ function skipUC2Reminder() {
 function handleUC3Response(userMessage) {
     if (userMessage.toLowerCase().includes('sure') || userMessage.toLowerCase().includes('yes') || userMessage.toLowerCase().includes('okay')) {
         setTimeout(() => {
-            const mindfulnessMessage = "How about trying a mindfulness challenge next? It complements your health goals.";
-            addFutureSelfMessageWithButton(mindfulnessMessage, "Start Mindfulness Challenge", "uc3-mindfulness");
+            const challengeMessage = "How about trying a mindfulness challenge next? It complements your health goals.";
+            addFutureSelfMessage(challengeMessage);
+            
+            setTimeout(() => {
+                addMindfulnessChallenge();
+            }, 1000);
         }, 800);
     } else {
         setTimeout(() => {
@@ -2363,28 +2429,34 @@ function exploreMoreChallenges() {
     }, 500);
 }
 
+let uc4MessageCount = 0;
+
 // UC4 - Dream Proposal Response Handlers
 function handleUC4Response(userMessage) {
-    if (userMessage.toLowerCase().includes('interesting') || userMessage.toLowerCase().includes('yes') || userMessage.toLowerCase().includes('sounds good')) {
+    uc4MessageCount++;
+    
+    if (uc4MessageCount === 1) {
+        // First response - always say "No rush"
+        setTimeout(() => {
+            const postponeMessage = "No rush! I'll keep it in mind for when you're ready to explore bigger dreams.";
+            addFutureSelfMessage(postponeMessage);
+        }, 800);
+    } else {
+        // Second response - offer to add and explore
         setTimeout(() => {
             const addMessage = "I'll add it to your dream suggestions. We can explore it tomorrow.";
             addFutureSelfMessageWithButton(addMessage, "Explore Dream Now", "uc4-explore-dream");
-        }, 800);
-    } else {
-        setTimeout(() => {
-            const postponeMessage = "No rush! I'll keep it in mind for when you're ready to explore bigger dreams.";
-            addFutureSelfMessageWithButton(postponeMessage, "Maybe Later", "uc4-postpone");
         }, 800);
     }
 }
 
 function exploreDreamSuggestion() {
     setTimeout(() => {
-        const message = "Living with vitality means waking up energized, moving with purpose, and feeling alive in your body. Let's start building that dream:";
+        const message = "Here's a dream that matches your journey:";
         addFutureSelfMessage(message);
         
         setTimeout(() => {
-            addVitalityDreamCard();
+            addScubaDiverDreamCard();
         }, 1000);
     }, 500);
 }
@@ -2405,29 +2477,23 @@ function handleUC5Response(userMessage) {
         let responseMessage = "";
         
         if (userMessage.toLowerCase().includes('focus') || userMessage.toLowerCase().includes('work')) {
-            responseMessage = "That's great progress. Would you like to journal about it?";
+            responseMessage = "That's great progress. Tell me more about what helped you stay focused this week.";
         } else if (userMessage.toLowerCase().includes('consistent') || userMessage.toLowerCase().includes('habit')) {
-            responseMessage = "Building consistency is huge! Would you like to journal about what's working?";
+            responseMessage = "Building consistency is huge! What's been the key to maintaining your habits?";
         } else {
-            responseMessage = "That sounds meaningful. Would you like to capture those thoughts in writing?";
+            responseMessage = "That sounds meaningful. What made the difference for you this week?";
         }
         
-        addFutureSelfMessageWithDualButtons(responseMessage, "Start Journaling", "uc5-journal", "edit", "Not Now", "uc5-skip-journal");
+        addFutureSelfMessage(responseMessage);
     }, 800);
 }
 
 function startJournaling() {
-    setTimeout(() => {
-        const message = "Great! Journaling helps you process and appreciate your progress. What specifically about your focus at work felt different this week?";
-        addFutureSelfMessage(message);
-    }, 500);
+    // Not needed anymore - continuing conversation directly
 }
 
 function skipJournaling() {
-    setTimeout(() => {
-        const message = "That's fine! Sometimes just acknowledging your progress is enough. You're doing great.";
-        addFutureSelfMessage(message);
-    }, 500);
+    // Not needed anymore - continuing conversation directly
 }
 
 // Card Component Functions
@@ -2439,10 +2505,10 @@ function addMindfulnessChallenge() {
     challengeDiv.className = 'uc-mini-challenge-card';
     challengeDiv.innerHTML = `
         <div class="challenge-card">
-            <div class="challenge-image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+            <div class="challenge-image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
             <div class="challenge-details">
-                <div class="challenge-name">5-Minute Morning Meditation</div>
-                <div class="challenge-duration">14 days</div>
+                <div class="challenge-name">Daily Water Challenge</div>
+                <div class="challenge-duration">21 days</div>
             </div>
             <button class="challenge-cta" onclick="startMindfulnessChallenge()">Start Challenge</button>
         </div>
@@ -2513,47 +2579,26 @@ function addChallengeOptions() {
     }
 }
 
-function addVitalityDreamCard() {
+function addScubaDiverDreamCard() {
     const chatMessages = document.getElementById('uc-chat-messages');
     const popup = document.querySelector('.uc-popup-content');
     
     const dreamDiv = document.createElement('div');
-    dreamDiv.className = 'uc-dream-card';
+    dreamDiv.className = 'uc-minimal-dream-card';
     dreamDiv.innerHTML = `
-        <div class="dream-card">
-            <div class="dream-header">
-                <div class="dream-icon">
-                    <i data-lucide="zap"></i>
+        <div class="minimal-dream-card">
+            <div class="dream-image-placeholder"></div>
+            <div class="dream-content">
+                <div class="dream-title">Become a Scuba Diver</div>
+                <div class="dream-description">
+                    Explore underwater worlds, discover marine life, and experience the freedom of diving beneath the surface.
                 </div>
-                <div class="dream-title">Living with Vitality</div>
+                <button class="minimal-dream-cta" onclick="addScubaDream()">Add to My Dreams</button>
             </div>
-            <div class="dream-description">
-                Wake up energized, move with purpose, and feel alive in your body through consistent wellness habits.
-            </div>
-            <div class="dream-milestones">
-                <div class="milestone-item">
-                    <i data-lucide="check-circle"></i>
-                    <span>Morning energy routines</span>
-                </div>
-                <div class="milestone-item">
-                    <i data-lucide="check-circle"></i>
-                    <span>Regular movement practice</span>
-                </div>
-                <div class="milestone-item">
-                    <i data-lucide="check-circle"></i>
-                    <span>Mindful nutrition habits</span>
-                </div>
-            </div>
-            <button class="dream-cta" onclick="addVitalityDream()">Add to My Dreams</button>
         </div>
     `;
     
     chatMessages.appendChild(dreamDiv);
-    
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
     
     if (popup) {
         popup.scrollTo({
@@ -2566,63 +2611,189 @@ function addVitalityDreamCard() {
 // Action functions for cards
 function startMindfulnessChallenge() {
     setTimeout(() => {
-        addFutureSelfMessage("Perfect! Your mindfulness journey begins tomorrow. I'll check in with you each morning.");
+        addFutureSelfMessage("Perfect! Your daily water challenge begins tomorrow. I'll help you build the habit of staying hydrated. You've got this!");
     }, 500);
 }
 
-function addVitalityDream() {
+function addScubaDream() {
     setTimeout(() => {
-        addFutureSelfMessage("Your 'Living with Vitality' dream has been added! We'll break this into achievable steps and build it one habit at a time.");
+        addFutureSelfMessage("Your 'Become a Scuba Diver' dream has been added! We'll break this into achievable steps from certification to your first dive.");
     }, 500);
 }
 
-// UC6 - Coach Introduction Response Handlers
+// UC6 - Enhanced Coach Introduction Response Handlers
 function handleUC6Response(userMessage) {
+    // Analyze response for goal domain keywords
+    const detectedDomain = analyzeGoalDomain(userMessage);
+    uc6CoachData.goal_domain = detectedDomain;
+    
     if (userMessage.toLowerCase().includes('yes') || userMessage.toLowerCase().includes('sure') || userMessage.toLowerCase().includes('okay')) {
         setTimeout(() => {
             const introMessage = "Perfect, I'll introduce you now.";
-            addFutureSelfMessageWithButton(introMessage, "Meet Money Coach", "uc6-meet-coach");
+            addFutureSelfMessage(introMessage);
+            
+            setTimeout(() => {
+                showCoachRegistry();
+            }, 1000);
         }, 800);
     } else {
         setTimeout(() => {
-            const laterMessage = "No problem! I'll keep the Money Coach option available for when you're ready.";
+            const laterMessage = "No problem! Our coaches are here whenever you're ready to explore specialized support.";
             addFutureSelfMessage(laterMessage);
         }, 800);
     }
 }
 
-function introduceMoneyCoach() {
+function analyzeGoalDomain(message) {
+    const text = message.toLowerCase();
+    if (text.includes('money') || text.includes('finance') || text.includes('save') || text.includes('invest')) {
+        return 'finance';
+    } else if (text.includes('health') || text.includes('wellness') || text.includes('fitness') || text.includes('nutrition')) {
+        return 'health';
+    } else if (text.includes('career') || text.includes('job') || text.includes('professional') || text.includes('work')) {
+        return 'career';
+    } else if (text.includes('mindful') || text.includes('meditation') || text.includes('peace') || text.includes('focus')) {
+        return 'mindfulness';
+    }
+    return null;
+}
+
+function introduceSpecificCoach() {
+    const domain = uc6CoachData.goal_domain || 'finance';
+    const coach = getSuggestedCoach(domain);
+    
     setTimeout(() => {
-        const introMessage = "Hi! I'm your Money Coach. I help people build wealth through smart, sustainable financial habits. What's your biggest financial goal right now?";
+        let introMessage = "";
+        if (coach.id === 'money_coach') {
+            introMessage = "Hi! I'm your Money Coach. I help people build wealth through smart, sustainable financial habits. What's your biggest financial goal right now?";
+        } else if (coach.id === 'wellness_coach') {
+            introMessage = "Hello! I'm your Wellness Coach. I specialize in creating sustainable health habits that fit your lifestyle. What wellness area would you like to focus on?";
+        } else if (coach.id === 'career_coach') {
+            introMessage = "Hi there! I'm your Career Coach. I help professionals navigate growth, transitions, and leadership development. What's your biggest career aspiration?";
+        } else {
+            introMessage = "Welcome! I'm your Mindfulness Coach. I guide people toward greater presence, clarity, and emotional balance. What drew you to explore mindfulness?";
+        }
+        
         addFutureSelfMessage(introMessage);
+    }, 500);
+}
+
+function showCoachRegistry() {
+    setTimeout(() => {
+        const message = "Here are our expert coaches. Each brings specialized knowledge to help you grow:";
+        addFutureSelfMessage(message);
+        
+        setTimeout(() => {
+            addCoachRegistryCards();
+        }, 1000);
+    }, 500);
+}
+
+function selectCoach(coachId) {
+    const coach = uc6CoachData.available_agents.find(agent => agent.id === coachId);
+    uc6CoachData.selected_coach = coach;
+    
+    if (coach.premium && !checkPremiumAccess()) {
+        showPremiumGate(coach);
+    } else {
+        introduceSelectedCoach(coach);
+    }
+}
+
+function checkPremiumAccess() {
+    // Simplified premium check - in real app would check user subscription
+    return Math.random() > 0.5; // 50% chance for demo
+}
+
+function showPremiumGate(coach) {
+    setTimeout(() => {
+        const premiumMessage = `${coach.name} is available with Unlimits Pro. Upgrade to unlock specialized coaching and advanced features.`;
+        addFutureSelfMessageWithDualButtons(premiumMessage, "Upgrade to Pro", "uc6-upgrade", "star", "Maybe Later", "uc6-skip");
+    }, 500);
+}
+
+function introduceSelectedCoach(coach) {
+    setTimeout(() => {
+        const continuityMessage = `Perfect! Your journey with me has built the foundation, and now ${coach.name} will help you go deeper. They specialize in ${coach.specialty.toLowerCase()}.`;
+        addFutureSelfMessage(continuityMessage);
+        
+        setTimeout(() => {
+            introduceSpecificCoach();
+        }, 1500);
     }, 500);
 }
 
 function skipCoachIntroduction() {
     setTimeout(() => {
-        const skipMessage = "That's perfectly fine! I'm always here when you're ready to explore new support options.";
+        const skipMessage = "That's perfectly fine! Our expert coaches are here whenever you're ready to explore specialized support.";
         addFutureSelfMessage(skipMessage);
     }, 500);
 }
 
-// UC7 - Contextual Reflection Response Handlers
+// UC7 - Enhanced Contextual Reflection Response Handlers  
 function handleUC7Response(userMessage) {
-    uc7ReflectionData.reflection_topic = 'distraction_management';
-    uc7ReflectionData.previous_responses.push(userMessage);
+    // Analyze sentiment and store response
+    const sentiment = analyzeSentiment(userMessage);
+    uc7ReflectionData.activity_sentiment = sentiment;
+    uc7ReflectionData.previous_responses.push({
+        message: userMessage,
+        sentiment: sentiment,
+        timestamp: new Date()
+    });
     
     setTimeout(() => {
-        let responseMessage = "";
+        const contextualResponse = getContextualResponseForSentiment(sentiment, userMessage);
         
-        if (userMessage.toLowerCase().includes('distracted') || userMessage.toLowerCase().includes('unfocused')) {
-            responseMessage = "I understand that feeling. Would you like to create a focus challenge for next week?";
-        } else if (userMessage.toLowerCase().includes('overwhelmed') || userMessage.toLowerCase().includes('busy')) {
-            responseMessage = "Being overwhelmed can make it hard to focus. A structured challenge might help. Want to try?";
+        if (sentiment === 'distraction') {
+            addFutureSelfMessageWithDualButtons(contextualResponse, "Create Focus Challenge", "uc7-focus-challenge", "target", "Not Right Now", "uc7-skip");
+        } else if (sentiment === 'struggle') {
+            addFutureSelfMessageWithDualButtons(contextualResponse, "Get Support", "uc7-support", "heart", "I'm Okay", "uc7-skip");
+        } else if (sentiment === 'growth') {
+            addFutureSelfMessage(contextualResponse);
         } else {
-            responseMessage = "Thanks for sharing that with me. Would creating a focus challenge help you feel more centered?";
+            // Follow up with empathetic question
+            addFutureSelfMessage(contextualResponse);
         }
-        
-        addFutureSelfMessageWithButton(responseMessage, "Create Focus Challenge", "uc7-focus-challenge");
     }, 800);
+}
+
+function analyzeSentiment(message) {
+    const text = message.toLowerCase();
+    
+    // Check for specific sentiment keywords
+    for (const [sentiment, keywords] of Object.entries(uc7ReflectionData.sentiment_keywords)) {
+        if (keywords.some(keyword => text.includes(keyword))) {
+            return sentiment;
+        }
+    }
+    
+    return 'neutral';
+}
+
+function getContextualResponseForSentiment(sentiment, message) {
+    const responses = uc7ReflectionData.contextual_responses[sentiment];
+    
+    if (responses && responses.length > 0) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+    
+    // Fallback responses based on message content
+    if (message.toLowerCase().includes('week')) {
+        return "Thank you for sharing about your week. How are you feeling about moving forward?";
+    }
+    
+    return "I hear you. What would feel most supportive right now?";
+}
+
+function provideSupportOptions() {
+    setTimeout(() => {
+        const message = "Here are some ways I can support you:";
+        addFutureSelfMessage(message);
+        
+        setTimeout(() => {
+            addSupportOptions();
+        }, 1000);
+    }, 500);
 }
 
 function createFocusChallenge() {
@@ -2676,6 +2847,120 @@ function startFocusChallenge() {
     }, 500);
 }
 
+// UC6 Coach Registry Card Component
+function addCoachRegistryCards() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const coachRegistryDiv = document.createElement('div');
+    coachRegistryDiv.className = 'uc-coach-registry';
+    
+    let cardsHTML = '<div class="coach-registry-grid">';
+    
+    uc6CoachData.available_agents.forEach(coach => {
+        const premiumBadge = coach.premium ? '<div class="coach-premium-badge">Pro</div>' : '';
+        cardsHTML += `
+            <div class="coach-card ${coach.premium ? 'premium' : ''}" onclick="selectCoach('${coach.id}')">
+                ${premiumBadge}
+                <div class="coach-icon">
+                    <i data-lucide="${coach.icon}"></i>
+                </div>
+                <div class="coach-info">
+                    <div class="coach-name">${coach.name}</div>
+                    <div class="coach-description">${coach.description}</div>
+                </div>
+                <button class="coach-select-btn">Select</button>
+            </div>
+        `;
+    });
+    
+    cardsHTML += '</div>';
+    coachRegistryDiv.innerHTML = cardsHTML;
+    
+    chatMessages.appendChild(coachRegistryDiv);
+    
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// UC7 Support Options Component
+function addSupportOptions() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const supportDiv = document.createElement('div');
+    supportDiv.className = 'uc-support-options';
+    supportDiv.innerHTML = `
+        <div class="support-option-grid">
+            <div class="support-option-card" onclick="createFocusChallenge()">
+                <div class="support-icon" style="background: #4ecdc4;">
+                    <i data-lucide="target"></i>
+                </div>
+                <div class="support-text">
+                    <div class="support-title">Focus Challenge</div>
+                    <div class="support-desc">Build concentration habits</div>
+                </div>
+            </div>
+            
+            <div class="support-option-card" onclick="suggestMindfulnessSupport()">
+                <div class="support-icon" style="background: #667eea;">
+                    <i data-lucide="brain"></i>
+                </div>
+                <div class="support-text">
+                    <div class="support-title">Mindful Moments</div>
+                    <div class="support-desc">Stress relief practices</div>
+                </div>
+            </div>
+            
+            <div class="support-option-card" onclick="scheduleCheckIn()">
+                <div class="support-icon" style="background: #ff6b6b;">
+                    <i data-lucide="heart"></i>
+                </div>
+                <div class="support-text">
+                    <div class="support-title">Regular Check-ins</div>
+                    <div class="support-desc">Ongoing emotional support</div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(supportDiv);
+    
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Support option functions
+function suggestMindfulnessSupport() {
+    setTimeout(() => {
+        addFutureSelfMessage("Let's try a simple breathing exercise. Take 3 deep breaths with me. Breathe in for 4 counts, hold for 4, exhale for 6. You're doing great.");
+    }, 500);
+}
+
+function scheduleCheckIn() {
+    setTimeout(() => {
+        addFutureSelfMessage("I'll check in with you tomorrow evening. Remember, it's okay to have difficult days. You're not alone in this journey.");
+    }, 500);
+}
+
 // UC2 - Progress Check-In Data
 const uc2ProgressData = {
     challenge_id: null,
@@ -2709,19 +2994,81 @@ const uc5SummaryData = {
     weekly_stats: {}
 };
 
-// UC6 - Coach Introduction Data
+// UC6 - Coach Introduction Data with Multi-Agent Registry
 const uc6CoachData = {
     goal_domain: null,
     engagement_score: 0,
-    available_agents: ['Money Coach', 'Wellness Coach', 'Career Coach'],
-    selected_coach: null
+    selected_coach: null,
+    available_agents: [
+        {
+            id: 'money_coach',
+            name: 'Money Coach',
+            domain: 'finance',
+            description: 'Smart financial habits, savings milestones, and wealth building strategies',
+            icon: 'dollar-sign',
+            premium: false,
+            specialty: 'Financial planning and money mindset'
+        },
+        {
+            id: 'wellness_coach', 
+            name: 'Wellness Coach',
+            domain: 'health',
+            description: 'Physical health, nutrition, fitness, and holistic wellbeing',
+            icon: 'heart',
+            premium: true,
+            specialty: 'Mind-body wellness and healthy lifestyle design'
+        },
+        {
+            id: 'career_coach',
+            name: 'Career Coach', 
+            domain: 'career',
+            description: 'Professional growth, leadership skills, and career transitions',
+            icon: 'briefcase',
+            premium: true,
+            specialty: 'Career strategy and professional development'
+        },
+        {
+            id: 'mindfulness_coach',
+            name: 'Mindfulness Coach',
+            domain: 'mindfulness',
+            description: 'Meditation, presence, emotional intelligence, and inner peace',
+            icon: 'brain',
+            premium: false,
+            specialty: 'Contemplative practices and emotional mastery'
+        }
+    ]
 };
 
-// UC7 - Reflection Prompt Data
+// UC7 - Reflection Prompt Data with Enhanced Sentiment Analysis
 const uc7ReflectionData = {
     reflection_topic: null,
     activity_sentiment: null,
-    previous_responses: []
+    previous_responses: [],
+    sentiment_keywords: {
+        positive: ['good', 'great', 'amazing', 'wonderful', 'excited', 'motivated', 'confident', 'proud', 'accomplished', 'fulfilled'],
+        negative: ['bad', 'terrible', 'awful', 'frustrated', 'overwhelmed', 'stressed', 'anxious', 'disappointed', 'stuck', 'lost'],
+        neutral: ['okay', 'fine', 'normal', 'average', 'mixed', 'unsure', 'thinking', 'processing'],
+        distraction: ['distracted', 'unfocused', 'scattered', 'busy', 'chaotic', 'overwhelmed', 'pulled in directions'],
+        growth: ['learning', 'growing', 'developing', 'improving', 'progress', 'better', 'stronger'],
+        struggle: ['difficult', 'challenging', 'hard', 'tough', 'struggling', 'failing', 'behind']
+    },
+    contextual_responses: {
+        distraction: [
+            "That's okay — awareness is the first step. Would you like to create a focus challenge for next week?",
+            "Feeling scattered is common. Sometimes structure helps. Want to build a focus routine together?",
+            "I understand that feeling. Let's create something to help you find your center again."
+        ],
+        growth: [
+            "I love hearing about your growth! What's been the most surprising thing you've learned?",
+            "Progress like this builds on itself. What do you want to explore next?",
+            "That growth mindset is powerful. How are you feeling about the journey ahead?"
+        ],
+        struggle: [
+            "Struggles are part of the path. You're not behind — you're exactly where you need to be.",
+            "Every challenge teaches us something. What has this difficulty shown you about yourself?", 
+            "I hear the weight you're carrying. What would feel like a small win right now?"
+        ]
+    }
 };
 
 window.toggleScenariosDropdown = toggleScenariosDropdown;
