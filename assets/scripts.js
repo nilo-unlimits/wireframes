@@ -1379,6 +1379,49 @@ window.selectFilter = selectFilter;
 window.addNewDream = addNewDream;
 window.showDreamDetail = showDreamDetail;
 
+// Future Self Scenarios dropdown
+function toggleScenariosDropdown() {
+    const dropdown = document.getElementById('scenarios-dropdown');
+    const dropdownBtn = document.querySelector('.scenarios-dropdown');
+    
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
+        dropdownBtn.classList.add('active');
+    } else {
+        dropdown.style.display = 'none';
+        dropdownBtn.classList.remove('active');
+    }
+}
+
+function selectScenario(scenarioType) {
+    const dropdownLabel = document.querySelector('.dropdown-label');
+    const dropdown = document.getElementById('scenarios-dropdown');
+    const dropdownBtn = document.querySelector('.scenarios-dropdown');
+    
+    // Update the dropdown label based on selected scenario
+    const scenarioNames = {
+        'career-pivot': 'Career Pivot',
+        'financial-freedom': 'Financial Freedom',
+        'health-transformation': 'Health Transformation',
+        'creative-journey': 'Creative Journey',
+        'relationship-goals': 'Relationship Goals'
+    };
+    
+    dropdownLabel.textContent = scenarioNames[scenarioType] || 'Choose a scenario';
+    
+    // Close dropdown
+    dropdown.style.display = 'none';
+    dropdownBtn.classList.remove('active');
+    
+    // Here we would navigate to the specific scenario page (to be built)
+    console.log(`Selected scenario: ${scenarioType}`);
+    // TODO: Navigate to scenario page when ready
+    // showPage(`future-self-${scenarioType}`);
+}
+
+window.toggleScenariosDropdown = toggleScenariosDropdown;
+window.selectScenario = selectScenario;
+
 // Dream Management Tab Switching (for dream-management page)
 function switchManagementTab(tabName) {
     // Update tab buttons
