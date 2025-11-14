@@ -6602,7 +6602,7 @@ h1, h2 {
     gap: 8px;
     padding: 12px 16px;
     background: #fff;
-    border: 1px solid #e5e5ea;
+    border: 1px solid #000;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
