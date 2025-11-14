@@ -272,58 +272,102 @@
     </div>
 </div>
 
-<!-- Latest Messages Section -->
+<!-- Newsfeed Section -->
 <div class="latest-messages-section">
     <div class="latest-messages-header">
         <div class="latest-messages-title-row">
-            <h2 class="latest-messages-title">Latest Messages</h2>
-            <button class="view-all-messages-btn" onclick="showPage('activity-feed')">View All</button>
+            <h2 class="latest-messages-title">Newsfeed</h2>
         </div>
     </div>
     
-    <div class="messages-list-sleek">
-        <div class="activity-item-sleek">
-            <div class="activity-avatar-small">SK</div>
-            <div class="activity-content-sleek">
-                <div class="activity-message-sleek">Just completed day 5 of staying hydrated! Feeling amazing and energized 💧</div>
-                <div class="activity-meta-sleek">
-                    <span class="activity-challenge-sleek">Daily Water Challenge</span>
-                    <span class="activity-time-sleek">2h</span>
+    <div class="activity-feed-list">
+        <!-- Today Section -->
+        <div class="feed-time-section" data-period="today">
+            <div class="feed-time-label">Today</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">SK</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Just completed day 5 of staying hydrated! Feeling amazing and energized 💧</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Daily Water Challenge</span>
+                        <span class="activity-time-sleek">2h</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">MH</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">No snooze button for 3 days straight! My morning routine is finally coming together 🌅</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Perfect Morning Routine</span>
+                        <span class="activity-time-sleek">6h</span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="activity-item-sleek">
-            <div class="activity-avatar-small">MH</div>
-            <div class="activity-content-sleek">
-                <div class="activity-message-sleek">No snooze button for 3 days straight! My morning routine is finally coming together 🌅</div>
-                <div class="activity-meta-sleek">
-                    <span class="activity-challenge-sleek">Perfect Morning Routine</span>
-                    <span class="activity-time-sleek">12h</span>
+        <!-- Yesterday Section -->
+        <div class="feed-time-section" data-period="yesterday">
+            <div class="feed-time-label">Yesterday</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">LK</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Started my gratitude journal today. Three things I'm grateful for: coffee, sunshine, and this supportive community!</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Daily Gratitude Practice</span>
+                        <span class="activity-time-sleek">1d</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">TS</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Digital detox day 2 complete! Amazing how much more present I feel without constant notifications 📱</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">Digital Detox Challenge</span>
+                        <span class="activity-time-sleek">1d</span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="activity-item-sleek">
-            <div class="activity-avatar-small">LK</div>
-            <div class="activity-content-sleek">
-                <div class="activity-message-sleek">Started my gratitude journal today. Three things I'm grateful for: coffee, sunshine, and this supportive community!</div>
-                <div class="activity-meta-sleek">
-                    <span class="activity-challenge-sleek">Daily Gratitude Practice</span>
-                    <span class="activity-time-sleek">1d</span>
+        <!-- This Week Section -->
+        <div class="feed-time-section" data-period="this-week">
+            <div class="feed-time-label">This week</div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">RJ</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Week 1 of meditation complete! The 10-minute sessions are becoming easier each day 🧘‍♀️</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">21-Day Meditation Challenge</span>
+                        <span class="activity-time-sleek">3d</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-item-sleek">
+                <div class="activity-avatar-small">AL</div>
+                <div class="activity-content-sleek">
+                    <div class="activity-message-sleek">Cold shower challenge day 4! It's getting easier and I feel more energized throughout the day ❄️</div>
+                    <div class="activity-meta-sleek">
+                        <span class="activity-challenge-sleek">30-Day Cold Shower Challenge</span>
+                        <span class="activity-time-sleek">4d</span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="activity-item-sleek">
-            <div class="activity-avatar-small">TS</div>
-            <div class="activity-content-sleek">
-                <div class="activity-message-sleek">Digital detox day 2 complete! Amazing how much more present I feel without constant notifications 📱</div>
-                <div class="activity-meta-sleek">
-                    <span class="activity-challenge-sleek">Digital Detox Challenge</span>
-                    <span class="activity-time-sleek">1d</span>
-                </div>
+        <!-- Loading Animation -->
+        <div class="loading-spinner-container">
+            <div class="loading-spinner">
+                <i data-lucide="loader"></i>
             </div>
+            <div class="loading-text">Loading more...</div>
         </div>
     </div>
 </div>

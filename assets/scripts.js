@@ -306,11 +306,17 @@ function enhancedShowPage(pageId) {
         }
     }
     
-    // Show/hide challenge sticky buttons
+    // Show/hide challenge sticky buttons (only on challenge-water-flow Progress tab)
     const challengeButtons = document.getElementById('challenge-sticky-buttons');
     if (challengeButtons) {
         if (pageId === 'challenge-water-flow') {
-            challengeButtons.style.display = 'block';
+            // Check if Progress tab is active, default to showing buttons
+            const progressTab = document.querySelector('[data-tab="progress"]');
+            if (progressTab && progressTab.classList.contains('active')) {
+                challengeButtons.style.display = 'block';
+            } else {
+                challengeButtons.style.display = 'block'; // Show by default when entering page
+            }
         } else {
             challengeButtons.style.display = 'none';
         }
@@ -1659,7 +1665,7 @@ function switchAchieveTab(tabName) {
 function switchChallengeFlowTab(tabName) {
     try {
         // Remove active class from all tabs
-        document.querySelectorAll('.challenge-flow-tab').forEach(tab => {
+        document.querySelectorAll('.achieve-tab').forEach(tab => {
             tab.classList.remove('active');
         });
         
@@ -1670,7 +1676,7 @@ function switchChallengeFlowTab(tabName) {
         }
         
         // Hide all content
-        document.querySelectorAll('.challenge-flow-content').forEach(content => {
+        document.querySelectorAll('.achieve-content').forEach(content => {
             content.style.display = 'none';
         });
         
@@ -1678,6 +1684,16 @@ function switchChallengeFlowTab(tabName) {
         const selectedContent = document.querySelector(`#${tabName}-content`);
         if (selectedContent) {
             selectedContent.style.display = 'block';
+        }
+        
+        // Show/hide challenge buttons based on tab
+        const challengeButtons = document.getElementById('challenge-sticky-buttons');
+        if (challengeButtons) {
+            if (tabName === 'progress') {
+                challengeButtons.style.display = 'block';
+            } else {
+                challengeButtons.style.display = 'none';
+            }
         }
         
         console.log(`Switched to ${tabName} tab`);

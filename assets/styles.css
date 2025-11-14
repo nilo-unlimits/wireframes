@@ -8099,6 +8099,111 @@ h1, h2 {
     color: white;
 }
 
+/* Friends Progress Tracker */
+.friend-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 8px;
+}
+
+.friend-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 120px;
+}
+
+.friend-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.friend-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+}
+
+.friend-week-tracker {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+}
+
+.friend-week-tracker .day-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.friend-week-tracker .day-label {
+    font-size: 10px;
+    color: #666;
+    font-weight: 500;
+}
+
+.friend-week-tracker .day-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.friend-week-tracker .day-item.completed .day-circle {
+    background: #4ECDC4;
+    border-color: #4ECDC4;
+}
+
+.friend-week-tracker .day-item.completed .day-circle i {
+    color: white !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+/* Add Friend Row */
+.add-friend-row {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.add-friend-row:hover {
+    background: #f8f9fa;
+}
+
+.add-friend-avatar {
+    background: #e8e8e8 !important;
+    color: #999 !important;
+}
+
+.add-friend-row .friend-name {
+    color: #999;
+    font-style: italic;
+}
+
+.add-friend-avatar i {
+    width: 14px !important;
+    height: 14px !important;
+}
+
 .day-circle:hover {
     background: #e8e8e8;
 }
