@@ -653,8 +653,9 @@ body {
 /* UC Chat Button */
 .uc-popup-content .uc-chat-button {
     margin: 16px 0 0 0 !important;
-    padding: 0 20px !important;
+    padding: 0 !important;
     text-align: left !important;
+    margin-left: 20px !important;
 }
 
 .uc-popup-content .uc-chat-button button {
@@ -828,6 +829,144 @@ body {
 
 .uc-popup-content .challenge-cta:hover {
     background: #0056CC !important;
+}
+
+/* UC Challenge Options Grid */
+.uc-popup-content .uc-challenge-options {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.uc-popup-content .challenge-option-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+}
+
+.uc-popup-content .challenge-option-card {
+    background: #f8f8f8 !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+}
+
+.uc-popup-content .challenge-option-card:hover {
+    background: #f0f0f0 !important;
+    transform: translateY(-1px) !important;
+}
+
+.uc-popup-content .challenge-option-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+}
+
+.uc-popup-content .challenge-option-icon i {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.uc-popup-content .option-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1d1d1f !important;
+    margin-bottom: 2px !important;
+}
+
+.uc-popup-content .option-desc {
+    font-size: 12px !important;
+    color: #666 !important;
+}
+
+/* UC Dream Card */
+.uc-popup-content .uc-dream-card {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.uc-popup-content .dream-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    color: white !important;
+}
+
+.uc-popup-content .dream-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 12px !important;
+}
+
+.uc-popup-content .dream-icon {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.uc-popup-content .dream-icon i {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.uc-popup-content .dream-title {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+.uc-popup-content .dream-description {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    opacity: 0.9 !important;
+    margin-bottom: 16px !important;
+}
+
+.uc-popup-content .dream-milestones {
+    margin-bottom: 16px !important;
+}
+
+.uc-popup-content .milestone-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+    font-size: 13px !important;
+    opacity: 0.9 !important;
+}
+
+.uc-popup-content .milestone-item i {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.uc-popup-content .dream-cta {
+    background: white !important;
+    color: #764ba2 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+}
+
+.uc-popup-content .dream-cta:hover {
+    background: #f8f8f8 !important;
+    transform: translateY(-1px) !important;
 }
 
 /* Main Content */
