@@ -1517,6 +1517,10 @@ function showUCScenario(ucType) {
             startUC6Script();
         } else if (ucType === 'uc7') {
             startUC7Script();
+        } else if (ucType === 'uc0') {
+            startUC0Script();
+        } else if (ucType === 'uc11') {
+            startUC11Script();
         }
     }, 10);
 }
@@ -1832,6 +1836,16 @@ function getContextualResponse(sentiment) {
         return responses[Math.floor(Math.random() * responses.length)];
     }
     return "How are you feeling about your progress lately?";
+}
+
+// UC0 - Weekly Dream Report Script
+function startUC0Script() {
+    generateWeeklyReport();
+}
+
+// UC11 - Future Self Letter Script  
+function startUC11Script() {
+    checkLetterTrigger();
 }
 
 // Handle chat button clicks
@@ -2961,6 +2975,157 @@ function scheduleCheckIn() {
     }, 500);
 }
 
+// UC0 - Weekly Dream Report Functions
+function generateWeeklyReport() {
+    // Simulate weekly stats
+    uc0WeeklyReportData.weekly_stats = {
+        completed_actions: 2,
+        focus_wins: ['finished focus project actions', 'sent the message you had been avoiding'],
+        drift_patterns: ['drift when task not on calendar'],
+        consistency_days: 5,
+        bounce_back_count: 3
+    };
+    
+    setTimeout(() => {
+        showWeeklyReportHeader();
+    }, 500);
+}
+
+function showWeeklyReportHeader() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'uc-weekly-header';
+    headerDiv.innerHTML = `
+        <div class="weekly-report-header">
+            <div class="portrait-stamp">
+                <div class="portrait-placeholder"></div>
+            </div>
+            <div class="header-text">
+                <div class="report-title">Your Weekly Dream Report</div>
+                <div class="identity-line">The one who keeps their word</div>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(headerDiv);
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Show main report after header
+    setTimeout(() => {
+        showWeeklyReportContent();
+    }, 1000);
+}
+
+function showWeeklyReportContent() {
+    const stats = uc0WeeklyReportData.weekly_stats;
+    
+    const reportText = `Your week had a steady hum. You finished ${stats.completed_actions} small actions on your focus project and ${stats.focus_wins[1]}. That is you keeping your word when it counts. Watch the spot where you ${stats.drift_patterns[0]}. One tweak there moves the needle. A note for belief. Small daily wins beat big rare pushes. You stacked ${stats.bounce_back_count}. Keep going.`;
+    
+    setTimeout(() => {
+        addFutureSelfMessage(reportText);
+        
+        setTimeout(() => {
+            const closingMessage = "Pick one next step. I will set the timer.";
+            addFutureSelfMessageWithButton(closingMessage, "Set Timer", "uc0-timer");
+        }, 2000);
+        
+        setTimeout(() => {
+            showNextWeekSection();
+        }, 3000);
+    }, 500);
+}
+
+function showNextWeekSection() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const nextWeekDiv = document.createElement('div');
+    nextWeekDiv.className = 'uc-next-week-section';
+    nextWeekDiv.innerHTML = `
+        <div class="next-week-header">Next week, start here.</div>
+        <div class="next-week-tasks">
+            <div class="week-task">
+                <div class="task-description">Practice underwater breathing for 3 minutes, after morning coffee.</div>
+                <div class="task-actions">
+                    <button class="task-action-btn start" onclick="startTask('breathing')">Start</button>
+                    <button class="task-action-btn swap" onclick="swapTask('breathing')">Swap</button>
+                    <button class="task-action-btn edit" onclick="editTask('breathing')">Edit</button>
+                </div>
+            </div>
+            
+            <div class="week-task">
+                <div class="task-description">Review challenge progress for 3 minutes, after dinner.</div>
+                <div class="task-actions">
+                    <button class="task-action-btn start" onclick="startTask('review')">Start</button>
+                    <button class="task-action-btn swap" onclick="swapTask('review')">Swap</button>
+                    <button class="task-action-btn edit" onclick="editTask('review')">Edit</button>
+                </div>
+            </div>
+            
+            <div class="week-task">
+                <div class="task-description">Take one photo mindfully for 3 minutes, after lunch.</div>
+                <div class="task-actions">
+                    <button class="task-action-btn start" onclick="startTask('photo')">Start</button>
+                    <button class="task-action-btn swap" onclick="swapTask('photo')">Swap</button>
+                    <button class="task-action-btn edit" onclick="editTask('photo')">Edit</button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(nextWeekDiv);
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Show consistency section
+    setTimeout(() => {
+        showConsistencySection();
+    }, 1500);
+}
+
+function showConsistencySection() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const stats = uc0WeeklyReportData.weekly_stats;
+    
+    const consistencyDiv = document.createElement('div');
+    consistencyDiv.className = 'uc-consistency-section';
+    consistencyDiv.innerHTML = `
+        <div class="consistency-header">Your consistency.</div>
+        <div class="consistency-stats">
+            <div class="stat-item">
+                <div class="stat-text">You showed up on ${stats.consistency_days} of the last 7 days.</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-text">Fast returns: you bounced back within a day ${stats.bounce_back_count} times.</div>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(consistencyDiv);
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // UC2 - Progress Check-In Data
 const uc2ProgressData = {
     challenge_id: null,
@@ -3071,6 +3236,193 @@ const uc7ReflectionData = {
     }
 };
 
+// UC0 - Weekly Dream Report Data
+const uc0WeeklyReportData = {
+    user_portrait: null,
+    identity_line: null,
+    meditation_time: '19:00', // Default evening time
+    weekly_stats: {
+        completed_actions: 0,
+        focus_wins: [],
+        drift_patterns: [],
+        consistency_days: 0,
+        bounce_back_count: 0
+    },
+    active_dreams: ['Become a Scuba Diver', 'Master Photography'],
+    active_challenges: ['Daily Water Challenge', 'Morning Routine'],
+    next_week_tasks: []
+};
+
+// UC11 - Future Self Letter Data
+const uc11LetterData = {
+    trigger_day: 7,
+    meaningful_actions_count: 8,
+    letter_prompts: {
+        waking_feeling: null,
+        visible_proof: null,
+        who_notices: null,
+        tiny_promise: null,
+        anchor_sentence: null
+    },
+    delivery_choice: null, // 'six_months' or 'one_year'
+    scheduled_delivery: null,
+    letter_content: null
+};
+
+// UC11 - Letter System Functions
+function checkLetterTrigger() {
+    const popup = document.querySelector('.uc-popup');
+    if (popup) {
+        popup.remove();
+    }
+    
+    // Simulate checking if trigger day reached
+    const triggerReached = uc11LetterData.meaningful_actions_count >= uc11LetterData.trigger_day;
+    
+    if (triggerReached) {
+        addFutureSelfMessage('Sid, I think it\'s time. You\'ve been showing up consistently, taking small steps that matter. I want to help you capture this moment - where you are right now - and send a letter to your future self.');
+        
+        setTimeout(() => {
+            addFutureSelfMessage('This letter won\'t be advice or goals. It\'ll be proof. Proof of who you\'re becoming, written in your own words, delivered when you need to remember.');
+            
+            setTimeout(() => {
+                addLetterPromptFlow();
+            }, 2000);
+        }, 3000);
+    } else {
+        // Show encouragement message
+        addFutureSelfMessage(`You're building something meaningful, Sid. I can see the small actions adding up. Keep going - when you hit ${uc11LetterData.trigger_day} meaningful actions, I'll help you write a letter to your future self.`);
+        
+        setTimeout(() => {
+            addFutureSelfMessage('For now, what\'s one small thing you can do today that your future self will thank you for?');
+        }, 2500);
+    }
+}
+
+function addLetterPromptFlow() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    
+    const promptsDiv = document.createElement('div');
+    promptsDiv.className = 'letter-prompts-container';
+    promptsDiv.innerHTML = `
+        <div class="letter-prompt-item">
+            <div class="prompt-question">When you wake up six months from now, having become who you're meant to be, how do you feel in your body?</div>
+            <textarea class="prompt-input" placeholder="I feel..." data-prompt="waking_feeling"></textarea>
+        </div>
+        
+        <div class="letter-prompt-item">
+            <div class="prompt-question">What visible proof will exist that your life has changed?</div>
+            <textarea class="prompt-input" placeholder="The proof is..." data-prompt="visible_proof"></textarea>
+        </div>
+        
+        <div class="letter-prompt-item">
+            <div class="prompt-question">Who in your life notices the change? What do they say?</div>
+            <textarea class="prompt-input" placeholder="They notice..." data-prompt="who_notices"></textarea>
+        </div>
+        
+        <div class="letter-prompt-item">
+            <div class="prompt-question">What's one tiny promise you're making to yourself right now?</div>
+            <textarea class="prompt-input" placeholder="I promise..." data-prompt="tiny_promise"></textarea>
+        </div>
+        
+        <div class="letter-prompt-item">
+            <div class="prompt-question">Complete this sentence: "The person reading this letter is someone who..."</div>
+            <textarea class="prompt-input" placeholder="...is someone who..." data-prompt="anchor_sentence"></textarea>
+        </div>
+        
+        <button class="uc-chat-button" onclick="generateLetter()">
+            Create My Letter
+        </button>
+    `;
+    
+    chatMessages.appendChild(promptsDiv);
+    scrollToBottom();
+}
+
+function generateLetter() {
+    // Collect all prompt responses
+    const inputs = document.querySelectorAll('.prompt-input');
+    inputs.forEach(input => {
+        const promptKey = input.dataset.prompt;
+        uc11LetterData.letter_prompts[promptKey] = input.value;
+    });
+    
+    // Generate letter content
+    const letter = `Dear Future Me,
+
+I'm writing this on ${new Date().toLocaleDateString()}, and I want you to remember this moment.
+
+Right now, when I imagine waking up as who I'm meant to be, ${uc11LetterData.letter_prompts.waking_feeling}
+
+The proof that my life has changed: ${uc11LetterData.letter_prompts.visible_proof}
+
+The people around me notice: ${uc11LetterData.letter_prompts.who_notices}
+
+I'm making you a promise today: ${uc11LetterData.letter_prompts.tiny_promise}
+
+Most importantly, the person reading this letter is someone who ${uc11LetterData.letter_prompts.anchor_sentence}
+
+I believe in you. I believe in us.
+
+With love and conviction,
+Your Past Self`;
+    
+    uc11LetterData.letter_content = letter;
+    
+    addFutureSelfMessage('Your letter is beautiful, Sid. Now, when should I deliver this to you?');
+    
+    setTimeout(() => {
+        addLetterDeliveryOptions();
+    }, 1500);
+}
+
+function addLetterDeliveryOptions() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    
+    const deliveryDiv = document.createElement('div');
+    deliveryDiv.className = 'delivery-options-container';
+    deliveryDiv.innerHTML = `
+        <div class="delivery-option-grid">
+            <div class="delivery-option-card" onclick="scheduleDelivery('six_months')">
+                <div class="delivery-icon">📅</div>
+                <div class="delivery-text">
+                    <div class="delivery-title">6 Months</div>
+                    <div class="delivery-desc">Perfect for checking progress</div>
+                </div>
+            </div>
+            
+            <div class="delivery-option-card" onclick="scheduleDelivery('one_year')">
+                <div class="delivery-icon">🗓️</div>
+                <div class="delivery-text">
+                    <div class="delivery-title">1 Year</div>
+                    <div class="delivery-desc">For major transformation</div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(deliveryDiv);
+    scrollToBottom();
+}
+
+function scheduleDelivery(timeframe) {
+    const deliveryDate = new Date();
+    if (timeframe === 'six_months') {
+        deliveryDate.setMonth(deliveryDate.getMonth() + 6);
+    } else {
+        deliveryDate.setFullYear(deliveryDate.getFullYear() + 1);
+    }
+    
+    uc11LetterData.delivery_choice = timeframe;
+    uc11LetterData.scheduled_delivery = deliveryDate;
+    
+    addFutureSelfMessage(`Perfect. I'll deliver your letter on ${deliveryDate.toLocaleDateString()}. Until then, keep building the person who'll read it.`);
+    
+    setTimeout(() => {
+        addFutureSelfMessage('Every meaningful action you take between now and then is another line in that letter. Make it count.');
+    }, 2500);
+}
+
 window.toggleScenariosDropdown = toggleScenariosDropdown;
 window.toggleExternalScenariosDropdown = toggleExternalScenariosDropdown;
 window.selectScenario = selectScenario;
@@ -3078,6 +3430,8 @@ window.showUCScenario = showUCScenario;
 window.handleUCChatKeydown = handleUCChatKeydown;
 window.sendUCMessage = sendUCMessage;
 window.closeUCPopup = closeUCPopup;
+window.generateLetter = generateLetter;
+window.scheduleDelivery = scheduleDelivery;
 
 // Dream Management Tab Switching (for dream-management page)
 function switchManagementTab(tabName) {

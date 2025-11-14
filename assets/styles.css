@@ -979,7 +979,7 @@ body {
     background: white !important;
     border: 1px solid #e5e5ea !important;
     border-radius: 12px !important;
-    padding: 16px !important;
+    padding: 16px 16px 12px 16px !important;
     display: flex !important;
     align-items: flex-start !important;
     gap: 16px !important;
@@ -1030,6 +1030,263 @@ body {
 .uc-popup-content .minimal-dream-cta:hover {
     background: #0056CC !important;
     transform: translateY(-1px) !important;
+}
+
+/* UC11 Letter System Styles */
+.letter-prompts-container {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.letter-prompt-item {
+    margin-bottom: 20px !important;
+}
+
+.prompt-question {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+}
+
+.prompt-input {
+    width: 100% !important;
+    min-height: 80px !important;
+    padding: 12px !important;
+    border: 1px solid #e5e5ea !important;
+    border-radius: 8px !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    resize: vertical !important;
+    background: white !important;
+    color: #000 !important;
+}
+
+.prompt-input:focus {
+    outline: none !important;
+    border-color: #007AFF !important;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+}
+
+.delivery-options-container {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.delivery-option-grid {
+    display: flex !important;
+    gap: 12px !important;
+}
+
+.delivery-option-card {
+    flex: 1 !important;
+    background: white !important;
+    border: 1px solid #e5e5ea !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.delivery-option-card:hover {
+    background: #f8f8f8 !important;
+    transform: translateY(-2px) !important;
+    border-color: #007AFF !important;
+}
+
+.delivery-icon {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+}
+
+.delivery-text {
+    width: 100% !important;
+}
+
+.delivery-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
+    margin-bottom: 4px !important;
+}
+
+.delivery-desc {
+    font-size: 12px !important;
+    color: #8e8e93 !important;
+    line-height: 1.3 !important;
+}
+
+/* UC0 Weekly Report Styles */
+.uc-weekly-header {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.weekly-report-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    background: white !important;
+    border: 1px solid #e5e5ea !important;
+    border-radius: 12px !important;
+}
+
+.portrait-stamp {
+    flex-shrink: 0 !important;
+}
+
+.portrait-placeholder {
+    width: 60px !important;
+    height: 60px !important;
+    background: #f0f0f0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #8e8e93 !important;
+    font-size: 12px !important;
+}
+
+.header-text {
+    flex: 1 !important;
+}
+
+.report-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin-bottom: 4px !important;
+}
+
+.identity-line {
+    font-size: 14px !important;
+    color: #8e8e93 !important;
+    font-weight: 500 !important;
+}
+
+.weekly-stats-container {
+    margin: 16px 20px !important;
+    padding: 0 !important;
+}
+
+.weekly-content-section {
+    background: white !important;
+    border: 1px solid #e5e5ea !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+}
+
+.section-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
+    margin-bottom: 12px !important;
+}
+
+.wins-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.win-item {
+    font-size: 14px !important;
+    color: #000 !important;
+    line-height: 1.4 !important;
+    padding-left: 16px !important;
+    position: relative !important;
+}
+
+.win-item::before {
+    content: '✓' !important;
+    position: absolute !important;
+    left: 0 !important;
+    color: #34C759 !important;
+    font-weight: 600 !important;
+}
+
+.drift-pattern-item {
+    font-size: 14px !important;
+    color: #000 !important;
+    line-height: 1.4 !important;
+    padding-left: 16px !important;
+    position: relative !important;
+}
+
+.drift-pattern-item::before {
+    content: '○' !important;
+    position: absolute !important;
+    left: 0 !important;
+    color: #FF9500 !important;
+    font-weight: 600 !important;
+}
+
+.consistency-chart {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+}
+
+.day-column {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    flex: 1 !important;
+}
+
+.day-label {
+    font-size: 10px !important;
+    color: #8e8e93 !important;
+    font-weight: 500 !important;
+    margin-bottom: 4px !important;
+}
+
+.day-bar {
+    width: 16px !important;
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+    min-height: 12px !important;
+}
+
+.day-bar.high {
+    background: #34C759 !important;
+    height: 48px !important;
+}
+
+.day-bar.medium {
+    background: #FF9500 !important;
+    height: 32px !important;
+}
+
+.day-bar.low {
+    background: #FF3B30 !important;
+    height: 16px !important;
+}
+
+.day-score {
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
+}
+
+.consistency-motivation {
+    padding-top: 16px !important;
+    border-top: 1px solid #f0f0f0 !important;
+}
+
+.motivation-text {
+    font-size: 12px !important;
+    color: #8e8e93 !important;
+    line-height: 1.3 !important;
 }
 
 /* UC Coach Registry */
