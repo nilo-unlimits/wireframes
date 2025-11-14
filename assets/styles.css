@@ -242,31 +242,33 @@ body {
 /* External Zero State Toggle - positioned outside mobile frame */
 .external-zero-state-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 16px;
+    right: 16px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: rgba(248, 248, 248, 0.95);
-    padding: 12px 16px;
-    border-radius: 24px;
-    border: 1px solid #e5e5ea;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     cursor: pointer;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    width: 140px;
+    justify-content: space-between;
 }
 
 .external-zero-state-toggle:hover {
-    background: rgba(229, 229, 234, 0.95);
-    transform: translateY(-1px);
+    background: rgba(240, 240, 240, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .external-zero-state-toggle.active {
     background: rgba(0, 122, 255, 0.95);
     color: white;
-    border-color: #007AFF;
+    border-color: rgba(0, 122, 255, 0.3);
 }
 
 .external-zero-state-toggle.active .toggle-label {
@@ -274,29 +276,28 @@ body {
 }
 
 .toggle-label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: #1d1d1f;
     white-space: nowrap;
 }
 
 .toggle-switch {
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.04);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8e8e93;
-    border: 1px solid #e5e5ea;
+    color: #666;
+    border: none;
     transition: all 0.2s ease;
 }
 
 .external-zero-state-toggle.active .toggle-switch {
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .toggle-switch i,
@@ -304,6 +305,119 @@ body {
     width: 16px !important;
     height: 16px !important;
     stroke-width: 1.5;
+}
+
+/* External Future Self Scenarios Dropdown */
+.external-scenarios-dropdown {
+    position: fixed;
+    top: 72px; /* Below the zero state toggle with spacing */
+    right: 16px;
+    z-index: 999;
+}
+
+.scenarios-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    white-space: nowrap;
+    width: 140px;
+    justify-content: space-between;
+}
+
+.scenarios-dropdown-trigger:hover {
+    background: rgba(240, 240, 240, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.scenarios-dropdown-trigger.active {
+    background: rgba(0, 122, 255, 0.95);
+    color: white;
+    border-color: rgba(0, 122, 255, 0.3);
+}
+
+.scenarios-dropdown-trigger .dropdown-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+.scenarios-dropdown-trigger.active .dropdown-label {
+    color: white;
+}
+
+.scenarios-dropdown-trigger .dropdown-arrow {
+    width: 14px !important;
+    height: 14px !important;
+    color: #666;
+    transition: transform 0.15s ease;
+}
+
+.scenarios-dropdown-trigger.active .dropdown-arrow {
+    color: white;
+    transform: rotate(180deg);
+}
+
+.external-scenarios-dropdown .scenarios-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 240px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.external-scenarios-dropdown .scenario-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.external-scenarios-dropdown .scenario-option:last-child {
+    border-bottom: none;
+}
+
+.external-scenarios-dropdown .scenario-option:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.external-scenarios-dropdown .scenario-icon {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.external-scenarios-dropdown .scenario-text {
+    flex: 1;
+}
+
+.external-scenarios-dropdown .scenario-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+.external-scenarios-dropdown .scenario-desc {
+    font-size: 12px;
+    color: #666;
 }
 
 /* Main Content */

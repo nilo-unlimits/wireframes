@@ -1379,7 +1379,7 @@ window.selectFilter = selectFilter;
 window.addNewDream = addNewDream;
 window.showDreamDetail = showDreamDetail;
 
-// Future Self Scenarios dropdown
+// Future Self Scenarios dropdown (internal - within app)
 function toggleScenariosDropdown() {
     const dropdown = document.getElementById('scenarios-dropdown');
     const dropdownBtn = document.querySelector('.scenarios-dropdown');
@@ -1393,25 +1393,56 @@ function toggleScenariosDropdown() {
     }
 }
 
+// External Future Self Scenarios dropdown (browser interface)
+function toggleExternalScenariosDropdown() {
+    const dropdown = document.getElementById('external-scenarios-dropdown');
+    const dropdownBtn = document.querySelector('.scenarios-dropdown-trigger');
+    
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
+        dropdownBtn.classList.add('active');
+    } else {
+        dropdown.style.display = 'none';
+        dropdownBtn.classList.remove('active');
+    }
+}
+
 function selectScenario(scenarioType) {
-    const dropdownLabel = document.querySelector('.dropdown-label');
-    const dropdown = document.getElementById('scenarios-dropdown');
-    const dropdownBtn = document.querySelector('.scenarios-dropdown');
+    // Update dropdown labels for both internal and external dropdowns
+    const internalDropdownLabel = document.querySelector('.scenarios-dropdown .dropdown-label');
+    const externalDropdownLabel = document.querySelector('.scenarios-dropdown-trigger .dropdown-label');
+    const internalDropdown = document.getElementById('scenarios-dropdown');
+    const externalDropdown = document.getElementById('external-scenarios-dropdown');
+    const internalDropdownBtn = document.querySelector('.scenarios-dropdown');
+    const externalDropdownBtn = document.querySelector('.scenarios-dropdown-trigger');
     
     // Update the dropdown label based on selected scenario
     const scenarioNames = {
-        'career-pivot': 'Career Pivot',
-        'financial-freedom': 'Financial Freedom',
-        'health-transformation': 'Health Transformation',
-        'creative-journey': 'Creative Journey',
-        'relationship-goals': 'Relationship Goals'
+        'uc1': 'UC 1',
+        'uc2': 'UC 2', 
+        'uc3': 'UC 3',
+        'uc4': 'UC 4',
+        'uc5': 'UC 5'
     };
     
-    dropdownLabel.textContent = scenarioNames[scenarioType] || 'Choose a scenario';
+    const selectedName = scenarioNames[scenarioType] || 'Future Self';
     
-    // Close dropdown
-    dropdown.style.display = 'none';
-    dropdownBtn.classList.remove('active');
+    if (internalDropdownLabel) {
+        internalDropdownLabel.textContent = selectedName;
+    }
+    if (externalDropdownLabel) {
+        externalDropdownLabel.textContent = selectedName;
+    }
+    
+    // Close both dropdowns
+    if (internalDropdown) {
+        internalDropdown.style.display = 'none';
+        if (internalDropdownBtn) internalDropdownBtn.classList.remove('active');
+    }
+    if (externalDropdown) {
+        externalDropdown.style.display = 'none';
+        if (externalDropdownBtn) externalDropdownBtn.classList.remove('active');
+    }
     
     // Here we would navigate to the specific scenario page (to be built)
     console.log(`Selected scenario: ${scenarioType}`);
@@ -1420,6 +1451,7 @@ function selectScenario(scenarioType) {
 }
 
 window.toggleScenariosDropdown = toggleScenariosDropdown;
+window.toggleExternalScenariosDropdown = toggleExternalScenariosDropdown;
 window.selectScenario = selectScenario;
 
 // Dream Management Tab Switching (for dream-management page)

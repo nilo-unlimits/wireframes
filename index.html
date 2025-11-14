@@ -19,6 +19,45 @@
         </div>
     </div>
 
+    <!-- Future Self Scenarios Dropdown - positioned below Zero State toggle -->
+    <div class="external-scenarios-dropdown">
+        <div class="scenarios-dropdown-trigger" onclick="toggleExternalScenariosDropdown()">
+            <span class="dropdown-label">Future Self</span>
+            <i data-lucide="chevron-down" class="dropdown-arrow"></i>
+        </div>
+        <div class="scenarios-dropdown-menu" id="external-scenarios-dropdown" style="display: none;">
+            <div class="scenario-option" onclick="selectScenario('uc1')">
+                <div class="scenario-text">
+                    <div class="scenario-name">UC 1</div>
+                </div>
+            </div>
+            
+            <div class="scenario-option" onclick="selectScenario('uc2')">
+                <div class="scenario-text">
+                    <div class="scenario-name">UC 2</div>
+                </div>
+            </div>
+            
+            <div class="scenario-option" onclick="selectScenario('uc3')">
+                <div class="scenario-text">
+                    <div class="scenario-name">UC 3</div>
+                </div>
+            </div>
+            
+            <div class="scenario-option" onclick="selectScenario('uc4')">
+                <div class="scenario-text">
+                    <div class="scenario-name">UC 4</div>
+                </div>
+            </div>
+            
+            <div class="scenario-option" onclick="selectScenario('uc5')">
+                <div class="scenario-text">
+                    <div class="scenario-name">UC 5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="phone-container">
         <!-- Header will be loaded here -->
         <div id="header-container"></div>
