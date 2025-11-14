@@ -1536,10 +1536,30 @@ function handleUCChatKeydown(event) {
 
 function sendUCMessage() {
     const input = document.querySelector('.uc-chat-input-simple .chat-input-text');
+    const chatMessages = document.getElementById('uc-chat-messages');
+    
     if (input && input.value.trim()) {
-        console.log('UC Message sent:', input.value);
-        // TODO: Implement UC chat functionality with conversation flow
+        const userMessage = input.value.trim();
+        
+        // Create user message element
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'uc-user-message';
+        messageDiv.textContent = userMessage;
+        
+        // Add to chat
+        chatMessages.appendChild(messageDiv);
+        
+        // Clear input
         input.value = '';
+        
+        // Scroll to bottom
+        const popup = document.querySelector('.uc-popup-content');
+        if (popup) {
+            popup.scrollTop = popup.scrollHeight;
+        }
+        
+        // TODO: Add AI response here
+        console.log('User message added:', userMessage);
     }
 }
 
