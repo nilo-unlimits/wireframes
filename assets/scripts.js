@@ -1470,32 +1470,6 @@ function showUCScenario(ucType) {
             </div>
             
             <div class="uc-popup-content" id="${ucType}-content">
-                <!-- Future Self Chat Window Structure -->
-                <div class="future-self-message">
-                    Morning Sid. Every version of you that hesitated, dreamed, or tried — they all led here.
-                    <br><br>
-                    You are a visionary. Take a breath. I'm here to help you see where you're headed, and how to meet me there.
-                    <span class="message-timestamp">Just now</span>
-                </div>
-                
-                <!-- Simple Activity List -->
-                <div class="simple-activity-list">
-                    <div class="simple-activity-item">
-                        Transform your morning routine into a success ritual
-                        <i data-lucide="chevron-right"></i>
-                    </div>
-                    
-                    <div class="simple-activity-item">
-                        Unlock your photography potential with daily practice
-                        <i data-lucide="chevron-right"></i>
-                    </div>
-                    
-                    <div class="simple-activity-item">
-                        Master mindfulness and reshape your reality
-                        <i data-lucide="chevron-right"></i>
-                    </div>
-                </div>
-
                 <!-- Chat Messages -->
                 <div class="chat-messages" id="uc-chat-messages">
                     <!-- Messages will be added here dynamically -->
@@ -1524,6 +1498,11 @@ function showUCScenario(ucType) {
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+        
+        // Start UC1 script if this is UC1
+        if (ucType === 'uc1') {
+            startUC1Script();
+        }
     }, 10);
 }
 
@@ -1534,6 +1513,8 @@ function handleUCChatKeydown(event) {
     }
 }
 
+let uc1MessageCount = 0; // Track message progression
+
 function sendUCMessage() {
     const input = document.querySelector('.uc-chat-input-simple .chat-input-text');
     const chatMessages = document.getElementById('uc-chat-messages');
@@ -1541,24 +1522,34 @@ function sendUCMessage() {
     if (input && input.value.trim()) {
         const userMessage = input.value.trim();
         
-        // Create user message element
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'uc-user-message';
-        messageDiv.textContent = userMessage;
-        
-        // Add to chat
-        chatMessages.appendChild(messageDiv);
+        // Add user message using shared function
+        addUCUserMessage(userMessage);
         
         // Clear input
         input.value = '';
         
-        // Scroll to bottom
-        const popup = document.querySelector('.uc-popup-content');
-        if (popup) {
-            popup.scrollTop = popup.scrollHeight;
+        // Handle different UC flows
+        if (uc1CurrentQuestion > 0 && uc1CurrentQuestion <= 9) {
+            // UC1 intake flow
+            if (uc1CurrentQuestion === 8) {
+                // Skip for question 8 as it uses option buttons
+                return;
+            }
+            handleUC1Response(userMessage);
+        } else if (uc1MessageCount === 0) {
+            // First user message - send the encouragement response
+            setTimeout(() => {
+                const encouragementMessage = `I already know how your story turns out, and it turns out well.
+
+You just did something most people never do. Out of every hundred who talk about change, only eight ever start. You are one of the eight.
+
+We will chat for a few minutes. Nothing heavy. At the end you get two things. A short, personal report that shows what is working, what is in the way, and who you are becoming. And a guided meditation to help you start living that future now.`;
+                
+                addFutureSelfMessageWithButton(encouragementMessage, "Ready To Begin", "uc1-begin");
+                uc1MessageCount++;
+            }, 800);
         }
         
-        // TODO: Add AI response here
         console.log('User message added:', userMessage);
     }
 }
@@ -1570,6 +1561,616 @@ function closeUCPopup() {
         setTimeout(() => {
             ucPopup.remove();
         }, 300);
+    }
+}
+
+// UC1 Script - Auto-appearing Future Self messages
+function startUC1Script() {
+    const fullMessage = "Well, look who showed up. You and me. Same person, different timeline.\n\nI am your Future Self, the version of you living your dream life without regrets.\n\nWant to know a secret?";
+    
+    // Start the single typewriter message
+    setTimeout(() => {
+        addFutureSelfMessage(fullMessage);
+    }, 500);
+}
+
+function addFutureSelfMessage(messageText) {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    // Create message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-future-self-message';
+    
+    // Create text container with blinking cursor
+    const textContainer = document.createElement('div');
+    textContainer.className = 'uc-typing-text';
+    textContainer.style.whiteSpace = 'pre-wrap'; // Preserve line breaks
+    
+    messageDiv.appendChild(textContainer);
+    chatMessages.appendChild(messageDiv);
+    
+    // Start typewriter effect
+    let charIndex = 0;
+    const typingSpeed = 8; // Much much faster - 8ms per character
+    
+    function typeCharacter() {
+        if (charIndex < messageText.length) {
+            textContainer.textContent = messageText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            // Scroll to bottom
+            if (popup) {
+                popup.scrollTo({
+                    top: popup.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+            
+            setTimeout(typeCharacter, typingSpeed);
+        }
+        // No cursor, just shows final text when done
+    }
+    
+    // Start typing after short delay
+    setTimeout(typeCharacter, 200);
+}
+
+// Add Future Self message with button
+function addFutureSelfMessageWithButton(messageText, buttonText, buttonAction) {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    // Create message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-future-self-message';
+    
+    // Create text container
+    const textContainer = document.createElement('div');
+    textContainer.className = 'uc-typing-text';
+    textContainer.style.whiteSpace = 'pre-wrap';
+    
+    messageDiv.appendChild(textContainer);
+    chatMessages.appendChild(messageDiv);
+    
+    // Start typewriter effect
+    let charIndex = 0;
+    const typingSpeed = 8;
+    
+    function typeCharacter() {
+        if (charIndex < messageText.length) {
+            textContainer.textContent = messageText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (popup) {
+                popup.scrollTo({
+                    top: popup.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+            
+            setTimeout(typeCharacter, typingSpeed);
+        } else {
+            // After typing is complete, add button
+            setTimeout(() => {
+                const buttonDiv = document.createElement('div');
+                buttonDiv.className = 'uc-chat-button';
+                buttonDiv.innerHTML = `
+                    <button onclick="handleChatButton('${buttonAction}')">
+                        ${buttonText}
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                `;
+                messageDiv.appendChild(buttonDiv);
+                
+                // Initialize Lucide icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                // Scroll to show button
+                if (popup) {
+                    popup.scrollTo({
+                        top: popup.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 500);
+        }
+    }
+    
+    setTimeout(typeCharacter, 200);
+}
+
+// UC1 Intake Data Storage
+const uc1IntakeData = {
+    user_name: null,
+    profession: null,
+    online_presence: null,
+    proud_memory: null,
+    core_value: null,
+    current_good: null,
+    current_challenge_area: null,
+    current_challenge_text: null,
+    coping_style: null,
+    future_snapshot: null
+};
+
+let uc1CurrentQuestion = 0;
+
+// Handle chat button clicks
+function handleChatButton(action) {
+    console.log('Chat button clicked:', action);
+    
+    if (action === 'uc1-begin') {
+        startUC1IntakeQuestions();
+    } else if (action === 'uc1-report') {
+        generateUC1Report();
+    } else if (action === 'uc1-meditation') {
+        startUC1PortraitFlow();
+    } else if (action === 'uc1-portrait') {
+        capturePortrait();
+    } else if (action === 'uc1-challenge') {
+        suggestChallenge();
+    }
+}
+
+// Generate UC1 personalized report
+function generateUC1Report() {
+    setTimeout(() => {
+        const reportMessage = `**${uc1IntakeData.user_name || 'Your'}'s Path to a Dream Life Without Regrets**
+
+Few people start. You did. That already sets you apart.
+
+Your days live between ${uc1IntakeData.profession || 'your work'} and the quiet relief you feel when you notice ${uc1IntakeData.current_good || 'what is good'}. You value ${uc1IntakeData.core_value || 'growth'}. The weight sits in ${uc1IntakeData.current_challenge_area || 'life'}. You tend to meet it with ${getCopingDescription(uc1IntakeData.coping_style)}.
+
+You have been busy, which is not the same as moving forward. We will choose one step that counts.
+
+Most people regret the chances they did not take. You broke that pattern by beginning.
+
+You show up when it matters. You finish more than you admit.
+
+You wake without rush. Your first thought is about creating, not catching up. There is more space in your day and more calm in your chest.
+
+When you worked from aliveness, the impact followed. Depth over noise. The right people found you.
+
+Close your eyes. Feel the breath. Walk through the future you described.`;
+
+        addFutureSelfMessageWithButton(reportMessage, "Start Meditation", "uc1-meditation");
+    }, 800);
+}
+
+// Get coping style description
+function getCopingDescription(copingStyle) {
+    switch(copingStyle) {
+        case 'talking': return 'talking it out';
+        case 'break': return 'taking a break and reset';
+        case 'action': return 'pushing through with action';
+        case 'reflection': return 'quiet reflection';
+        case 'other': return 'your own approach';
+        default: return 'thoughtful response';
+    }
+}
+
+// Start UC1 Portrait Flow
+function startUC1PortraitFlow() {
+    setTimeout(() => {
+        const portraitMessage = `Want to meet the face you grow into. Take a quick selfie. I will create your Future Self portrait. That is who you will see when we talk. You can skip this and do it later.`;
+        
+        addFutureSelfMessageWithDualButtons(portraitMessage, "Capture Future Self Portrait", "uc1-portrait", "camera", "Skip", "uc1-challenge");
+    }, 800);
+}
+
+// Add Future Self message with icon button
+function addFutureSelfMessageWithButtonIcon(messageText, buttonText, buttonAction, iconName) {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    // Create message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-future-self-message';
+    
+    // Create text container
+    const textContainer = document.createElement('div');
+    textContainer.className = 'uc-typing-text';
+    textContainer.style.whiteSpace = 'pre-wrap';
+    
+    messageDiv.appendChild(textContainer);
+    chatMessages.appendChild(messageDiv);
+    
+    // Start typewriter effect
+    let charIndex = 0;
+    const typingSpeed = 8;
+    
+    function typeCharacter() {
+        if (charIndex < messageText.length) {
+            textContainer.textContent = messageText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (popup) {
+                popup.scrollTo({
+                    top: popup.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+            
+            setTimeout(typeCharacter, typingSpeed);
+        } else {
+            // After typing is complete, add button with icon
+            setTimeout(() => {
+                const buttonDiv = document.createElement('div');
+                buttonDiv.className = 'uc-chat-button';
+                buttonDiv.innerHTML = `
+                    <button onclick="handleChatButton('${buttonAction}')">
+                        <i data-lucide="${iconName}"></i>
+                        ${buttonText}
+                    </button>
+                `;
+                messageDiv.appendChild(buttonDiv);
+                
+                // Initialize Lucide icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                if (popup) {
+                    popup.scrollTo({
+                        top: popup.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 200);
+        }
+    }
+    
+    setTimeout(typeCharacter, 200);
+}
+
+// Add Future Self message with dual buttons
+function addFutureSelfMessageWithDualButtons(messageText, primaryText, primaryAction, iconName, secondaryText, secondaryAction) {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    // Create message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-future-self-message';
+    
+    // Create text container
+    const textContainer = document.createElement('div');
+    textContainer.className = 'uc-typing-text';
+    textContainer.style.whiteSpace = 'pre-wrap';
+    
+    messageDiv.appendChild(textContainer);
+    chatMessages.appendChild(messageDiv);
+    
+    // Start typewriter effect
+    let charIndex = 0;
+    const typingSpeed = 8;
+    
+    function typeCharacter() {
+        if (charIndex < messageText.length) {
+            textContainer.textContent = messageText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (popup) {
+                popup.scrollTo({
+                    top: popup.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+            
+            setTimeout(typeCharacter, typingSpeed);
+        } else {
+            // After typing is complete, add dual buttons
+            setTimeout(() => {
+                const buttonDiv = document.createElement('div');
+                buttonDiv.className = 'uc-dual-buttons';
+                buttonDiv.innerHTML = `
+                    <button class="uc-primary-btn" onclick="handleChatButton('${primaryAction}')">
+                        <i data-lucide="${iconName}"></i>
+                        ${primaryText}
+                    </button>
+                    <button class="uc-secondary-btn" onclick="handleChatButton('${secondaryAction}')">
+                        ${secondaryText}
+                    </button>
+                `;
+                messageDiv.appendChild(buttonDiv);
+                
+                // Initialize Lucide icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                if (popup) {
+                    popup.scrollTo({
+                        top: popup.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 200);
+        }
+    }
+    
+    setTimeout(typeCharacter, 200);
+}
+
+// Capture Portrait (placeholder)
+function capturePortrait() {
+    setTimeout(() => {
+        const message = "Portrait capture feature coming soon. For now, let's continue with a suggested challenge.";
+        addFutureSelfMessage(message);
+        
+        setTimeout(() => {
+            suggestChallenge();
+        }, 1500);
+    }, 500);
+}
+
+// Suggest Challenge
+function suggestChallenge() {
+    setTimeout(() => {
+        const challengeMessage = "Here's a challenge that aligns with your path:";
+        addFutureSelfMessage(challengeMessage);
+        
+        // Add challenge card component here
+        setTimeout(() => {
+            addChallengeCard();
+        }, 1000);
+    }, 800);
+}
+
+// Add Challenge Card (mini component)
+function addChallengeCard() {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const popup = document.querySelector('.uc-popup-content');
+    
+    const challengeDiv = document.createElement('div');
+    challengeDiv.className = 'uc-mini-challenge-card';
+    challengeDiv.innerHTML = `
+        <div class="challenge-card">
+            <div class="challenge-image-placeholder"></div>
+            <div class="challenge-details">
+                <div class="challenge-name">Daily Intention Setting</div>
+                <div class="challenge-duration">7 days</div>
+            </div>
+            <button class="challenge-cta" onclick="handleChatButton('uc1-challenge')">Start Challenge</button>
+        </div>
+    `;
+    
+    chatMessages.appendChild(challengeDiv);
+    
+    if (popup) {
+        popup.scrollTo({
+            top: popup.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Start UC1 Intake Questions
+function startUC1IntakeQuestions() {
+    uc1CurrentQuestion = 1;
+    askUC1Question(1);
+}
+
+// Ask UC1 Question
+function askUC1Question(questionNumber) {
+    let question = '';
+    
+    switch(questionNumber) {
+        case 1:
+            question = "What is your full name?";
+            break;
+        case 2:
+            question = `Nice to meet you, ${uc1IntakeData.user_name}. How do you spend most of your time right now? Working, studying, building, or creating?`;
+            break;
+        case 3:
+            question = "If you want, share any links that show your world. LinkedIn, Instagram, a personal site. You can skip this.";
+            break;
+        case 4:
+            question = "Tell me one moment that made you proud. Big or small. Finishing something hard. Helping someone. Showing up when it mattered.";
+            break;
+        case 5:
+            question = "What does that moment say about who you are at your best?";
+            break;
+        case 6:
+            question = "What in your life feels quietly good right now?";
+            break;
+        case 7:
+            question = "Where do you feel a bit stuck or heavy? If you could make one part of life lighter, which area would it be?\n\nWork is career, money, purpose. Play is fun, creativity, adventure. Self is health, mindset, growth. Love is relationships, family, emotions.";
+            break;
+        case 8:
+            question = "When life feels that way, what helps you get unstuck? Pick one or say your own.";
+            addUC1CopingOptions();
+            return;
+        case 9:
+            question = "Five years from now, life feels right. Not perfect. Aligned. What is different about your days compared to today?";
+            break;
+        default:
+            finishUC1Intake();
+            return;
+    }
+    
+    setTimeout(() => {
+        addFutureSelfMessage(question);
+    }, 500);
+}
+
+// Add coping style options
+function addUC1CopingOptions() {
+    const question = "When life feels that way, what helps you get unstuck? Pick one or say your own.";
+    
+    setTimeout(() => {
+        addFutureSelfMessageWithOptions(question, [
+            { text: "Talking it out", value: "talking" },
+            { text: "Taking a break and reset", value: "break" },
+            { text: "Pushing through with action", value: "action" },
+            { text: "Quiet reflection", value: "reflection" },
+            { text: "Something else", value: "other" }
+        ]);
+    }, 800);
+}
+
+// Add message with option buttons
+function addFutureSelfMessageWithOptions(message, options) {
+    const chatContainer = document.getElementById('uc-chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-future-self-message';
+    
+    const textSpan = document.createElement('span');
+    messageDiv.appendChild(textSpan);
+    chatContainer.appendChild(messageDiv);
+    
+    // Scroll to bottom
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+    let i = 0;
+    function typeCharacter() {
+        if (i < message.length) {
+            textSpan.textContent += message[i];
+            i++;
+            setTimeout(typeCharacter, 8);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        } else {
+            // Add option buttons after typing
+            setTimeout(() => {
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'uc-coping-options';
+                
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'uc-option-button';
+                    button.textContent = option.text;
+                    button.onclick = () => selectUC1CopingOption(option.value, option.text);
+                    optionsDiv.appendChild(button);
+                });
+                
+                messageDiv.appendChild(optionsDiv);
+                
+                // Initialize Lucide icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 200);
+        }
+    }
+    
+    setTimeout(typeCharacter, 200);
+}
+
+// Handle coping style selection
+function selectUC1CopingOption(value, text) {
+    uc1IntakeData.coping_style = value;
+    
+    // Add user message
+    addUCUserMessage(text);
+    
+    // Acknowledge and continue
+    setTimeout(() => {
+        const acknowledgments = [
+            "That makes sense.",
+            "I can see that working for you.",
+            "That's a good approach.",
+            "I understand that style."
+        ];
+        const ack = acknowledgments[Math.floor(Math.random() * acknowledgments.length)];
+        
+        addFutureSelfMessage(ack);
+        
+        // Continue to next question
+        setTimeout(() => {
+            uc1CurrentQuestion = 9;
+            askUC1Question(9);
+        }, 1500);
+    }, 800);
+}
+
+// Handle UC1 text responses
+function handleUC1Response(userInput) {
+    // Store the response based on current question
+    switch(uc1CurrentQuestion) {
+        case 1:
+            uc1IntakeData.user_name = userInput;
+            break;
+        case 2:
+            uc1IntakeData.profession = userInput;
+            break;
+        case 3:
+            uc1IntakeData.online_presence = userInput;
+            break;
+        case 4:
+            uc1IntakeData.proud_memory = userInput;
+            break;
+        case 5:
+            uc1IntakeData.core_value = userInput;
+            break;
+        case 6:
+            uc1IntakeData.current_good = userInput;
+            break;
+        case 7:
+            uc1IntakeData.current_challenge_text = userInput;
+            // Determine challenge area from keywords
+            const text = userInput.toLowerCase();
+            if (text.includes('work') || text.includes('career') || text.includes('money') || text.includes('purpose')) {
+                uc1IntakeData.current_challenge_area = 'work';
+            } else if (text.includes('play') || text.includes('fun') || text.includes('creativity') || text.includes('adventure')) {
+                uc1IntakeData.current_challenge_area = 'play';
+            } else if (text.includes('self') || text.includes('health') || text.includes('mindset') || text.includes('growth')) {
+                uc1IntakeData.current_challenge_area = 'self';
+            } else if (text.includes('love') || text.includes('relationship') || text.includes('family') || text.includes('emotion')) {
+                uc1IntakeData.current_challenge_area = 'love';
+            } else {
+                uc1IntakeData.current_challenge_area = 'general';
+            }
+            break;
+        case 9:
+            uc1IntakeData.future_snapshot = userInput;
+            break;
+    }
+    
+    // Add acknowledgment and continue
+    setTimeout(() => {
+        const acknowledgments = [
+            "I hear you.",
+            "Thank you for sharing that.",
+            "That gives me insight.",
+            "I see what you mean.",
+            "That paints a picture."
+        ];
+        
+        const ack = acknowledgments[Math.floor(Math.random() * acknowledgments.length)];
+        addFutureSelfMessage(ack);
+        
+        // Move to next question
+        setTimeout(() => {
+            uc1CurrentQuestion++;
+            askUC1Question(uc1CurrentQuestion);
+        }, 800);
+    }, 800);
+}
+
+// Finish UC1 Intake
+function finishUC1Intake() {
+    setTimeout(() => {
+        const finalMessage = "I have everything I need to create your personalized report. Are you ready to see what I see?";
+        addFutureSelfMessageWithButton(finalMessage, "Show My Report", "uc1-report");
+    }, 800);
+}
+
+// Add UC user message helper function
+function addUCUserMessage(message) {
+    const chatMessages = document.getElementById('uc-chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'uc-user-message';
+    messageDiv.textContent = message;
+    chatMessages.appendChild(messageDiv);
+    
+    // Scroll to bottom
+    const popup = document.querySelector('.uc-popup-content');
+    if (popup) {
+        popup.scrollTop = popup.scrollHeight;
     }
 }
 
