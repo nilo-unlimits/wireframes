@@ -1444,15 +1444,122 @@ function selectScenario(scenarioType) {
         if (externalDropdownBtn) externalDropdownBtn.classList.remove('active');
     }
     
-    // Here we would navigate to the specific scenario page (to be built)
+    // Navigate to UC scenario pages
     console.log(`Selected scenario: ${scenarioType}`);
-    // TODO: Navigate to scenario page when ready
-    // showPage(`future-self-${scenarioType}`);
+    
+    // Handle UC scenarios
+    if (scenarioType.startsWith('uc')) {
+        showUCScenario(scenarioType);
+        return;
+    }
+}
+
+// UC Scenario Handler
+function showUCScenario(ucType) {
+    // Create and show UC popup without close icon
+    const ucPopup = document.createElement('div');
+    ucPopup.className = 'uc-popup-overlay';
+    ucPopup.innerHTML = `
+        <div class="uc-popup-container">
+            <!-- Breadcrumb with Back Button -->
+            <div class="uc-breadcrumb">
+                <button class="uc-back-button" onclick="closeUCPopup()">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <span class="uc-breadcrumb-title">Future Self</span>
+            </div>
+            
+            <div class="uc-popup-content" id="${ucType}-content">
+                <!-- Future Self Chat Window Structure -->
+                <div class="future-self-message">
+                    Morning Sid. Every version of you that hesitated, dreamed, or tried — they all led here.
+                    <br><br>
+                    You are a visionary. Take a breath. I'm here to help you see where you're headed, and how to meet me there.
+                    <span class="message-timestamp">Just now</span>
+                </div>
+                
+                <!-- Simple Activity List -->
+                <div class="simple-activity-list">
+                    <div class="simple-activity-item">
+                        Transform your morning routine into a success ritual
+                        <i data-lucide="chevron-right"></i>
+                    </div>
+                    
+                    <div class="simple-activity-item">
+                        Unlock your photography potential with daily practice
+                        <i data-lucide="chevron-right"></i>
+                    </div>
+                    
+                    <div class="simple-activity-item">
+                        Master mindfulness and reshape your reality
+                        <i data-lucide="chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="uc-chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Sticky Chat Input -->
+            <div class="uc-chat-input-simple">
+                <input 
+                    type="text"
+                    class="chat-input-text" 
+                    placeholder="Ask your future self anything..."
+                    onkeydown="handleUCChatKeydown(event)"
+                />
+                <i data-lucide="send" class="send-icon" onclick="sendUCMessage()"></i>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(ucPopup);
+    
+    // Fade in animation
+    setTimeout(() => {
+        ucPopup.classList.add('active');
+        // Initialize Lucide icons for the new content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }, 10);
+}
+
+// UC Chat Functions (placeholder for now)
+function handleUCChatKeydown(event) {
+    if (event.key === 'Enter') {
+        sendUCMessage();
+    }
+}
+
+function sendUCMessage() {
+    const input = document.querySelector('.uc-chat-input-simple .chat-input-text');
+    if (input && input.value.trim()) {
+        console.log('UC Message sent:', input.value);
+        // TODO: Implement UC chat functionality with conversation flow
+        input.value = '';
+    }
+}
+
+function closeUCPopup() {
+    const ucPopup = document.querySelector('.uc-popup-overlay');
+    if (ucPopup) {
+        ucPopup.classList.remove('active');
+        setTimeout(() => {
+            ucPopup.remove();
+        }, 300);
+    }
 }
 
 window.toggleScenariosDropdown = toggleScenariosDropdown;
 window.toggleExternalScenariosDropdown = toggleExternalScenariosDropdown;
 window.selectScenario = selectScenario;
+window.showUCScenario = showUCScenario;
+window.handleUCChatKeydown = handleUCChatKeydown;
+window.sendUCMessage = sendUCMessage;
+window.closeUCPopup = closeUCPopup;
 
 // Dream Management Tab Switching (for dream-management page)
 function switchManagementTab(tabName) {
