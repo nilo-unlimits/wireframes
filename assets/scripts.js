@@ -306,6 +306,16 @@ function enhancedShowPage(pageId) {
         }
     }
     
+    // Show/hide challenge sticky buttons
+    const challengeButtons = document.getElementById('challenge-sticky-buttons');
+    if (challengeButtons) {
+        if (pageId === 'challenge-water-flow') {
+            challengeButtons.style.display = 'block';
+        } else {
+            challengeButtons.style.display = 'none';
+        }
+    }
+    
     // Call the basic showPage function
     basicShowPage(pageId);
 }
